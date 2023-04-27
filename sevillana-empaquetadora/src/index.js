@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Pedididos from "./pages/Pedididos";
 import Productos from "./pages/Productos";
@@ -13,6 +14,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
           <Route index element={<Home />} />
+          <Route path="Login" element={<Login />} />
           <Route path="pedididos" element={<Pedididos />} />
           <Route path="productos" element={<Productos />} />
           <Route path="cajas" element={<Cajas />} />

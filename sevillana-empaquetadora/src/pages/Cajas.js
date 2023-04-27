@@ -19,6 +19,7 @@ const Cajas = () => {
         <div id="contenedor_usuario">
           <h3>Usuario</h3>
           <h4>daniel@email.com</h4>
+          <button className="boton_out"><Link className="boton_out" to="/Login">Sign out</Link></button>
         </div>
       </div>
       <div id="contenedor_blanco_2">
@@ -26,7 +27,7 @@ const Cajas = () => {
           <div id="boton_imagen">
             <a><Link to="/"><img className="iconos_btn" src={cajas} alt="logo sevillana empaquetadora" /></Link></a>
           </div>
-          <div id="boton_texto"><a>Nueva caja</a></div>
+          <div id="boton_texto"><p>Nueva caja</p></div>
         </div>
         <div id="contenedor_contenido">
           <table>
