@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from '../imagenes/logo.png';
 import pedididos from '../imagenes/iconos/pedidos.png';
 import productos from '../imagenes/iconos/productos.png';
@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <div id="contenedor_negro">
         <div id="contenedor_logo">
-          <a><Link to="/"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link></a>
+          <Link to="/"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
         </div>
         <div id="contenedor_usuario">
           <h3>Usuario</h3>

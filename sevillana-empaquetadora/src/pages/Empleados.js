@@ -1,9 +1,6 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from '../imagenes/logo.png';
-import pedidos from '../imagenes/iconos/pedidos+.png';
 import empleados_blanco from '../imagenes/iconos/empleados_blanco.png';
-import productos from '../imagenes/iconos/productos+.png';
-import cajas from '../imagenes/iconos/cajas+.png';
 import empleados from '../imagenes/iconos/empleados+.png';
 import '../css/app.css';
 import '../css/menu.css';
@@ -13,7 +10,7 @@ const Empleados = () => {
     <>
       <div id="contenedor_negro">
         <div id="contenedor_logo">
-          <a><Link to="/"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link></a>
+          <Link to="/"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
           <img className="iconos_blanco" src={empleados_blanco} alt="logo sevillana empaquetadora" />
         </div>
         <div id="contenedor_usuario">
@@ -21,11 +18,11 @@ const Empleados = () => {
           <h4>daniel@email.com</h4>
           <button className="boton_out"><Link className="boton_out" to="/Login">Sign out</Link></button>
         </div>
-      </div>
+      </div >
       <div id="contenedor_blanco_2">
         <div id="contenedor_boton">
           <div id="boton_imagen">
-            <a><Link to="/"><img className="iconos_btn" src={empleados} alt="logo sevillana empaquetadora" /></Link></a>
+            <Link to="/"><img className="iconos_btn" src={empleados} alt="logo sevillana empaquetadora" /></Link>
           </div>
           <div id="boton_texto"><p>Nuevo empleado</p></div>
         </div>
