@@ -1,0 +1,14 @@
+/*******************************BLANCO*****************************/
+
+#contenedor_blanco_home {
+    background-color: #F7F6EE;
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

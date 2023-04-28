@@ -1,0 +1,60 @@
+/*****************************NEGRO*******************************/
+
+#contenedor_negro_login {
+    background-color: black;
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*******************************BLANCO*****************************/
+
+#contenedor_blanco_login {
+    background-color: #F7F6EE;
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenedor_boton_login {
+    height: 70px;
+    width: 150px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #F7F6EE;
+    padding: 12px 20px 12px 40px;
+    margin: 2px;
+}
+#email {
+    background-image: url('../imagenes/iconos/email.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
+
+#contasenia {
+    background-image: url('../imagenes/iconos/contraseña.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
