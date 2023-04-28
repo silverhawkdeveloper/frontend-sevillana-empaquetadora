@@ -16,7 +16,7 @@ const Cajas = () => {
         <div id="contenedor_usuario">
           <h3>Usuario</h3>
           <h4>daniel@email.com</h4>
-          <button className="boton_out"><Link className="boton_out" to="/Login">Sign out</Link></button>
+          <button className="boton_out"><Link className="boton_out" to="/">Sign out</Link></button>
         </div>
       </div>
       <div id="contenedor_blanco_2">
