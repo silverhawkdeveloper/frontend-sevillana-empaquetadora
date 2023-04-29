@@ -9,7 +9,7 @@ const Login = () => {
     console.log('Entrando en la función fetch');
     const email = document.getElementById("email");
     const contasenia = document.getElementById("contasenia");
-
+    const url = 'http://localhost:5000/auth-token/login';
     let datos = {
       "email": "",
       "contrasenia": ""
@@ -25,7 +25,7 @@ const Login = () => {
           console.log(respuesta);
         }
       };
-      xhr.open("POST", "http://localhost:5000/auth/autenticado");
+      xhr.open("POST", url);
       xhr.send(JSON.stringify(datos));
     }
   }

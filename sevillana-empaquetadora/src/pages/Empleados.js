@@ -15,7 +15,6 @@ const Empleados = () => {
         </div>
 
         <div id="contenedor_usuario">
-          <h3>Usuario</h3>
           <h4>daniel@email.com</h4>
           <button id="boton_out"><Link id="boton_out" to="/">Sign out</Link></button>
         </div>

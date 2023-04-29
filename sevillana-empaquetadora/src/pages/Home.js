@@ -13,11 +13,10 @@ const Home = () => {
       <div id="contenedor_negro">
 
         <div id="contenedor_logo">
-          <Link to="/"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
+          <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
         </div>
 
         <div id="contenedor_usuario">
-          <h3>Usuario</h3>
           <h4>daniel@email.com</h4>
           <button><Link id="boton_out" to="/">Sign out</Link></button>
         </div>

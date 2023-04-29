@@ -39,11 +39,11 @@ body {
 
 #logo {
     height: 120px;
-    margin-right: 30px;
 }
 
 #iconos_blanco {
     height: 80px;
+    margin-left: 30px;
 }
 
 h3,
