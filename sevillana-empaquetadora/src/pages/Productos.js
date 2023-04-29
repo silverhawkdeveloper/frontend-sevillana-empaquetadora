@@ -25,7 +25,7 @@ const Productos = () => {
 
         <div id="contenedor_boton">
           <div id="boton_imagen">
-            <Link to="/"><img id="iconos_btn" src={productos} alt="logo sevillana empaquetadora" /></Link>
+            <Link to="/Figuras"><img id="iconos_btn" src={productos} alt="logo sevillana empaquetadora" /></Link>
           </div>
           <div id="boton_texto"><p>Nuevo producto</p></div>
         </div>

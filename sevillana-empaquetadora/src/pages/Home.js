@@ -26,7 +26,7 @@ const Home = () => {
       <div id="contenedor_blanco_home">
         <nav>
           <ul>
-            <li id="boton"> <Link to="/Pedididos"><div id="cuadrado">
+            <li id="boton"><Link to="/Pedidos"><div id="cuadrado">
               <img id="iconos" src={pedididos} alt="logo pedididos" />
             </div>PEDIDOS</Link></li>
             <li id="boton"><Link to="/Productos"><div id="cuadrado">

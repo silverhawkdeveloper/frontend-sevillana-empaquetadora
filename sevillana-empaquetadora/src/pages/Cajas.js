@@ -25,7 +25,7 @@ const Cajas = () => {
         <div id="contenedor_boton">
 
           <div id="boton_imagen">
-            <Link to="/"><img id="iconos_btn" src={cajas} alt="logo sevillana empaquetadora" /></Link>
+            <Link to="/Cajas_reg"><img id="iconos_btn" src={cajas} alt="logo sevillana empaquetadora" /></Link>
           </div>
           <div id="boton_texto"><p>Nueva caja</p></div>
 

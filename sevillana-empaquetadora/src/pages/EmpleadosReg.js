@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from '../imagenes/logo.png';
 import empleados_blanco from '../imagenes/iconos/empleados_blanco.png';
 import flecha from '../imagenes/iconos/flecha.png';
-import '../css/app.css';
+import '../css/login.css';
 
 const EmpleadosReg = () => {
 
@@ -34,20 +34,59 @@ const EmpleadosReg = () => {
   }
 
   return (
-    <>
+    <div id='contenedor'>
       <div id="contenedor_negro">
+
         <div id="contenedor_logo">
-          <Link to="/"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
+          <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
           <img id="iconos_blanco" src={empleados_blanco} alt="logo sevillana empaquetadora" />
         </div>
+
         <div id="contenedor_usuario">
-          <h3>Usuario</h3>
           <h4>daniel@email.com</h4>
           <button id="boton_out"><Link id="boton_out" to="/">Sign out</Link></button>
         </div>
+
       </div >
-      <div id="contenedor_blanco">
-        <div id="contenedor_texto"><h2>Datos</h2></div>
+
+      <div id="contenedor_blanco_empleados">
+
+        <div id="contenedor_formulario_empleados">
+
+          <div id="contenedor_texto"><h2>Datos usuario</h2></div>
+
+          <form id="form_ancho">
+            <select id="rol">
+              <option value={'admin'}>Administrador</option>
+              <option value={'user'}>Usuario</option>
+            </select>
+            <input id="nombre" type="text" placeholder="Nombre" />
+            <input id="telefono" type="text" placeholder="Teléfono" />
+            <input id="email" type="text" placeholder="Email" />
+            <input id="contasenia" type="text" placeholder="Contraseña" />
+          </form>
+
+          <div id="contenedor_boton_login">
+            <div id="boton_texto"><p>Guardar</p></div>
+            <div id="boton_imagen" onClick={() => Sing()}>
+              <Link to="/"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  );
+};
+
+export default EmpleadosReg;
+
+/*
+ <div id="contenedor_texto"><h2>Datos</h2></div>
+
         <div id="contenedor_formulario">
           <form>
             <select>
@@ -55,20 +94,16 @@ const EmpleadosReg = () => {
               <option value={'user'}>Usuario</option>
             </select>
             <input id="nombre" type="text" placeholder="Nombre" />
-            <input id="telefono" type="number" placeholder="telefono" />
+            <input id="telefono" type="text" placeholder="Teléfono" />
             <input id="email" type="text" placeholder="Email" />
             <input id="contasenia" type="text" placeholder="Contraseña" />
           </form>
         </div>
-        <div id="contenedor_boton">
+
+        <div id="contenedor_boton_login">
           <div id="boton_texto"><p>Guardar</p></div>
           <div id="boton_imagen" onClick={() => Sing()}>
-            <Link to="/"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+            <Link to="/"><img id ="iconos_btn" src={flecha} alt="boton flecha" /></Link>
           </div>
         </div>
-      </div>
-    </>
-  );
-};
-
-export default EmpleadosReg;
+*/

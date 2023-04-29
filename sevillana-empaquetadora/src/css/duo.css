@@ -1,0 +1,41 @@
+/*******************************BLANCO*****************************/
+
+#contenedor_blanco_duo {
+    background-color: #F7F6EE;
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#imagen {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form {
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    margin: 30px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagen_figura {
+    height: 300px;
+    margin-left: 20px;
+}
+
+#form_estrecho {
+    margin-left: 50px;
+    margin-right: 50px;
+}
