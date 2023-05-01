@@ -18,7 +18,7 @@ const Home = () => {
 
         <div id="contenedor_usuario">
           <h4>daniel@email.com</h4>
-          <button><Link id="boton_out" to="/">Sign out</Link></button>
+          <button><Link id="boton_out" to="/">Log out</Link></button>
         </div>
 
       </div>

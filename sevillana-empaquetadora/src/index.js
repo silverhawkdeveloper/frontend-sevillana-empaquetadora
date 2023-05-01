@@ -4,37 +4,54 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Pedidos from "./pages/Pedidos";
-import Productos from "./pages/Productos";
-import Cajas from "./pages/Cajas";
-import Empleados from "./pages/Empleados";
-import Figuras from "./pages/Figuras";
-import EmpleadosReg from "./pages/EmpleadosReg";
-import CajasReg from "./pages/CajasReg";
-import CuboReg from "./pages/CuboReg";
-import OrtoedroReg from "./pages/OrtoedroReg";
-import CilindroReg from "./pages/CilindroReg";
-import EsferaReg from "./pages/EsferaReg";
-import PedidosReg from "./pages/PedidosReg";
+
+//Empleados
+import Empleados from "./pages/empleados/Empleados";
+import EmpleadosReg from "./pages/empleados/EmpleadosReg";
+
+//Pedidos
+import Pedidos from "./pages/pedidos/Pedidos";
+import PedidosReg from "./pages/pedidos/PedidosReg";
+import PedidosMod from "./pages/pedidos/PedidosMod";
+
+//Cajas
+import Cajas from "./pages/cajas/Cajas";
+import CajasReg from "./pages/cajas/CajasReg";
+
+//Productos
+import Productos from "./pages/productos/Productos";
+import Figuras from "./pages/productos/Figuras";
+import CuboReg from "./pages/productos/CuboReg";
+import OrtoedroReg from "./pages/productos/OrtoedroReg";
+import CilindroReg from "./pages/productos/CilindroReg";
+import EsferaReg from "./pages/productos/EsferaReg";
+
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        
         <Route index element={<Login />} />
         <Route path="home" element={<Home />} />
         <Route path="pedidos" element={<Pedidos />} />
-        <Route path="productos" element={<Productos />} />
-        <Route path="cajas" element={<Cajas />} />
+
         <Route path="empleados" element={<Empleados />} />
-        <Route path="figuras" element={<Figuras />} />
         <Route path="empleados_reg" element={<EmpleadosReg />} />
+        
+        <Route path="pedidos_reg" element={<PedidosReg />} />
+        <Route path="pedidos_mod" element={<PedidosMod />} />
+        
+        <Route path="cajas" element={<Cajas />} />
         <Route path="cajas_reg" element={<CajasReg />} />
+        
+        <Route path="productos" element={<Productos />} />
+        <Route path="figuras" element={<Figuras />} />
         <Route path="cubo_reg" element={<CuboReg />} />
         <Route path="ortoedro_reg" element={<OrtoedroReg />} />
         <Route path="cilindro_reg" element={<CilindroReg />} />
         <Route path="esfera_reg" element={<EsferaReg />} />
-        <Route path="pedidos_reg" element={<PedidosReg />} />
+        
       </Routes>
     </BrowserRouter>
   );

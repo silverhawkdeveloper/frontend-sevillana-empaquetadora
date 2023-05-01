@@ -86,6 +86,13 @@ h4 {
     align-items: center;
 }
 
+#contenedor_botones{
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    margin-right: 40px;
+}
+
 #contenedor_contenido {
     background-color: #D9D9D9;
     border-radius: 15px;
@@ -100,7 +107,12 @@ h4 {
 }
 
 #iconos_btn {
-    height: 50px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+#boton_texto {
+    margin-right: 10px;
 }
 
 table {
@@ -115,4 +127,10 @@ td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #F7F6EE;
+}
+
+tr:hover {background-color: #e6e6e6;}
+
+.boton_emer{
+    width: 30px;
 }

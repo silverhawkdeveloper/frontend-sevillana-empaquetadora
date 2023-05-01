@@ -5,7 +5,7 @@ import '../css/login.css';
 
 const Login = () => {
 
-  function Sing() {
+  function login() {
     console.log('Entrando en la función fetch');
     const email = document.getElementById("email");
     const contasenia = document.getElementById("contasenia");
@@ -49,8 +49,8 @@ const Login = () => {
         </div>
 
         <div id="contenedor_boton_login">
-          <div id="boton_texto"><p>Sign in</p></div>
-          <div id="boton_imagen" onClick={() => Sing()}>
+          <div id="boton_texto"><p>Log in</p></div>
+          <div id="boton_imagen" onClick={() => login()}>
             <Link to="/"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
           </div>
         </div>
@@ -62,33 +62,3 @@ const Login = () => {
 };
 
 export default Login;
-
-/*
- <div id="contenedor_negro">
-
-        <div id="contenedor_logo">
-          <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-        </div>
-
-      </div>
-
-      <div id="contenedor_blanco">
-
-        <div id="contenedor_texto"><h1>BIENVENIDO</h1></div>
-
-        <div id="contenedor_formulario">
-          <form>
-            <input id="email" type="text" placeholder="Email" />
-            <input id="contasenia" type="text" placeholder="Contraseña" />
-          </form>
-        </div>
-
-        <div id="contenedor_boton">
-          <div id="boton_texto"><p>Sign in</p></div>
-          <div id="boton_imagen" onClick={() => Sing()}>
-            <Link to="/"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
-          </div>
-        </div>
-
-      </div>
-*/
