@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../imagenes/logo.png';
 import pedididos from '../imagenes/iconos/pedidos.png';
 import productos from '../imagenes/iconos/productos.png';
@@ -8,6 +9,40 @@ import '../css/home.css';
 import '../css/menu.css';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // La función que deseas ejecutar al montar el componente
+    console.log('El contenido HTML se ha cargado');
+    let datos = {
+      "email": "dan@emeal.com",
+      "contrasenia": "987654"
+    };
+
+    if (XMLHttpRequest) {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(xhr.response);
+          //let respuesta = JSON.parse(xhr.responseText);
+          //console.log(respuesta);
+        } 
+        if (xhr.response != 'admin') {
+          const div = document.getElementById('cuadrado');
+          div.style.display = 'none';
+        }
+        
+      };
+      xhr.open('POST', 'http://localhost:5000/auth/autorizado');
+      xhr.send(JSON.stringify(datos));
+    }
+
+  }, []);
+
+  function autorizado() {
+    console.log('Entrando en la función autorizado');
+  }
+
   return (
     <div id='contenedor'>
       <div id="contenedor_negro">
