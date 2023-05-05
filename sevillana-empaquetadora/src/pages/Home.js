@@ -7,6 +7,7 @@ import cajas from '../imagenes/iconos/cajas.png';
 import empleados from '../imagenes/iconos/empleados.png';
 import '../css/home.css';
 import '../css/menu.css';
+import { auth_token_profile } from '../js/funciones.js'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,33 +15,21 @@ const Home = () => {
   useEffect(() => {
     // La función que deseas ejecutar al montar el componente
     console.log('El contenido HTML se ha cargado');
-    let datos = {
-      "email": "dan@emeal.com",
-      "contrasenia": "987654"
-    };
 
-    if (XMLHttpRequest) {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(xhr.response);
-          //let respuesta = JSON.parse(xhr.responseText);
-          //console.log(respuesta);
-        } 
-        if (xhr.response != 'admin') {
-          const div = document.getElementById('cuadrado');
-          div.style.display = 'none';
-        }
-        
-      };
-      xhr.open('POST', 'http://localhost:5000/auth/autorizado');
-      xhr.send(JSON.stringify(datos));
-    }
+    const li_cajas = document.getElementById('li_cajas');
+    const li_empleados = document.getElementById('li_empleados');
+    const usuario = document.getElementById('usuario');
+    const url = 'http://localhost:5000/auth-token/profile';
+
+    // Recuperamos el token almacenado en la sesion
+    let token = sessionStorage.getItem('JWT');
+    auth_token_profile(url, token, usuario, li_cajas, li_empleados);
 
   }, []);
 
-  function autorizado() {
-    console.log('Entrando en la función autorizado');
+  function logout() {
+    sessionStorage.clear();
+    navigate('/');
   }
 
   return (
@@ -52,8 +41,8 @@ const Home = () => {
         </div>
 
         <div id="contenedor_usuario">
-          <h4>daniel@email.com</h4>
-          <button><Link id="boton_out" to="/">Log out</Link></button>
+          <h4 id='usuario'> </h4>
+          <button onClick={() => logout()}><Link id="boton_out" to="/">Log out</Link></button>
         </div>
 
       </div>
@@ -61,16 +50,16 @@ const Home = () => {
       <div id="contenedor_blanco_home">
         <nav>
           <ul>
-            <li id="boton"><Link to="/Pedidos"><div id="cuadrado">
+            <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
               <img id="iconos" src={pedididos} alt="logo pedididos" />
             </div>PEDIDOS</Link></li>
-            <li id="boton"><Link to="/Productos"><div id="cuadrado">
+            <li id="li_productos"><Link to="/Productos"><div id="cuadrado">
               <img id="iconos" src={productos} alt="logo productos" />
             </div>PRODUCTOS</Link> </li>
-            <li id="boton"><Link to="/Cajas"><div id="cuadrado">
+            <li id="li_cajas"><Link to="/Cajas"><div id="cuadrado">
               <img id="iconos" src={cajas} alt="logo cajas" />
             </div>CAJAS</Link></li>
-            <li id="boton"><Link to="/Empleados"><div id="cuadrado">
+            <li id="li_empleados"><Link to="/Empleados"><div id="cuadrado">
               <img id="iconos" src={empleados} alt="logo empleados" />
             </div>EMPLEADOS</Link></li>
           </ul>
