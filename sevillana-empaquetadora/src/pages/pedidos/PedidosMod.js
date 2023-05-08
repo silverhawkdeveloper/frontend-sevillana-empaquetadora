@@ -5,6 +5,7 @@ import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
 import '../../css/app.css';
+import '../../css/pedidos_mod.css';
 
 const PedidosMod = () => {
   const navigate = useNavigate();
@@ -20,25 +21,32 @@ const PedidosMod = () => {
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url, token, usuario);
 
-    //Cargar los datos local
+    //Cargamos los datos locales
     let pedido = JSON.parse(localStorage.getItem('pedido'));
 
     let _id = pedido._id;
     let fecha = document.getElementById('fecha');
     let producto = document.getElementById('producto');
+    let caja = document.getElementById('caja');
     let cantidad = document.getElementById('cantidad');
     let merma = document.getElementById('merma');
     let realizado = document.getElementById('realizado');
 
-    const fecha2 = new Date(pedido.fecha);
-    const opciones = { day: '2-digit', month: '2-digit', year: 'numeric' };
-    const fechaFormateada = fecha2.toLocaleDateString('es-ES', opciones);
+    const fecha_res = new Date(pedido.fecha);
+    const anio = fecha_res.getFullYear();
+    const mes = String(fecha_res.getMonth() + 1).padStart(2, '0');
+    const dia = String(fecha_res.getDate()).padStart(2, '0');
+    const fecha_form = `${anio}-${mes}-${dia}`;
 
-    fecha.value = fechaFormateada;
+    //Peticion para el producto, la caja y el usuario
+
+    fecha.value = fecha_form;
     producto.value = pedido.producto;
+    caja.value = pedido.caja;
     cantidad.value = pedido.cantidad;
     merma.value = pedido.merma;
     realizado.value = pedido.usuario;
+
   });
 
   function auth_token_profile(url, token, usuario) {
@@ -66,8 +74,6 @@ const PedidosMod = () => {
     navigate('/');
   }
 
-  
-
   function ok() {
     console.log('Entrando en la función Ok');
     localStorage.clear();
@@ -88,25 +94,35 @@ const PedidosMod = () => {
         </div>
 
         <div id="contenedor_usuario">
-          <h4 id='usuario'> </h4>
           <button><Link id="boton_out" to="/">Sign out</Link></button>
+          <h4 id='usuario'> </h4>
         </div>
 
       </div>
 
-      <div id="contenedor_blanco_empleados">
+      <div id="contenedor_blanco_ped_mod">
 
-        <div id="contenedor_formulario_empleados">
-
+        <div id='contenedor_gris_ped_mod'>
           <div id="contenedor_texto"><h2>Datos pedido</h2></div>
 
-          <form id="form_ancho">
-            <input id="fecha" type="text" placeholder="Fecha" />
-            <input id="producto" type="text" placeholder="Producto" />
-            <input id="cantidad" type="text" placeholder="Cantidad" />
-            <input id="merma" type="text" placeholder="Merma" />
-            <input id="realizado" type="text" placeholder="Realizado" />
-          </form>
+          <div id='contenido_ped_mod'>
+            <div id="columna_izq">
+              <label>Fecha</label>
+              <label>Producto</label>
+              <label>Caja</label>
+              <label>Número</label>
+              <label>Merma</label>
+              <label>Realizado</label>
+            </div>
+            <div id="columna_der">
+              <input id="fecha" type="date" />
+              <input id="producto" type="text" />
+              <input id="caja" type="text" />
+              <input id="cantidad" type="number" />
+              <input id="merma" type="number" />
+              <input id="realizado" type="text" />
+            </div>
+          </div>
 
           <div id="contenedor_botones">
             <div id="contenedor_boton_login">
@@ -123,7 +139,6 @@ const PedidosMod = () => {
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -133,3 +148,46 @@ const PedidosMod = () => {
 }
 
 export default PedidosMod;
+/*
+            <div id="columna1">
+              <label>Fecha</label>
+              <label>Producto</label>
+              <label>Caja</label>
+              <label>Número</label>
+              <label>Merma</label>
+              <label>Realizado</label>
+            </div>
+*/
+/*
+<div id="contenedor_formulario_empleados">
+
+<div id="contenedor_texto"><h2>Datos pedido</h2></div>
+
+<form id="form_ancho">
+  <div id="columna2">
+    <input id="fecha" type="text" placeholder="Fecha" />
+    <input id="producto" type="text" placeholder="Producto" />
+    <input id="cantidad" type="text" placeholder="Cantidad" />
+    <input id="merma" type="text" placeholder="Merma" />
+    <input id="realizado" type="text" placeholder="Realizado" />
+  </div>
+</form>
+
+<div id="contenedor_botones">
+  <div id="contenedor_boton_login">
+    <div id="boton_texto"><p>Eliminar</p></div>
+    <div id="boton_imagen" onClick={no}>
+      <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
+    </div>
+  </div>
+
+  <div id="contenedor_boton_login">
+    <div id="boton_texto"><p>Guardar</p></div>
+    <div id="boton_imagen" onClick={ok}>
+      <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+    </div>
+  </div>
+</div>
+
+</div>
+*/

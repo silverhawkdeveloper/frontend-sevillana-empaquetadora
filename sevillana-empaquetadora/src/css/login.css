@@ -83,7 +83,7 @@ label {
 
 #contenedor_boton_login {
     height: 70px;
-    width: 150px;
+    width: 120px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -110,7 +110,7 @@ label {
     margin-right: 30px;
 }
 
-input[type=text] {
+input[type=text], [type=date], [type=number]{
     width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
