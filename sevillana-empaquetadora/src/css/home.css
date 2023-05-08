@@ -12,3 +12,19 @@
     justify-content: center;
     align-items: center;
 }
+
+#li_pedidos {
+    display: none;
+}
+
+#li_productos {
+    display: none;
+}
+
+#li_cajas {
+    display: none;
+}
+
+#li_empleados {
+    display: none;
+}

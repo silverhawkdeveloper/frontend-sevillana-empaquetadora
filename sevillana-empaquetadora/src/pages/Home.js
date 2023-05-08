@@ -7,7 +7,6 @@ import cajas from '../imagenes/iconos/cajas.png';
 import empleados from '../imagenes/iconos/empleados.png';
 import '../css/home.css';
 import '../css/menu.css';
-import { auth_token_profile } from '../js/funciones.js'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,19 +15,51 @@ const Home = () => {
     // La función que deseas ejecutar al montar el componente
     console.log('El contenido HTML se ha cargado');
 
-    const li_cajas = document.getElementById('li_cajas');
-    const li_empleados = document.getElementById('li_empleados');
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
+    const li_pedidos = document.getElementById('li_pedidos');
+    const li_productos = document.getElementById('li_productos');
+    const li_cajas = document.getElementById('li_cajas');
+    const li_empleados = document.getElementById('li_empleados');
 
     // Recuperamos el token almacenado en la sesion
-    let token = sessionStorage.getItem('JWT');
-    auth_token_profile(url, token, usuario, li_cajas, li_empleados);
+    const token = sessionStorage.getItem('JWT');
+    auth_token_profile(url, token, usuario, li_pedidos, li_productos, li_cajas, li_empleados);
 
-  }, []);
+  });
+
+  function auth_token_profile(url, token, usuario, div1, div2, div3, div4) {
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': token
+      }
+    })
+      .then(respuesta => {
+        if (respuesta.ok) {
+          return respuesta.json();
+        } else {
+          logout();
+        }
+      })
+      .then((datos) => {
+
+        usuario.innerHTML = datos.email;
+        if (datos.role === 'user') {
+          div1.style.display = 'block';
+          div2.style.display = 'block';
+        } else {
+          div1.style.display = 'block';
+          div2.style.display = 'block';
+          div3.style.display = 'block';
+          div4.style.display = 'block';
+        }
+      });
+  }
 
   function logout() {
     sessionStorage.clear();
+    localStorage.clear();
     navigate('/');
   }
 
