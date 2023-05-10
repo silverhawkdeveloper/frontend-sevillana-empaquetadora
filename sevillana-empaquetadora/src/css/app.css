@@ -36,7 +36,7 @@ body {
 #contenedor_usuario {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     margin-right: 50px;
 }
 
@@ -89,7 +89,7 @@ h4 {
     align-items: center;
 }
 
-#contenedor_botones{
+#contenedor_botones {
     display: flex;
     flex-direction: row;
     align-self: flex-end;
@@ -132,8 +132,10 @@ td {
     border-bottom: 1px solid #F7F6EE;
 }
 
-tr:hover {background-color: #e6e6e6;}
+tr:hover {
+    background-color: #e6e6e6;
+}
 
-.boton_emer{
+.boton_emer {
     width: 30px;
 }

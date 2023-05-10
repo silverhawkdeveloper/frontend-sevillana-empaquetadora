@@ -12,7 +12,7 @@ const PedidosMod = () => {
 
   useEffect(() => {
     // La función que deseas ejecutar al montar el componente
-    console.log('El contenido HTML se ha cargado');
+    console.log('El contenido HTML de Pedidos_mod se ha cargado');
 
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
@@ -22,30 +22,109 @@ const PedidosMod = () => {
     auth_token_profile(url, token, usuario);
 
     //Cargamos los datos locales
-    let pedido = JSON.parse(localStorage.getItem('pedido'));
+    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
 
-    let _id = pedido._id;
-    let fecha = document.getElementById('fecha');
-    let producto = document.getElementById('producto');
-    let caja = document.getElementById('caja');
-    let cantidad = document.getElementById('cantidad');
-    let merma = document.getElementById('merma');
-    let realizado = document.getElementById('realizado');
+    const fechaHTML = document.getElementById('fecha');
+    const productoHTML = document.getElementById('producto');
+    const cajaHTML = document.getElementById('caja');
+    const cantidadHTML = document.getElementById('cantidad');
+    const mermaHTML = document.getElementById('merma');
+    const usuarioHTML = document.getElementById('sel_usuario');
 
-    const fecha_res = new Date(pedido.fecha);
+    // Formato de la fecha
+    const fecha_res = new Date(pedidoLocal.fecha);
     const anio = fecha_res.getFullYear();
     const mes = String(fecha_res.getMonth() + 1).padStart(2, '0');
     const dia = String(fecha_res.getDate()).padStart(2, '0');
     const fecha_form = `${anio}-${mes}-${dia}`;
 
-    //Peticion para el producto, la caja y el usuario
+    // Peticion para obtener el producto
+    fetch(`http://localhost:5000/pedido/`)
+      .then(response => response.json())
+      .then(data => {
+        // Almacenar los datos en una variable
+        const datosRecibidos = data;
 
-    fecha.value = fecha_form;
-    producto.value = pedido.producto;
-    caja.value = pedido.caja;
-    cantidad.value = pedido.cantidad;
-    merma.value = pedido.merma;
-    realizado.value = pedido.usuario;
+        // Pasar por un condicional del resultado
+        if (datosRecibidos.length > 0) {
+          console.log('Se recibieron datos');
+          datosRecibidos.forEach(pedido => {
+            const a = pedido.producto[0]._id
+            const b = pedidoLocal.producto
+            const option = document.createElement('option');
+            option.value = a;
+            option.innerText = pedido.producto[0].descripcion;
+            productoHTML.appendChild(option);
+            if (a === b) option.setAttribute('selected', 'selected');
+          });
+
+        } else {
+          console.log('No se recibieron datos');
+        }
+      })
+      .catch(error => {
+        console.error('Error al realizar la petición:', error);
+      });
+
+    // Peticion para obtener la caja
+    fetch(`http://localhost:5000/caja/`)
+      .then(response => response.json())
+      .then(data => {
+        // Almacenar los datos en una variable
+        const datosRecibidos = data;
+
+        // Pasar por un condicional del resultado
+        if (datosRecibidos.length > 0) {
+          console.log('Se recibieron datos');
+          datosRecibidos.forEach(caja => {
+            const a = caja._id
+            const b = pedidoLocal.caja
+            const option = document.createElement('option');
+            option.value = a;
+            option.innerText = caja.descripcion;
+            cajaHTML.appendChild(option);
+            if (a === b) option.setAttribute('selected', 'selected');
+          });
+
+        } else {
+          console.log('No se recibieron datos');
+        }
+      })
+      .catch(error => {
+        console.error('Error al realizar la petición:', error);
+      });
+
+    // Peticion para obtener el usuario
+    fetch(`http://localhost:5000/usuario/`)
+      .then(response => response.json())
+      .then(data => {
+        // Almacenar los datos en una variable
+        const datosRecibidos = data;
+
+        // Pasar por un condicional del resultado
+        if (datosRecibidos.length > 0) {
+          console.log('Se recibieron datos');
+          datosRecibidos.forEach(usuario => {
+            const a = usuario._id;
+            const b = pedidoLocal.usuario;
+            const option = document.createElement('option');
+            option.value = a;
+            option.innerText = usuario.email;
+            usuarioHTML.appendChild(option);
+            if (a === b) option.setAttribute('selected', 'selected');
+          });
+
+        } else {
+          console.log('No se recibieron datos');
+        }
+      })
+      .catch(error => {
+        console.error('Error al realizar la petición:', error);
+      });
+
+    fechaHTML.value = fecha_form;
+    cantidadHTML.value = pedidoLocal.cantidad;
+    mermaHTML.value = pedidoLocal.merma;
 
   });
 
@@ -69,18 +148,19 @@ const PedidosMod = () => {
   }
 
   function logout() {
+    console.log('Entrando en la función logout');
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
-  function ok() {
-    console.log('Entrando en la función Ok');
+  function guardar() {
+    console.log('Entrando en la función guardar');
     localStorage.clear();
   }
 
-  function no() {
-    console.log('Entrando en la función No');
+  function eliminar() {
+    console.log('Entrando en la función eliminar');
     localStorage.clear();
   }
 
@@ -103,9 +183,11 @@ const PedidosMod = () => {
       <div id="contenedor_blanco_ped_mod">
 
         <div id='contenedor_gris_ped_mod'>
-          <div id="contenedor_texto"><h2>Datos pedido</h2></div>
+
+          <div id="contenedor_texto"><h2>Datos del pedido</h2></div>
 
           <div id='contenido_ped_mod'>
+
             <div id="columna_izq">
               <label>Fecha</label>
               <label>Producto</label>
@@ -114,31 +196,34 @@ const PedidosMod = () => {
               <label>Merma</label>
               <label>Realizado</label>
             </div>
+
             <div id="columna_der">
               <input id="fecha" type="date" />
-              <input id="producto" type="text" />
-              <input id="caja" type="text" />
+              <select id="producto"></select>
+              <select id="caja"></select>
               <input id="cantidad" type="number" />
               <input id="merma" type="number" />
-              <input id="realizado" type="text" />
+              <select id="sel_usuario"></select>
             </div>
+
           </div>
 
           <div id="contenedor_botones">
             <div id="contenedor_boton_login">
               <div id="boton_texto"><p>Eliminar</p></div>
-              <div id="boton_imagen" onClick={no}>
+              <div id="boton_imagen" onClick={eliminar}>
                 <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
               </div>
             </div>
 
             <div id="contenedor_boton_login">
               <div id="boton_texto"><p>Guardar</p></div>
-              <div id="boton_imagen" onClick={ok}>
+              <div id="boton_imagen" onClick={guardar}>
                 <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
               </div>
             </div>
           </div>
+
         </div>
 
       </div>
@@ -148,46 +233,3 @@ const PedidosMod = () => {
 }
 
 export default PedidosMod;
-/*
-            <div id="columna1">
-              <label>Fecha</label>
-              <label>Producto</label>
-              <label>Caja</label>
-              <label>Número</label>
-              <label>Merma</label>
-              <label>Realizado</label>
-            </div>
-*/
-/*
-<div id="contenedor_formulario_empleados">
-
-<div id="contenedor_texto"><h2>Datos pedido</h2></div>
-
-<form id="form_ancho">
-  <div id="columna2">
-    <input id="fecha" type="text" placeholder="Fecha" />
-    <input id="producto" type="text" placeholder="Producto" />
-    <input id="cantidad" type="text" placeholder="Cantidad" />
-    <input id="merma" type="text" placeholder="Merma" />
-    <input id="realizado" type="text" placeholder="Realizado" />
-  </div>
-</form>
-
-<div id="contenedor_botones">
-  <div id="contenedor_boton_login">
-    <div id="boton_texto"><p>Eliminar</p></div>
-    <div id="boton_imagen" onClick={no}>
-      <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
-    </div>
-  </div>
-
-  <div id="contenedor_boton_login">
-    <div id="boton_texto"><p>Guardar</p></div>
-    <div id="boton_imagen" onClick={ok}>
-      <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
-    </div>
-  </div>
-</div>
-
-</div>
-*/
