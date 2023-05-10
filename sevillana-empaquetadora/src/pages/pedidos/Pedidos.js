@@ -4,15 +4,15 @@ import logo from '../../imagenes/logo.png';
 import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import pedidos_plus from '../../imagenes/iconos/pedidos+.png';
 import '../../css/app.css';
-import {
-  obtener_id, crear_pedido, construir_tabla_pedidos
-} from '../../js/funciones.js'
+import '../../css/pedidos.css';
+import { obtener_id, crear_pedido, construir_tabla_pedidos }
+  from '../../js/funciones.js'
 
 const Pedidos = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('El contenido HTML se ha cargado');
+    console.log('El contenido HTML de Pedidos se ha cargado');
 
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
@@ -24,6 +24,7 @@ const Pedidos = () => {
     const url_pedido = 'http://localhost:5000/pedido/';
     const tbody = document.getElementById('tbody');
 
+    // Peticion para obtener los pedidos
     fetch(url_pedido)
       .then(response => response.json())
       .then(data => {
@@ -78,8 +79,9 @@ const Pedidos = () => {
 
   function modificarpedido(e) {
     console.log('Entrando en la función modificarpedido');
-    let id = obtener_id(e);
+    const id = obtener_id(e);
 
+    // Peticion para obtener un pedido
     fetch(`http://localhost:5000/pedido/${id}`)
       .then(response => response.json())
       .then(data => {
@@ -89,10 +91,8 @@ const Pedidos = () => {
         // Pasar por un condicional del resultado
         if (datosRecibidos.length > 0) {
           console.log('Se recibieron datos');
-          let datos_string = crear_pedido(datosRecibidos);
-          localStorage.setItem('pedido', datos_string);
+          localStorage.setItem('pedido', crear_pedido(datosRecibidos));
           navigate('/Pedidos_mod');
-
         } else {
           console.log('No se recibieron datos');
         }
@@ -119,16 +119,16 @@ const Pedidos = () => {
 
       </div>
 
-      <div id="contenedor_blanco">
-        <div id="contenedor_boton">
+      <div id="contenedor_blanco_ped">
 
+        <div id="contenedor_boton">
           <div id="boton_imagen">
             <Link to="/Pedidos_reg"><img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" /></Link>
           </div>
           <div id="boton_texto"><p>Nuevo pedido</p></div>
         </div>
 
-        <div id="contenedor_contenido">
+        <div id="contenedor_gris_ped">
           <table>
             <tbody id='tbody'>
               <tr>
