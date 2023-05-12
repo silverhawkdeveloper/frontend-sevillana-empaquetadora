@@ -47,7 +47,6 @@ const PedidosMod = () => {
 
         // Pasar por un condicional del resultado
         if (datosRecibidos.length > 0) {
-          console.log('Se recibieron datos');
           datosRecibidos.forEach(pedido => {
             const a = pedido.producto[0]._id
             const b = pedidoLocal.producto
@@ -75,7 +74,6 @@ const PedidosMod = () => {
 
         // Pasar por un condicional del resultado
         if (datosRecibidos.length > 0) {
-          console.log('Se recibieron datos');
           datosRecibidos.forEach(caja => {
             const a = caja._id
             const b = pedidoLocal.caja
@@ -103,7 +101,6 @@ const PedidosMod = () => {
 
         // Pasar por un condicional del resultado
         if (datosRecibidos.length > 0) {
-          console.log('Se recibieron datos');
           datosRecibidos.forEach(usuario => {
             const a = usuario._id;
             const b = pedidoLocal.usuario;
@@ -156,6 +153,38 @@ const PedidosMod = () => {
 
   function guardar() {
     console.log('Entrando en la función guardar');
+
+    const fechaHTML = document.getElementById('fecha');
+    const productoHTML = document.getElementById('producto');
+    const cajaHTML = document.getElementById('caja');
+    const cantidadHTML = document.getElementById('cantidad');
+    const mermaHTML = document.getElementById('merma');
+    const usuarioHTML = document.getElementById('sel_usuario');
+
+    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
+    const url = `http://localhost:5000/pedido/update/${pedidoLocal._id}`;
+    
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        'usuario': usuarioHTML.value,
+        'caja': cajaHTML.value,
+        'producto': productoHTML.value,
+        'cantidad': cantidadHTML.valueAsNumber,
+        'merma': mermaHTML.valueAsNumber,
+        'fecha': fechaHTML.valueAsDate
+      }),
+    })
+      .then((respuesta) => {
+        if (respuesta.ok) return respuesta;
+      })
+      .then((datos) => {
+        return datos;
+      });
+
     localStorage.clear();
   }
 
@@ -170,7 +199,7 @@ const PedidosMod = () => {
 
         <div id="contenedor_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedididos" />
+          <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedidos" />
         </div>
 
         <div id="contenedor_usuario">

@@ -1,4 +1,4 @@
-export let pedididos;
+export let pedidos;
 
 export async function mostrar_pedidos(url) {
     await fetch(url, {
@@ -8,7 +8,7 @@ export async function mostrar_pedidos(url) {
             if (respuesta.ok) return respuesta.json();
         })
         .then((datos) => {
-            pedididos = datos;
+            pedidos = datos;
         });
 }
 
