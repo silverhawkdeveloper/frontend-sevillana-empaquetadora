@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     // La función que deseas ejecutar al montar el componente
-    console.log('El contenido HTML se ha cargado');
+    console.log('El contenido HTML de Home se ha cargado');
 
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
