@@ -72,12 +72,13 @@
 
 label {
     width: 100%;
+    min-width: 115px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: #F7F6EE;
-    padding: 10px 20px 10px 40px;
+    padding: 10px 15px 10px 15px;
     margin: 2px;
 }
 
@@ -117,7 +118,7 @@ input[type=text], [type=date], [type=number]{
     border-radius: 4px;
     font-size: 16px;
     background-color: #F7F6EE;
-    padding: 10px 20px 10px 40px;
+    padding: 10px 20px 10px 20px;
     margin: 2px;
 }
 
@@ -128,7 +129,7 @@ select {
     border-radius: 4px;
     font-size: 16px;
     background-color: #F7F6EE;
-    padding: 10px 20px 10px 40px;
+    padding: 10px 20px 10px 20px;
     margin: 2px;
 }
 

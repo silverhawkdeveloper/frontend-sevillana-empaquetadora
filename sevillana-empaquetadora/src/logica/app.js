@@ -1,11 +1,12 @@
+
 import { Cubo } from "./modelo-cubo.js";
 import { Ortoedro } from "./modelo-ortoedro.js";
 import { Cilindro } from "./modelo-cilindro.js";
 import { Esfera } from "./modelo-esfera.js";
 import { Caja } from "./modelo-caja.js";
 import { Pedido } from "./modelo-pedido.js";
-import { Producto } from "./modelo-producto.js";
-
+//import { Producto } from "./modelo-producto.js";
+/*
 // PRODUCTOS
 let p1 = new Cubo('p1', 5);
 let p2 = new Ortoedro('p2', 10, 30, 25);
@@ -30,14 +31,44 @@ let pedido4 = new Pedido(fecha, p4, 26);
 
 // PROBAMOS
 let miResultado = empaquetar(pedido2);
+*/
 
-function empaquetar(pedido) {
+export function empaquetar(pedido, array) {
+
+    //Creamos el producto de la petición
+    let producto;
+    switch (pedido.producto.tipo) {
+        case 'Cubo':
+            producto = new Cubo(pedido.producto.descripcion, pedido.producto.arista);
+            break;
+        case 'Ortoedro':
+            producto = new Ortoedro(pedido.producto.descripcion,
+                pedido.producto.alto, pedido.producto.ancho, pedido.producto.profundo);
+            break;
+        case 'Cilindro':
+
+            break;
+        case 'Esfera':
+
+            break;
+
+        default:
+            break;
+    }
+
+    //Creamos las cajas de la petición
+    let arrayCajas = new Array();
+    array.forEach(elemeto_caja => {
+        let caja = new Caja(elemeto_caja.descripcion, elemeto_caja.alto, 
+            elemeto_caja.ancho, elemeto_caja.profundo);
+            arrayCajas.push(caja);
+    });
 
     // Descartar las cajas donde el producto no quepa.
-    arrayCajas = seleccionCajas(arrayCajas, pedido.producto);
+    arrayCajas = seleccionCajas(arrayCajas, producto);
 
     // Almacenamos los productos.
-    arrayCajas = guardarProducto(arrayCajas, pedido.producto, pedido.cantidad);
+    arrayCajas = guardarProducto(arrayCajas, producto, pedido.cantidad);
 
     // Elegimos la caja donde la merma de espacio y el numero de cajas sea menor.
     let resultado = seleccionCajaUnitaria(arrayCajas);
@@ -105,7 +136,7 @@ function guardarProducto(cajas, producto, cantidad) {
         if (productosCaja > cantidad) {
             resultado.numero_cajas = 1;
             resultado.merma = caja.calculoVolumen() - cantidad * volumenProducto;
-        // Se necesitan mas de una caja
+            // Se necesitan mas de una caja
         } else {
             let num_cajas = resultado.numero_cajas = Math.ceil(cantidad / productosCaja);
             let volumen;
@@ -113,7 +144,8 @@ function guardarProducto(cajas, producto, cantidad) {
             let productosFaltantes = cantidad;
             // Procesamos la merma por caja
             for (let i = 1; i <= num_cajas; i++) {
-                productosFaltantes > productosCaja ? productosCaja : productosCaja = productosFaltantes
+                //productosFaltantes > productosCaja ? productosCaja : productosCaja = productosFaltantes
+                if (productosFaltantes < productosCaja) productosCaja = productosFaltantes
                 volumen = productosCaja * volumenProducto;
                 merma += caja.calculoVolumen() - volumen;
                 productosFaltantes -= productosCaja;
