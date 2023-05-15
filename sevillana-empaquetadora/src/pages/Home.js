@@ -5,8 +5,10 @@ import pedididos from '../imagenes/iconos/pedidos.png';
 import productos from '../imagenes/iconos/productos.png';
 import cajas from '../imagenes/iconos/cajas.png';
 import empleados from '../imagenes/iconos/empleados.png';
+
+import '../css/app.css';
 import '../css/home.css';
-import '../css/menu.css';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -64,9 +66,9 @@ const Home = () => {
   }
 
   return (
-    <div id='contenedor'>
-      <div id="contenedor_negro">
+    <div id="contenedor">
 
+      <div id="contenedor_negro">
         <div id="contenedor_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
         </div>
@@ -75,10 +77,44 @@ const Home = () => {
           <h4 id='usuario'> </h4>
           <button onClick={() => logout()}><Link id="boton_out" to="/">Log out</Link></button>
         </div>
+      </div>
+
+      <div id="contenedor_blanco">
+
+        <ul>
+          <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
+            <img id="iconos" src={pedididos} alt="logo pedididos" />
+          </div>PEDIDOS</Link></li>
+          <li id="li_productos"><Link to="/Productos"><div id="cuadrado">
+            <img id="iconos" src={productos} alt="logo productos" />
+          </div>PRODUCTOS</Link> </li>
+          <li id="li_cajas"><Link to="/Cajas"><div id="cuadrado">
+            <img id="iconos" src={cajas} alt="logo cajas" />
+          </div>CAJAS</Link></li>
+          <li id="li_empleados"><Link to="/Empleados"><div id="cuadrado">
+            <img id="iconos" src={empleados} alt="logo empleados" />
+          </div>EMPLEADOS</Link></li>
+        </ul>
 
       </div>
 
-      <div id="contenedor_blanco_home">
+    </div>
+  );
+};
+
+export default Home;
+/*
+        <div id="contenedor_logo">
+          <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
+        </div>
+
+        <div id="contenedor_usuario">
+          <h4 id='usuario'> </h4>
+          <button onClick={() => logout()}><Link id="boton_out" to="/">Log out</Link></button>
+        </div>
+*/
+
+/*
         <nav>
           <ul>
             <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
@@ -95,9 +131,4 @@ const Home = () => {
             </div>EMPLEADOS</Link></li>
           </ul>
         </nav>
-      </div>
-    </div>
-  );
-};
-
-export default Home;
+*/

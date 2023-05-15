@@ -1,5 +1,5 @@
 /*******************************BLANCO*****************************/
-
+/*
 #contenedor_blanco_home {
     background-color: #F7F6EE;
     height: 75%;
@@ -27,4 +27,40 @@
 
 #li_empleados {
     display: none;
+}
+*/
+
+ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin-top: 10%;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cuadrado {
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#iconos {
+    height: 110px;
 }

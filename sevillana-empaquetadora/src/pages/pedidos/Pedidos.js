@@ -142,6 +142,7 @@ const Pedidos = () => {
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
   );

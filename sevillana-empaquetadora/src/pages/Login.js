@@ -45,13 +45,11 @@ const Login = () => {
 
       <div id="contenedor_blanco_login">
 
-        <div id="contenedor_texto"><h1>BIENVENIDO</h1></div>
+        <h1>BIENVENIDO</h1>
 
         <div id="contenedor_formulario">
-          <form>
-            <input id="email" type="text" placeholder="Email" />
-            <input id="contasenia" type="text" placeholder="Contraseña" />
-          </form>
+          <input id="email" type="text" placeholder="Email" />
+          <input id="contasenia" type="text" placeholder="Contraseña" />
         </div>
 
         <div id="contenedor_boton_login">
