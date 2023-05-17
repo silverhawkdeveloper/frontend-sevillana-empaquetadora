@@ -114,7 +114,7 @@ const PedidosReg = () => {
     const usuario = document.getElementById('usuario');
     let pedido_local = {
       'usuario': '',
-      'caja': resultado.caja,
+      'caja': resultado._id,
       'cajas_numero': resultado.numero_cajas,
       'producto': pedido.producto._id,
       'cantidad': pedido.cantidad,
@@ -137,27 +137,33 @@ const PedidosReg = () => {
 
   async function guardar() {
     const token = sessionStorage.getItem('JWT');
-    let usuario_local = await usuario(token);
+    const usuario_local = await usuario(token);
+    const pedido = JSON.parse(localStorage.getItem('pedido_local'));
     //Tenemos que hacer modificaciones para que el el pedido_local guarde il id de las cajas
+    const fecha = new Date();
+    fetch('http://localhost:5000/pedido/', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        'usuario': usuario_local._id,
+        'caja': pedido.caja,
+        //numero_cajas: pedido.cajas_numero,
+        'producto': pedido.producto,
+        'cantidad': pedido.cantidad,
+        'merma': pedido.merma,
+        'fecha': fecha
+      }),
+    })
+      .then((respuesta) => {
+        if (respuesta.ok) return respuesta;
+      })
+      .then((datos) => {
+        navigate('/Pedidos');
+      });
 
-    /*
-        const response = fetch('http://localhost:5000/producto/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            usuario: usuario.value,
-            caja: caja.value,
-            numero_cajas: numero.value,
-            producto: producto.value,
-            cantidad: cantidad.value,
-            merma: merma.value,
-            fecha: new Date()
-          })
-        });
-        const data = response.json();
-        return data;*/
+    localStorage.clear();
   }
 
   return (
@@ -229,7 +235,7 @@ const PedidosReg = () => {
               <div id="cntr_boton_login">
                 <div id="boton_texto"><p>Guardar</p></div>
                 <div id="boton_imagen" onClick={guardar}>
-                  <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+                  <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
                 </div>
               </div>
             </div>

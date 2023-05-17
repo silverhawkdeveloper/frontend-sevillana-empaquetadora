@@ -59,7 +59,7 @@ export function empaquetar(pedido, array) {
     //Creamos las cajas de la petición
     let arrayCajas = new Array();
     array.forEach(elemeto_caja => {
-        let caja = new Caja(elemeto_caja.descripcion, elemeto_caja.alto, 
+        let caja = new Caja(elemeto_caja._id, elemeto_caja.descripcion, elemeto_caja.alto, 
             elemeto_caja.ancho, elemeto_caja.profundo);
             arrayCajas.push(caja);
     });
@@ -119,6 +119,7 @@ function guardarProducto(cajas, producto, cantidad) {
         // Objeto que vamos a devolver en el array
         let resultado =
         {
+            _id: '',
             caja: '',
             numero_cajas: '',
             merma: ''
@@ -132,6 +133,7 @@ function guardarProducto(cajas, producto, cantidad) {
             productosCaja *= capacidad;
         }
         resultado.caja = caja.descripcion;
+        resultado._id = caja._id;
         // Caben en una sola caja
         if (productosCaja > cantidad) {
             resultado.numero_cajas = 1;

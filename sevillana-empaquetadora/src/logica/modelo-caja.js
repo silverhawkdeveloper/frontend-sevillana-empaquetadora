@@ -8,7 +8,8 @@ class Caja {
      * @param {Number} ancho 
      * @param {Number} profundo 
      */
-    constructor(descripcion, alto, ancho, profundo) {
+    constructor(_id, descripcion, alto, ancho, profundo) {
+        this._id = _id;
         this.descripcion = descripcion;
         this.alto = alto;
         this.ancho = ancho;
