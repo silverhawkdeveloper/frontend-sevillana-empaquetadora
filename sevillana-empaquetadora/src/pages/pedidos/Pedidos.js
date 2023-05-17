@@ -104,45 +104,47 @@ const Pedidos = () => {
   }
 
   return (
-    <div id='contenedor'>
-      <div id="contenedor_negro">
+    <div id='cntr'>
+      <div id="cntr_negro">
 
-        <div id="contenedor_logo">
+        <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
           <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedididos" />
         </div>
 
-        <div id="contenedor_usuario">
+        <div id="cntr_usuario">
           <h4 id='usuario'> </h4>
           <button onClick={() => logout()}><Link id="boton_out" to="/">Log out</Link></button>
         </div>
 
       </div>
 
-      <div id="contenedor_blanco_ped">
+      <div id="cntr_blanco">
+        <div id='cntr_pedidos'>
 
-        <div id="contenedor_boton">
-          <div id="boton_imagen">
-            <Link to="/Pedidos_reg"><img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" /></Link>
+          <div id="cntr_nuevo_obj">
+            <div id="boton_imagen">
+              <Link to="/Pedidos_reg"><img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" /></Link>
+            </div>
+            <div id="boton_texto"><p>Nuevo pedido</p></div>
           </div>
-          <div id="boton_texto"><p>Nuevo pedido</p></div>
-        </div>
 
-        <div id="contenedor_gris_ped">
-          <table>
-            <tbody id='tbody'>
-              <tr>
-                <th>Fecha</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Merna</th>
-                <th>Realizado</th>
-                <th>Modificar</th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <div id="cntr_gris_tabla">
+            <table>
+              <tbody id='tbody'>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Merna</th>
+                  <th>Realizado</th>
+                  <th>Modificar</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
+        </div>
       </div>
     </div>
   );

@@ -163,7 +163,7 @@ const PedidosMod = () => {
 
     const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
     const url = `http://localhost:5000/pedido/update/${pedidoLocal._id}`;
-    
+
     fetch(url, {
       method: "PUT",
       headers: {
@@ -194,67 +194,67 @@ const PedidosMod = () => {
   }
 
   return (
-    <div id='contenedor'>
-      <div id="contenedor_negro">
+    <div id='cntr'>
+      <div id="cntr_negro">
 
-        <div id="contenedor_logo">
+        <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
           <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedidos" />
         </div>
 
-        <div id="contenedor_usuario">
+        <div id="cntr_usuario">
           <button><Link id="boton_out" to="/">Sign out</Link></button>
           <h4 id='usuario'> </h4>
         </div>
 
       </div>
 
-      <div id="contenedor_blanco_ped_mod">
+      <div id="cntr_blanco">
+        <div id='cntr_pedidos_mod'>
+          <div id='cntr_gris_pedidos_mod'>
 
-        <div id='contenedor_gris_ped_mod'>
+            <div id="cntr_texto"><h2>Datos del pedido</h2></div>
 
-          <div id="contenedor_texto"><h2>Datos del pedido</h2></div>
+            <div id='contenido_pedidos_mod'>
 
-          <div id='contenido_ped_mod'>
+              <div id="columna_izq">
+                <label>Fecha</label>
+                <label>Producto</label>
+                <label>Caja</label>
+                <label>Número</label>
+                <label>Merma</label>
+                <label>Realizado</label>
+              </div>
 
-            <div id="columna_izq">
-              <label>Fecha</label>
-              <label>Producto</label>
-              <label>Caja</label>
-              <label>Número</label>
-              <label>Merma</label>
-              <label>Realizado</label>
+              <div id="columna_der">
+                <input id="fecha" type="date" />
+                <select id="producto"></select>
+                <select id="caja"></select>
+                <input id="cantidad" type="number" />
+                <input id="merma" type="number" />
+                <select id="sel_usuario"></select>
+              </div>
+
             </div>
 
-            <div id="columna_der">
-              <input id="fecha" type="date" />
-              <select id="producto"></select>
-              <select id="caja"></select>
-              <input id="cantidad" type="number" />
-              <input id="merma" type="number" />
-              <select id="sel_usuario"></select>
-            </div>
+            <div id="cntr_botones">
+              <div id="cntr_boton_login">
+                <div id="boton_texto"><p>Eliminar</p></div>
+                <div id="boton_imagen" onClick={eliminar}>
+                  <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
+                </div>
+              </div>
 
-          </div>
-
-          <div id="contenedor_botones">
-            <div id="contenedor_boton_login">
-              <div id="boton_texto"><p>Eliminar</p></div>
-              <div id="boton_imagen" onClick={eliminar}>
-                <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
+              <div id="cntr_boton_login">
+                <div id="boton_texto"><p>Guardar</p></div>
+                <div id="boton_imagen" onClick={guardar}>
+                  <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+                </div>
               </div>
             </div>
 
-            <div id="contenedor_boton_login">
-              <div id="boton_texto"><p>Guardar</p></div>
-              <div id="boton_imagen" onClick={guardar}>
-                <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
-              </div>
-            </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );
@@ -262,3 +262,11 @@ const PedidosMod = () => {
 }
 
 export default PedidosMod;
+/*
+                <label>Fecha</label>
+                <label>Producto</label>
+                <label>Caja</label>
+                <label>Número</label>
+                <label>Merma</label>
+                <label>Realizado</label>
+ */

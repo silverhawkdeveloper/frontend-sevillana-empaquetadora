@@ -1,6 +1,6 @@
 /*****************************NEGRO*******************************/
 
-#contenedor_negro_login {
+#cntr_negro_login {
     background-color: black;
     height: 30%;
     width: 100%;
@@ -15,7 +15,7 @@
 
 /*******************************BLANCO*****************************/
 
-#contenedor_blanco_login {
+#cntr_blanco_login {
     background-color: #F7F6EE;
     height: 65%;
     width: 100%;
@@ -28,7 +28,7 @@
     align-items: center;
 }
 
-#contenedor_formulario {
+#cntr_formulario {
     margin-left: 20px;
     margin-right: 20px;
 }

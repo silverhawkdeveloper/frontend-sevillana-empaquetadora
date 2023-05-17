@@ -1,15 +1,9 @@
 /*******************************BLANCO*****************************/
 
-#contenedor_blanco_duo {
-    background-color: #F7F6EE;
-    height: 65%;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+#cntr_pedidos_reg {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #imagen {
@@ -44,7 +38,7 @@
     align-items: center;
 }
 
-#form_estrecho_resultado {
+#form_resultado {
     margin-left: 50px;
     margin-right: 50px;
     display: flex;

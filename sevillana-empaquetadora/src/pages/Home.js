@@ -66,20 +66,20 @@ const Home = () => {
   }
 
   return (
-    <div id="contenedor">
+    <div id="cntr">
 
-      <div id="contenedor_negro">
-        <div id="contenedor_logo">
+      <div id="cntr_negro">
+        <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
         </div>
 
-        <div id="contenedor_usuario">
+        <div id="cntr_usuario">
           <h4 id='usuario'> </h4>
           <button onClick={() => logout()}><Link id="boton_out" to="/">Log out</Link></button>
         </div>
       </div>
 
-      <div id="contenedor_blanco">
+      <div id="cntr_blanco">
 
         <ul>
           <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
@@ -104,11 +104,11 @@ const Home = () => {
 
 export default Home;
 /*
-        <div id="contenedor_logo">
+        <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
         </div>
 
-        <div id="contenedor_usuario">
+        <div id="cntr_usuario">
           <h4 id='usuario'> </h4>
           <button onClick={() => logout()}><Link id="boton_out" to="/">Log out</Link></button>
         </div>
