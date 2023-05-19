@@ -231,9 +231,6 @@ const PedidosReg = () => {
             </div>
 
           </div>
-
-
-
         </div>
       </div>
     </div>
