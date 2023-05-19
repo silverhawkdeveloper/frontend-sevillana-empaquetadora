@@ -14,8 +14,6 @@ const PedidosReg = () => {
 
   useEffect(() => {
     // La función que deseas ejecutar al montar el componente
-    console.log('El contenido HTML de Pedidos_mod se ha cargado');
-
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
 
@@ -44,14 +42,8 @@ const PedidosReg = () => {
             productoHTML.appendChild(option);
           });
 
-        } else {
-          console.log('No se recibieron datos');
         }
       })
-      .catch(error => {
-        console.error('Error al realizar la petición:', error);
-      });
-
   });
 
   function auth_token_profile(url, token, usuario) {
@@ -74,7 +66,6 @@ const PedidosReg = () => {
   }
 
   function logout() {
-    console.log('Entrando en la función logout');
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
@@ -93,7 +84,6 @@ const PedidosReg = () => {
   }
 
   async function comprobar_ped() {
-    console.log('Entrando en la función empaquetar');
     const cajas = await peticionCajas();
     const fecha = new Date();
     const producto = await peticionProducto(document.getElementById('producto').value);
@@ -251,12 +241,3 @@ const PedidosReg = () => {
 };
 
 export default PedidosReg;
-
-/*
-usuario
-caja
-producto
-cantidad
-merma
-fecha
-*/

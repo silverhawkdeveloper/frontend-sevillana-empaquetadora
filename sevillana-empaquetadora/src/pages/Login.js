@@ -7,8 +7,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   function login() {
-    console.log('Entrando en la función login');
-
     const email = document.getElementById("email");
     const contasenia = document.getElementById("contasenia");
     const url = 'http://localhost:5000/auth-token/login';
@@ -25,7 +23,6 @@ const Login = () => {
         if (this.readyState === 4 && this.status === 200) {
           let respuesta = xhr.responseText;
           respuesta = respuesta.replace(/{"jwt":"/, '').replace(/"}/, '');
-          console.log(respuesta);
           sessionStorage.setItem('JWT', respuesta);
           navigate('/Home');
         }
@@ -66,19 +63,3 @@ const Login = () => {
 };
 
 export default Login;
-/*
-    if (XMLHttpRequest) {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-          let respuesta = xhr.responseText;
-          respuesta = respuesta.replace(/{"jwt":"/, '').replace(/"}/, '');
-          console.log(respuesta);
-          sessionStorage.setItem('JWT', respuesta);
-          navigate('/Home');
-        }
-      };
-      xhr.open("POST", url);
-      xhr.send(JSON.stringify(datos));
-    }
-*/

@@ -12,8 +12,6 @@ const PedidosMod = () => {
 
   useEffect(() => {
     // La función que deseas ejecutar al montar el componente
-    console.log('El contenido HTML de Pedidos_mod se ha cargado');
-
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
 
@@ -56,14 +54,8 @@ const PedidosMod = () => {
             productoHTML.appendChild(option);
             if (a === b) option.setAttribute('selected', 'selected');
           });
-
-        } else {
-          console.log('No se recibieron datos');
         }
       })
-      .catch(error => {
-        console.error('Error al realizar la petición:', error);
-      });
 
     // Peticion para obtener la caja
     fetch(`http://localhost:5000/caja/`)
@@ -84,13 +76,8 @@ const PedidosMod = () => {
             if (a === b) option.setAttribute('selected', 'selected');
           });
 
-        } else {
-          console.log('No se recibieron datos');
         }
       })
-      .catch(error => {
-        console.error('Error al realizar la petición:', error);
-      });
 
     // Peticion para obtener el usuario
     fetch(`http://localhost:5000/usuario/`)
@@ -111,13 +98,8 @@ const PedidosMod = () => {
             if (a === b) option.setAttribute('selected', 'selected');
           });
 
-        } else {
-          console.log('No se recibieron datos');
         }
       })
-      .catch(error => {
-        console.error('Error al realizar la petición:', error);
-      });
 
     fechaHTML.value = fecha_form;
     cantidadHTML.value = pedidoLocal.cantidad;
@@ -145,15 +127,12 @@ const PedidosMod = () => {
   }
 
   function logout() {
-    console.log('Entrando en la función logout');
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
   function guardar() {
-    console.log('Entrando en la función guardar');
-
     const fechaHTML = document.getElementById('fecha');
     const productoHTML = document.getElementById('producto');
     const cajaHTML = document.getElementById('caja');
@@ -189,7 +168,19 @@ const PedidosMod = () => {
   }
 
   function eliminar() {
-    console.log('Entrando en la función eliminar');
+    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
+    const url = `http://localhost:5000/pedido/delete/${pedidoLocal._id}`;
+
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      }
+    })
+      .then((respuesta) => {
+        if (respuesta.ok) return respuesta;
+      })
+
     localStorage.clear();
   }
 
@@ -262,11 +253,3 @@ const PedidosMod = () => {
 }
 
 export default PedidosMod;
-/*
-                <label>Fecha</label>
-                <label>Producto</label>
-                <label>Caja</label>
-                <label>Número</label>
-                <label>Merma</label>
-                <label>Realizado</label>
- */

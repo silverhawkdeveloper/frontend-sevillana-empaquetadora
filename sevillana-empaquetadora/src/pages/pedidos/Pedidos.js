@@ -12,8 +12,6 @@ const Pedidos = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('El contenido HTML de Pedidos se ha cargado');
-
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
 
@@ -33,7 +31,6 @@ const Pedidos = () => {
 
         // Pasar por un condicional del resultado
         if (datosRecibidos.length > 0) {
-          console.log('Se recibieron datos');
           construir_tabla_pedidos(datosRecibidos, tbody)
           const boton = document.getElementsByClassName('guardarpedido');
 
@@ -41,8 +38,6 @@ const Pedidos = () => {
             link.addEventListener('click', modificarpedido)
           });
 
-        } else {
-          console.log('No se recibieron datos');
         }
       })
       .catch(error => {
@@ -71,14 +66,12 @@ const Pedidos = () => {
   }
 
   function logout() {
-    console.log('Entrando en la función logout');
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
   function modificarpedido(e) {
-    console.log('Entrando en la función modificarpedido');
     const id = obtener_id(e);
 
     // Peticion para obtener un pedido
@@ -90,11 +83,8 @@ const Pedidos = () => {
 
         // Pasar por un condicional del resultado
         if (datosRecibidos.length > 0) {
-          console.log('Se recibieron datos');
           localStorage.setItem('pedido', crear_pedido(datosRecibidos));
           navigate('/Pedidos_mod');
-        } else {
-          console.log('No se recibieron datos');
         }
       })
       .catch(error => {
