@@ -13,7 +13,6 @@ const PedidosReg = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // La función que deseas ejecutar al montar el componente
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
 
@@ -25,25 +24,21 @@ const PedidosReg = () => {
     const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
     const productoHTML = document.getElementById('producto');
 
-    // Peticion para obtener el producto
-    fetch(`http://localhost:5000/pedido/`)
-      .then(response => response.json())
-      .then(data => {
-        // Almacenar los datos en una variable
-        const datosRecibidos = data;
-
-        // Pasar por un condicional del resultado
-        if (datosRecibidos.length > 0) {
-          datosRecibidos.forEach(pedido => {
-            const a = pedido.producto[0]._id
-            const option = document.createElement('option');
-            option.value = a;
-            option.innerText = pedido.producto[0].descripcion;
-            productoHTML.appendChild(option);
-          });
-
-        }
+    fetch('http://localhost:5000/producto/', {
+      method: 'GET'
+    })
+      .then(respuesta => {
+        if (respuesta.ok) return respuesta.json();
       })
+      .then((datos) => {
+        datos.forEach(producto => {
+          const a = producto._id
+          const option = document.createElement('option');
+          option.value = a;
+          option.innerText = producto.descripcion;
+          productoHTML.appendChild(option);
+        });
+      });
   });
 
   function auth_token_profile(url, token, usuario) {
@@ -139,7 +134,7 @@ const PedidosReg = () => {
       body: JSON.stringify({
         'usuario': usuario_local._id,
         'caja': pedido.caja,
-        //numero_cajas: pedido.cajas_numero,
+        'numero_cajas': pedido.cajas_numero,
         'producto': pedido.producto,
         'cantidad': pedido.cantidad,
         'merma': pedido.merma,

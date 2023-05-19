@@ -46,10 +46,10 @@ export function empaquetar(pedido, array) {
                 pedido.producto.alto, pedido.producto.ancho, pedido.producto.profundo);
             break;
         case 'Cilindro':
-
+            producto = new Cilindro(pedido.producto.descripcion, pedido.producto.alto, pedido.producto.circunferencia);
             break;
         case 'Esfera':
-
+            producto = new Esfera(pedido.producto.descripcion, pedido.producto.circunferencia);
             break;
 
         default:
@@ -59,9 +59,9 @@ export function empaquetar(pedido, array) {
     //Creamos las cajas de la petición
     let arrayCajas = new Array();
     array.forEach(elemeto_caja => {
-        let caja = new Caja(elemeto_caja._id, elemeto_caja.descripcion, elemeto_caja.alto, 
+        let caja = new Caja(elemeto_caja._id, elemeto_caja.descripcion, elemeto_caja.alto,
             elemeto_caja.ancho, elemeto_caja.profundo);
-            arrayCajas.push(caja);
+        arrayCajas.push(caja);
     });
 
     // Descartar las cajas donde el producto no quepa.

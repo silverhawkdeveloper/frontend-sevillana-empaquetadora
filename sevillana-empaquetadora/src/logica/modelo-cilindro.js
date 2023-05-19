@@ -5,7 +5,7 @@ class Cilindro extends Producto{
     /**
      * * Constructor del objeto Cilindro.
      * @param {String} descripcion 
-     * @param {Number} arista
+     * @param {Number} alto
      * @param {Number} circunferencia
      */
     constructor(descripcion, alto, circunferencia) {
