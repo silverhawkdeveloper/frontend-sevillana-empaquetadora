@@ -1,0 +1,12 @@
+/*******************************BLANCO*****************************/
+
+#cntr_figuras {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px
+}
+
+#figuras {
+    height: 160px;
+}

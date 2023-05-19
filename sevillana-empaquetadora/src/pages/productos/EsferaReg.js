@@ -5,7 +5,7 @@ import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import esfera from '../../imagenes/figuras_geometricas/medidas_esfera.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
-import '../../css/pedidos_reg.css';
+//import '../../css/pedidos_reg.css';
 
 function EsferaReg() {
 

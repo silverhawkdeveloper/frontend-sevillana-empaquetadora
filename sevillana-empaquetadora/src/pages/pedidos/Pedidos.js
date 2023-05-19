@@ -4,7 +4,7 @@ import logo from '../../imagenes/logo.png';
 import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import pedidos_plus from '../../imagenes/iconos/pedidos+.png';
 import '../../css/app.css';
-import '../../css/pedidos.css';
+import '../../css/pedidos/pedidos.css';
 import { obtener_id, crear_pedido, construir_tabla_pedidos }
   from '../../js/funciones.js'
 

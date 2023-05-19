@@ -5,7 +5,7 @@ import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import caja from '../../imagenes/medidas_caja.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
-import '../../css/pedidos_reg.css';
+//import '../../css/pedidos_reg.css';
 
 function CajasReg() {
 

@@ -5,7 +5,7 @@ import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
 import '../../css/app.css';
-import '../../css/pedidos_mod.css';
+import '../../css/pedidos/pedidos_mod.css';
 
 const PedidosMod = () => {
   const navigate = useNavigate();

@@ -1,6 +1,4 @@
-/*******************************BLANCO*****************************/
-
-#cntr_pedidos {
+#cntr_productos {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
