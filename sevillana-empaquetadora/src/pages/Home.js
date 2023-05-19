@@ -79,20 +79,22 @@ const Home = () => {
 
       <div id="cntr_blanco">
 
-        <ul>
-          <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
-            <img id="iconos" src={pedididos} alt="logo pedididos" />
-          </div>PEDIDOS</Link></li>
-          <li id="li_productos"><Link to="/Productos"><div id="cuadrado">
-            <img id="iconos" src={productos} alt="logo productos" />
-          </div>PRODUCTOS</Link> </li>
-          <li id="li_cajas"><Link to="/Cajas"><div id="cuadrado">
-            <img id="iconos" src={cajas} alt="logo cajas" />
-          </div>CAJAS</Link></li>
-          <li id="li_empleados"><Link to="/Empleados"><div id="cuadrado">
-            <img id="iconos" src={empleados} alt="logo empleados" />
-          </div>EMPLEADOS</Link></li>
-        </ul>
+        <div id='cntr_home'>
+          <ul>
+            <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
+              <img id="iconos" src={pedididos} alt="logo pedididos" />
+            </div>PEDIDOS</Link></li>
+            <li id="li_productos"><Link to="/Productos"><div id="cuadrado">
+              <img id="iconos" src={productos} alt="logo productos" />
+            </div>PRODUCTOS</Link> </li>
+            <li id="li_cajas"><Link to="/Cajas"><div id="cuadrado">
+              <img id="iconos" src={cajas} alt="logo cajas" />
+            </div>CAJAS</Link></li>
+            <li id="li_empleados"><Link to="/Empleados"><div id="cuadrado">
+              <img id="iconos" src={empleados} alt="logo empleados" />
+            </div>EMPLEADOS</Link></li>
+          </ul>
+        </div>
 
       </div>
 

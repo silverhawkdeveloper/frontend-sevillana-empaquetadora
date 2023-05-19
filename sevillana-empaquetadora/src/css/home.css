@@ -1,34 +1,7 @@
 /*******************************BLANCO*****************************/
-/*
-#contenedor_blanco_home {
-    background-color: #F7F6EE;
-    height: 75%;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#cntr_home {
+    margin-top: 10%;
 }
-
-#li_pedidos {
-    display: none;
-}
-
-#li_productos {
-    display: none;
-}
-
-#li_cajas {
-    display: none;
-}
-
-#li_empleados {
-    display: none;
-}
-*/
 
 ul {
     list-style-type: none;
@@ -37,7 +10,6 @@ ul {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0;
-    margin-top: 10%;
 }
 
 li a {
