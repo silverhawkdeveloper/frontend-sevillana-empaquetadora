@@ -24,8 +24,9 @@ const PedidosMod = () => {
 
     const fechaHTML = document.getElementById('fecha');
     const productoHTML = document.getElementById('producto');
-    const cajaHTML = document.getElementById('caja');
     const cantidadHTML = document.getElementById('cantidad');
+    const cajaHTML = document.getElementById('caja');
+    const numero_cajasHTML = document.getElementById('numero_cajas');
     const mermaHTML = document.getElementById('merma');
     const usuarioHTML = document.getElementById('sel_usuario');
 
@@ -36,69 +37,58 @@ const PedidosMod = () => {
     const dia = String(fecha_res.getDate()).padStart(2, '0');
     const fecha_form = `${anio}-${mes}-${dia}`;
 
-    // Peticion para obtener el producto
-    fetch(`http://localhost:5000/pedido/`)
+    // Peticion para obtener el pedido
+    fetch(`http://localhost:5000/pedido/${pedidoLocal._id}`)
       .then(response => response.json())
       .then(data => {
-        // Almacenar los datos en una variable
-        const datosRecibidos = data;
-
-        // Pasar por un condicional del resultado
-        if (datosRecibidos.length > 0) {
-          datosRecibidos.forEach(pedido => {
-            const a = pedido.producto[0]._id
-            const b = pedidoLocal.producto
-            const option = document.createElement('option');
-            option.value = a;
-            option.innerText = pedido.producto[0].descripcion;
-            productoHTML.appendChild(option);
-            if (a === b) option.setAttribute('selected', 'selected');
-          });
-        }
+        data.forEach(pedido => {
+          numero_cajasHTML.value = pedido.numero_cajas;
+        });
       })
 
-    // Peticion para obtener la caja
+    // Peticion para obtener los productos
+    fetch(`http://localhost:5000/producto/`)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(producto => {
+          const a = producto._id
+          const b = pedidoLocal.producto
+          const option = document.createElement('option');
+          option.value = a;
+          option.innerText = producto.descripcion;
+          productoHTML.appendChild(option);
+          if (a === b) option.setAttribute('selected', 'selected');
+        });
+      })
+
+    // Peticion para obtener las cajas
     fetch(`http://localhost:5000/caja/`)
       .then(response => response.json())
       .then(data => {
-        // Almacenar los datos en una variable
-        const datosRecibidos = data;
-
-        // Pasar por un condicional del resultado
-        if (datosRecibidos.length > 0) {
-          datosRecibidos.forEach(caja => {
-            const a = caja._id
-            const b = pedidoLocal.caja
-            const option = document.createElement('option');
-            option.value = a;
-            option.innerText = caja.descripcion;
-            cajaHTML.appendChild(option);
-            if (a === b) option.setAttribute('selected', 'selected');
-          });
-
-        }
+        data.forEach(caja => {
+          const a = caja._id
+          const b = pedidoLocal.caja
+          const option = document.createElement('option');
+          option.value = a;
+          option.innerText = caja.descripcion;
+          cajaHTML.appendChild(option);
+          if (a === b) option.setAttribute('selected', 'selected');
+        });
       })
 
     // Peticion para obtener el usuario
     fetch(`http://localhost:5000/usuario/`)
       .then(response => response.json())
       .then(data => {
-        // Almacenar los datos en una variable
-        const datosRecibidos = data;
-
-        // Pasar por un condicional del resultado
-        if (datosRecibidos.length > 0) {
-          datosRecibidos.forEach(usuario => {
-            const a = usuario._id;
-            const b = pedidoLocal.usuario;
-            const option = document.createElement('option');
-            option.value = a;
-            option.innerText = usuario.email;
-            usuarioHTML.appendChild(option);
-            if (a === b) option.setAttribute('selected', 'selected');
-          });
-
-        }
+        data.forEach(usuario => {
+          const a = usuario._id;
+          const b = pedidoLocal.usuario;
+          const option = document.createElement('option');
+          option.value = a;
+          option.innerText = usuario.email;
+          usuarioHTML.appendChild(option);
+          if (a === b) option.setAttribute('selected', 'selected');
+        });
       })
 
     fechaHTML.value = fecha_form;
@@ -211,8 +201,9 @@ const PedidosMod = () => {
               <div id="columna_izq">
                 <label>Fecha</label>
                 <label>Producto</label>
+                <label>Cantidad</label>
                 <label>Caja</label>
-                <label>Número</label>
+                <label>Numero cajas</label>
                 <label>Merma</label>
                 <label>Realizado</label>
               </div>
@@ -220,9 +211,10 @@ const PedidosMod = () => {
               <div id="columna_der">
                 <input id="fecha" type="date" />
                 <select id="producto"></select>
+                <input id="cantidad" type="number" min={1} />
                 <select id="caja"></select>
-                <input id="cantidad" type="number" />
-                <input id="merma" type="number" />
+                <input id="numero_cajas" type="number" min={1} />
+                <input id="merma" type="number" min={1} />
                 <select id="sel_usuario"></select>
               </div>
 

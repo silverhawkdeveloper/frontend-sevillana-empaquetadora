@@ -18,7 +18,7 @@ const Productos = () => {
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url_profile, token, usuario);
 
-    const url_pedido = 'http://localhost:5000/pedido/';
+    const url_producto = 'http://localhost:5000/producto/';
     const tbody = document.getElementById('tbody');
   });
 

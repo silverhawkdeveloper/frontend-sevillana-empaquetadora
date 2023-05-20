@@ -7,7 +7,7 @@
 #cntr_gris_pedidos_mod {
     background-color: #D9D9D9;
     border-radius: 15px;
-    margin: 30px;
+    margin: 10px 30px 10px 30px;
     max-width: 500px;
     display: flex;
     flex-direction: column;
