@@ -10,6 +10,7 @@ import { obtener_id, construir_tabla_productos }
 
 const Productos = () => {
   const navigate = useNavigate();
+  localStorage.clear();
 
   useEffect(() => {
     const usuario = document.getElementById('usuario');

@@ -10,6 +10,7 @@ import '../../css/productos/productos.css';
 
 const CuboReg = () => {
   const navigate = useNavigate();
+  localStorage.setItem('tipo', 'Cubo');
 
   useEffect(() => {
     const usuario = document.getElementById('usuario');
@@ -21,29 +22,33 @@ const CuboReg = () => {
 
     // Capturamos el cntr del boton eliminar
     // Si hemos accedido desde nuevo ocultamos el boton
-    const boton_eliminar = document.getElementById('boton_eliminar')
+    const boton_eliminar = document.getElementById('boton_eliminar');
+    const boton_guardar = document.getElementById('boton_guardar');
+    const boton_nuevo = document.getElementById('boton_nuevo');
     const contenedor_texto = document.getElementById('contenedor_texto').firstChild;
     const imagen = document.getElementById('imagen')
     let modificar_producto = localStorage.getItem('Modificar_producto');
     if (modificar_producto) {
+      boton_nuevo.style.display = 'none';
       imagen.style.display = 'none';
       contenedor_texto.innerHTML = 'Datos del producto';
+
+      //Cargamos los datos locales
+      const productoLocal = JSON.parse(localStorage.getItem('producto'));
+
+      const descripcionHTML = document.getElementById('descripcion');
+      const aristaHTML = document.getElementById('arista');
+
+      fetch(`http://localhost:5000/producto/${productoLocal._id}`)
+        .then(response => response.json())
+        .then(data => {
+          descripcionHTML.value = data[0].descripcion;
+          aristaHTML.value = data[0].arista;
+        })
     } else {
       boton_eliminar.style.display = 'none';
+      boton_guardar.style.display = 'none';
     }
-
-    //Cargamos los datos locales
-    const productoLocal = JSON.parse(localStorage.getItem('producto'));
-
-    const descripcionHTML = document.getElementById('descripcion');
-    const aristaHTML = document.getElementById('arista');
-
-    fetch(`http://localhost:5000/producto/${productoLocal._id}`)
-      .then(response => response.json())
-      .then(data => {
-        descripcionHTML.value = data[0].descripcion;
-        aristaHTML.value = data[0].arista;
-      })
   });
 
   function auth_token_profile(url, token, usuario) {
@@ -71,7 +76,7 @@ const CuboReg = () => {
     navigate('/');
   }
 
-  function guardar() {
+  async function guardar() {
     const productoLocal = JSON.parse(localStorage.getItem('producto'));
     const descripcionHTML = document.getElementById('descripcion');
     const aristaHTML = document.getElementById('arista');
@@ -88,11 +93,8 @@ const CuboReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) return respuesta;
+        if (respuesta.ok) navigate('/Productos');
       })
-      .then((datos) => {
-        return datos;
-      });
 
     localStorage.clear();
   }
@@ -108,11 +110,32 @@ const CuboReg = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) return respuesta;
+        if (respuesta.ok) navigate('/Productos');;
       })
-      .then((datos) => {
-        return datos;
-      });
+
+    localStorage.clear();
+  }
+
+  function insertar() {
+    const tipo = localStorage.getItem('tipo');
+    const descripcionHTML = document.getElementById('descripcion');
+    const aristaHTML = document.getElementById('arista');
+    
+    fetch('http://localhost:5000/producto/', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        'tipo': tipo,
+        'descripcion': descripcionHTML.value,
+        'arista': aristaHTML.valueAsNumber
+      }),
+    })
+      .then((respuesta) => {
+        if (respuesta.ok) navigate('/Productos');
+      })
+
     localStorage.clear();
   }
 
@@ -150,21 +173,34 @@ const CuboReg = () => {
             </div>
 
             <div id="cntr_botones">
+
               <div id="boton_eliminar">
                 <div id="cntr_boton_login">
                   <div id="boton_texto"><p>Eliminar</p></div>
                   <div id="boton_imagen" onClick={eliminar}>
-                    <Link to="/Productos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
+                    <Link><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
                   </div>
                 </div>
               </div>
 
-              <div id="cntr_boton_login">
-                <div id="boton_texto"><p>Guardar</p></div>
-                <div id="boton_imagen" onClick={guardar}>
-                  <Link to="/Productos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+              <div id="boton_guardar">
+                <div id="cntr_boton_login">
+                  <div id="boton_texto"><p>Guardar</p></div>
+                  <div id="boton_imagen" onClick={guardar}>
+                    <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+                  </div>
                 </div>
               </div>
+
+              <div id="boton_nuevo">
+                <div id="cntr_boton_login">
+                  <div id="boton_texto"><p>Guardar</p></div>
+                  <div id="boton_imagen" onClick={insertar}>
+                    <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
           </div>

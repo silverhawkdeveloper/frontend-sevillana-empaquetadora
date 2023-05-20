@@ -125,7 +125,6 @@ const PedidosReg = () => {
     const token = sessionStorage.getItem('JWT');
     const usuario_local = await usuario(token);
     const pedido = JSON.parse(localStorage.getItem('pedido_local'));
-    //Tenemos que hacer modificaciones para que el el pedido_local guarde il id de las cajas
     const fecha = new Date();
     fetch('http://localhost:5000/pedido/', {
       method: "POST",
