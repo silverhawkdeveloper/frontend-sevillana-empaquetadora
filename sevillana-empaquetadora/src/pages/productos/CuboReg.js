@@ -98,8 +98,8 @@ const CuboReg = () => {
   }
 
   function eliminar() {
-    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
-    const url = `http://localhost:5000/pedido/delete/${pedidoLocal._id}`;
+    const productoLocal = JSON.parse(localStorage.getItem('producto'));
+    const url = `http://localhost:5000/producto/delete/${productoLocal._id}`;
 
     fetch(url, {
       method: "DELETE",

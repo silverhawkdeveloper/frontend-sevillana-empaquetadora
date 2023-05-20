@@ -5,7 +5,6 @@ import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import ortoedro from '../../imagenes/figuras_geometricas/medidas_ortoedro.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
-//import '../../css/pedidos_reg.css';
 
 const OrtoedroReg = () => {
   const navigate = useNavigate();
@@ -105,8 +104,8 @@ const OrtoedroReg = () => {
   }
 
   function eliminar() {
-    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
-    const url = `http://localhost:5000/pedido/delete/${pedidoLocal._id}`;
+    const productoLocal = JSON.parse(localStorage.getItem('producto'));
+    const url = `http://localhost:5000/producto/delete/${productoLocal._id}`;
 
     fetch(url, {
       method: "DELETE",
