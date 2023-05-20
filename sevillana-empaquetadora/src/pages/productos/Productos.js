@@ -31,12 +31,9 @@ const Productos = () => {
         const boton = document.getElementsByClassName('guardarpedido');
 
         Array.from(boton).forEach(link => {
-          link.addEventListener('click', modificarpedido)
+          link.addEventListener('click', modificar_producto)
         });
       })
-      .catch(error => {
-        console.error('Error al realizar la petición:', error);
-      });
   });
 
   function auth_token_profile(url, token, usuario) {
@@ -64,7 +61,7 @@ const Productos = () => {
     navigate('/');
   }
 
-  function modificarpedido(e) {
+  function modificar_producto(e) {
     const id = obtener_id(e);
     let ruta;
     localStorage.setItem('Modificar_producto', true);
@@ -91,19 +88,6 @@ const Productos = () => {
         }
         navigate(ruta);
       })
-  }
-
-  function url(evento) {
-    console.log('Entrando en la función url');
-    
-    let ruta;
-    let figura = evento.currentTarget.parentElement.childNodes;
-    figura.forEach(element => {
-      if (element.id === 'tipo') {
-
-      };
-    });
-    navigate(ruta)
   }
 
   return (
