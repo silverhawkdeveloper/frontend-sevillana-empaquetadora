@@ -5,7 +5,7 @@ import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import pedidos_plus from '../../imagenes/iconos/pedidos+.png';
 import '../../css/app.css';
 import '../../css/pedidos/pedidos.css';
-import { obtener_id, crear_pedido, construir_tabla_pedidos }
+import { obtener_id, construir_tabla_pedidos }
   from '../../js/funciones.js'
 
 const Pedidos = () => {
@@ -26,19 +26,12 @@ const Pedidos = () => {
     fetch(url_pedido)
       .then(response => response.json())
       .then(data => {
-        // Almacenar los datos en una variable
-        const datosRecibidos = data;
+        construir_tabla_pedidos(data, tbody);
+        const boton = document.getElementsByClassName('guardarpedido');
 
-        // Pasar por un condicional del resultado
-        if (datosRecibidos.length > 0) {
-          construir_tabla_pedidos(datosRecibidos, tbody)
-          const boton = document.getElementsByClassName('guardarpedido');
-
-          Array.from(boton).forEach(link => {
-            link.addEventListener('click', modificarpedido)
-          });
-
-        }
+        Array.from(boton).forEach(link => {
+          link.addEventListener('click', modificarpedido)
+        });
       })
       .catch(error => {
         console.error('Error al realizar la petición:', error);
@@ -78,19 +71,9 @@ const Pedidos = () => {
     fetch(`http://localhost:5000/pedido/${id}`)
       .then(response => response.json())
       .then(data => {
-        // Almacenar los datos en una variable
-        const datosRecibidos = data;
-
-        // Pasar por un condicional del resultado
-        if (datosRecibidos.length > 0) {
-          localStorage.setItem('pedido', crear_pedido(datosRecibidos));
+          localStorage.setItem('pedido', JSON.stringify(data[0]));
           navigate('/Pedidos_mod');
-        }
       })
-      .catch(error => {
-        console.error('Error al realizar la petición:', error);
-      });
-
   }
 
   return (

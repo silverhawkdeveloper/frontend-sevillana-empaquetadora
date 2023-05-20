@@ -12,6 +12,51 @@ export async function mostrar_pedidos(url) {
         });
 }
 
+export async function construir_tabla_productos(datos, padre) {
+    await datos.forEach(element => {
+        const filaDato = document.createElement('tr');
+        padre.appendChild(filaDato);
+
+        const oculto = document.createElement('input');
+        oculto.type = 'hidden';
+        oculto.value = element._id;
+        filaDato.appendChild(oculto);
+
+        const descripcion = document.createElement('td');
+        filaDato.appendChild(descripcion);
+        descripcion.innerHTML = element.descripcion;
+
+        const tipo = document.createElement('td');
+        filaDato.appendChild(tipo);
+        tipo.innerHTML = element.tipo;
+
+        const medidas = document.createElement('td');
+        filaDato.appendChild(medidas);
+        //medidas.setAttribute('style', 'text-align: initial');
+        switch (element.tipo) {
+            case 'Cubo':
+                medidas.innerHTML = 'Aristas: ' + element.arista;
+                break;
+            case 'Ortoedro':
+                medidas.innerHTML = 'Alto: ' + element.alto + '<br/>' +
+                                    'Ancho: ' + element.ancho + '<br/>' +
+                                    'Profundo: ' + element.profundo
+                break;
+            case 'Cilindro':
+                medidas.innerHTML = 'Alto: ' + element.alto + '<br/>' +
+                                    'Circunferencia: ' + element.circunferencia
+                    break;
+            case 'Esfera':
+                medidas.innerHTML = 'Circunferencia: ' + element.circunferencia
+                    break;
+            default:
+                break;
+        }
+
+        crear_boton(filaDato);
+    });
+}
+
 export async function construir_tabla_pedidos(datos, padre) {
     await datos.forEach(element => {
         const fecha2 = new Date(element.fecha);
@@ -61,17 +106,4 @@ function crear_boton(padre) {
 export function obtener_id(e) {
     let id = e.currentTarget.parentElement.parentElement.firstChild.value;
     return id;
-}
-
-export function crear_pedido(datos) {
-    let pedido = {
-        '_id': datos[0]._id,
-        'usuario': datos[0].usuario[0],
-        'producto': datos[0].producto[0],
-        'cantidad': datos[0].cantidad,
-        'caja': datos[0].caja[0],
-        'merma': datos[0].merma,
-        'fecha': datos[0].fecha,
-    }
-    return JSON.stringify(pedido)
 }

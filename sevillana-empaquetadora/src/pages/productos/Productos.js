@@ -6,6 +6,8 @@ import productos from '../../imagenes/iconos/productos+.png';
 import boton_emer from '../../imagenes/iconos/boton-emergencia.png';
 import '../../css/app.css';
 import '../../css/productos/productos.css';
+import { obtener_id, crear_producto, construir_tabla_productos }
+  from '../../js/funciones.js'
 
 const Productos = () => {
   const navigate = useNavigate();
@@ -20,6 +22,21 @@ const Productos = () => {
 
     const url_producto = 'http://localhost:5000/producto/';
     const tbody = document.getElementById('tbody');
+
+    // Peticion para obtener los productos
+    fetch(url_producto)
+      .then(response => response.json())
+      .then(data => {
+        construir_tabla_productos(data, tbody);
+        const boton = document.getElementsByClassName('guardarpedido');
+
+        Array.from(boton).forEach(link => {
+          link.addEventListener('click', modificarpedido)
+        });
+      })
+      .catch(error => {
+        console.error('Error al realizar la petición:', error);
+      });
   });
 
   function auth_token_profile(url, token, usuario) {
@@ -47,14 +64,16 @@ const Productos = () => {
     navigate('/');
   }
 
-  function url(evento) {
-    console.log('Entrando en la función url');
-    localStorage.setItem('Modificar_producto', true);
+  function modificarpedido(e) {
+    const id = obtener_id(e);
     let ruta;
-    let figura = evento.currentTarget.parentElement.childNodes;
-    figura.forEach(element => {
-      if (element.id === 'tipo') {
-        switch (element.innerText) {
+    localStorage.setItem('Modificar_producto', true);
+    // Peticion para obtener un producto
+    fetch(`http://localhost:5000/producto/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem('producto', JSON.stringify(data[0]));
+        switch (data[0].tipo) {
           case 'Cubo':
             ruta = "/cubo_reg";
             break;
@@ -70,6 +89,18 @@ const Productos = () => {
           default:
             ruta = "/home";
         }
+        navigate(ruta);
+      })
+  }
+
+  function url(evento) {
+    console.log('Entrando en la función url');
+    
+    let ruta;
+    let figura = evento.currentTarget.parentElement.childNodes;
+    figura.forEach(element => {
+      if (element.id === 'tipo') {
+
       };
     });
     navigate(ruta)
@@ -85,7 +116,7 @@ const Productos = () => {
         </div>
 
         <div id="cntr_usuario">
-        <h4 id='usuario'> </h4>
+          <h4 id='usuario'> </h4>
           <button><Link id="boton_out" to="/">Log out</Link></button>
         </div>
 
@@ -104,44 +135,12 @@ const Productos = () => {
 
           <div id="cntr_gris_tabla">
             <table>
-              <tbody>
+              <tbody id='tbody'>
                 <tr>
                   <th>Descripción</th>
                   <th>Tipo</th>
                   <th>Medidas</th>
                   <th>Modificar</th>
-                </tr>
-                <tr>
-                  <td id='descripcion'>Producto 1</td>
-                  <td id='tipo'>Cubo</td>
-                  <td id='medidas'>100x100x100</td>
-                  <td onClick={url}>
-                    <Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td id='descripcion'>Producto 2</td>
-                  <td id='tipo'>Ortoedro</td>
-                  <td id='medidas'>100x200x50</td>
-                  <td onClick={url}>
-                    <Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td id='descripcion'>Producto 3</td>
-                  <td id='tipo'>Cilindro</td>
-                  <td id='medidas'>25x230</td>
-                  <td onClick={url}>
-                    <Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td id='descripcion'>Producto 4 </td>
-                  <td id='tipo'>Esfera</td>
-                  <td id='medidas'>250</td>
-                  <td onClick={url}>
-                    <Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link>
-                  </td>
                 </tr>
               </tbody>
             </table>
