@@ -6,6 +6,12 @@ import '../css/login.css';
 const Login = () => {
   const navigate = useNavigate();
 
+  const pressEnter = (event) => {
+    if (event.key === 'Enter') {
+      login();
+    }
+  };
+
   function login() {
     const email = document.getElementById("email");
     const contasenia = document.getElementById("contasenia");
@@ -45,8 +51,8 @@ const Login = () => {
         <h1>BIENVENIDO</h1>
 
         <div id="cntr_formulario">
-          <input id="email" type="text" placeholder="Email" />
-          <input id="contasenia" type="password" placeholder="Contraseña" />
+          <input id="email" type="text" placeholder="Email" onKeyDown={pressEnter} />
+          <input id="contasenia" type="password" placeholder="Contraseña" onKeyDown={pressEnter} />
         </div>
 
         <div id="cntr_boton_login">
