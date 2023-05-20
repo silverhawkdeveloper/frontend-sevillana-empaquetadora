@@ -176,20 +176,3 @@ const CuboReg = () => {
 };
 
 export default CuboReg;
-/*
-            <div id="cntr_botones">
-              <div id="contenedor_boton_login_no">
-                <div id="boton_texto"><p>Eliminar</p></div>
-                <div id="boton_imagen" onClick={eliminar}>
-                  <Link to="/Productos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
-                </div>
-              </div>
-
-              <div id="contenedor_boton_login_ok">
-                <div id="boton_texto"><p>Guardar</p></div>
-                <div id="boton_imagen" onClick={guardar}>
-                  <Link to="/Productos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
-                </div>
-              </div>
-            </div>
-*/

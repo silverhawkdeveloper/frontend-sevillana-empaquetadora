@@ -31,7 +31,7 @@ const PedidosReg = () => {
       })
       .then((datos) => {
         // Si exinten nodos de productos no los volvemos a escribir
-        if (nodos_hijos != null & nodos_hijos.length == 0) {
+        if (nodos_hijos != null & nodos_hijos.length === 0) {
           datos.forEach(producto => {
             const a = producto._id
             const option = document.createElement('option');
@@ -98,7 +98,6 @@ const PedidosReg = () => {
     merma.value = resultado.merma;
 
     // Almacenamos el pedido de forma local
-    const usuario = document.getElementById('usuario');
     let pedido_local = {
       'usuario': '',
       'caja': resultado._id,

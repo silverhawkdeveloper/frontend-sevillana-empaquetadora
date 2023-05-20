@@ -3,10 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import productos_blanco from '../../imagenes/iconos/productos_blanco.png';
 import productos from '../../imagenes/iconos/productos+.png';
-import boton_emer from '../../imagenes/iconos/boton-emergencia.png';
 import '../../css/app.css';
 import '../../css/productos/productos.css';
-import { obtener_id, crear_producto, construir_tabla_productos }
+import { obtener_id, construir_tabla_productos }
   from '../../js/funciones.js'
 
 const Productos = () => {
