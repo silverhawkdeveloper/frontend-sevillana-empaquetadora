@@ -20,9 +20,8 @@ const PedidosReg = () => {
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url, token, usuario);
 
-    //Cargamos los datos locales
-    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
     const productoHTML = document.getElementById('producto');
+    const nodos_hijos = productoHTML.childNodes
 
     fetch('http://localhost:5000/producto/', {
       method: 'GET'
@@ -31,13 +30,16 @@ const PedidosReg = () => {
         if (respuesta.ok) return respuesta.json();
       })
       .then((datos) => {
-        datos.forEach(producto => {
-          const a = producto._id
-          const option = document.createElement('option');
-          option.value = a;
-          option.innerText = producto.descripcion;
-          productoHTML.appendChild(option);
-        });
+        // Si exinten nodos de productos no los volvemos a escribir
+        if (nodos_hijos != null & nodos_hijos.length == 0) {
+          datos.forEach(producto => {
+            const a = producto._id
+            const option = document.createElement('option');
+            option.value = a;
+            option.innerText = producto.descripcion;
+            productoHTML.appendChild(option);
+          });
+        }
       });
   });
 
@@ -81,9 +83,9 @@ const PedidosReg = () => {
   async function comprobar_ped() {
     const cajas = await peticionCajas();
     const fecha = new Date();
-    const producto = await peticionProducto(document.getElementById('producto').value);
-    const cantidad = document.getElementById('cantidad').valueAsNumber;
-    const pedido = new Pedido(fecha, producto, cantidad);
+    const producto_ped = await peticionProducto(document.getElementById('producto').value);
+    const cantidad_ped = document.getElementById('cantidad').valueAsNumber;
+    const pedido = new Pedido(fecha, producto_ped, cantidad_ped);
     let resultado = empaquetar(pedido, cajas);
 
     //Mostramos el resultado en la pantalla
@@ -151,6 +153,11 @@ const PedidosReg = () => {
     localStorage.clear();
   }
 
+  function cancelar() {
+    localStorage.clear();
+    navigate('/Pedidos');
+  }
+
   return (
     <div id='cntr'>
       <div id="cntr_negro">
@@ -172,8 +179,7 @@ const PedidosReg = () => {
         <div id='cntr_pedidos_reg'>
 
           <div id="form">
-            <div id="cntr_texto"><h2>Indica el producto</h2></div>
-
+            <h2>Indica producto y cantidad</h2>
 
             <form id="form_estrecho">
               <select id="producto"></select>
@@ -184,13 +190,13 @@ const PedidosReg = () => {
             <div id="cntr_boton_login">
               <div id="boton_texto"><p>Enviar</p></div>
               <div id="boton_imagen" onClick={comprobar_ped}>
-                <Link to="/Pedidos_reg"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+                <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
               </div>
             </div>
           </div>
 
           <div id="form">
-            <h2>Resultado del pedido</h2>
+            <h2>Resultado del empaquetado</h2>
 
             <form id="form_resultado">
 
@@ -212,8 +218,8 @@ const PedidosReg = () => {
             <div id="cntr_botones">
               <div id="cntr_boton_login">
                 <div id="boton_texto"><p>Cancelar</p></div>
-                <div id="boton_imagen">
-                  <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
+                <div id="boton_imagen" onClick={cancelar}>
+                  <Link><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
                 </div>
               </div>
 

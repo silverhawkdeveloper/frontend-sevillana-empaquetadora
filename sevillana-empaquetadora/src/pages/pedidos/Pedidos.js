@@ -126,7 +126,7 @@ const Pedidos = () => {
                   <th>Fecha</th>
                   <th>Producto</th>
                   <th>Cantidad</th>
-                  <th>Merna</th>
+                  <th>Merma cm³</th>
                   <th>Realizado</th>
                   <th>Modificar</th>
                 </tr>
