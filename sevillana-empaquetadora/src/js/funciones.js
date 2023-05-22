@@ -1,15 +1,25 @@
-export let pedidos;
+export async function construir_tabla_cajas(datos, padre) {
+    await datos.forEach(element => {
+        const filaDato = document.createElement('tr');
+        padre.appendChild(filaDato);
 
-export async function mostrar_pedidos(url) {
-    await fetch(url, {
-        method: 'GET',
-    })
-        .then(respuesta => {
-            if (respuesta.ok) return respuesta.json();
-        })
-        .then((datos) => {
-            pedidos = datos;
-        });
+        const oculto = document.createElement('input');
+        oculto.type = 'hidden';
+        oculto.value = element._id;
+        filaDato.appendChild(oculto);
+
+        const descripcion = document.createElement('td');
+        filaDato.appendChild(descripcion);
+        descripcion.innerHTML = element.descripcion;
+
+        const medidas = document.createElement('td');
+        filaDato.appendChild(medidas);
+        medidas.innerHTML = 'Alto: ' + element.alto + '<br/>' +
+                                    'Ancho: ' + element.ancho + '<br/>' +
+                                    'Profundo: ' + element.profundo;
+
+        crear_boton(filaDato);
+    });
 }
 
 export async function construir_tabla_productos(datos, padre) {
