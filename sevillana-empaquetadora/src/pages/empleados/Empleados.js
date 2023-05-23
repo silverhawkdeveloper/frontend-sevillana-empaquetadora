@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import empleados_blanco from '../../imagenes/iconos/empleados_blanco.png';
 import empleados from '../../imagenes/iconos/empleados+.png';
+import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/empleados/empleados.css';
 import { obtener_id, construir_tabla_empleados }
@@ -92,17 +93,24 @@ const Empleados = () => {
 
         <div id='cntr_productos'>
 
-          <div id="cntr_nuevo_obj">
-            <div id="boton_imagen">
-              <Link to="/Empleados_reg"><img id="iconos_btn" src={empleados} alt="nuevo empleado" /></Link>
+          <div id="cntr_botones">
+            <div id="cntr_nuevo_obj">
+              <Link to="/"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+              <div id="boton_texto"><p>Gráficas</p></div>
             </div>
-            <div id="boton_texto"><p>Nuevo empleado</p></div>
+
+            <div id="cntr_nuevo_obj">
+              <div id="boton_imagen">
+                <Link to="/Empleados_reg"><img id="iconos_btn" src={empleados} alt="nuevo empleado" /></Link>
+              </div>
+              <div id="boton_texto"><p>Nuevo empleado</p></div>
+            </div>
           </div>
 
           <div id="cntr_gris_tabla">
 
             <table>
-            <tbody id='tbody'>
+              <tbody id='tbody'>
                 <tr>
                   <th>Role</th>
                   <th>Email</th>

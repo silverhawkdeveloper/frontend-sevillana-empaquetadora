@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import pedidos_plus from '../../imagenes/iconos/pedidos+.png';
+import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/pedidos/pedidos.css';
 import { obtener_id, construir_tabla_pedidos }
@@ -71,8 +72,8 @@ const Pedidos = () => {
     fetch(`http://localhost:5000/pedido/${id}`)
       .then(response => response.json())
       .then(data => {
-          localStorage.setItem('pedido', JSON.stringify(data[0]));
-          navigate('/Pedidos_mod');
+        localStorage.setItem('pedido', JSON.stringify(data[0]));
+        navigate('/Pedidos_mod');
       })
   }
 
@@ -95,11 +96,18 @@ const Pedidos = () => {
       <div id="cntr_blanco">
         <div id='cntr_pedidos'>
 
-          <div id="cntr_nuevo_obj">
-            <div id="boton_imagen">
-              <Link to="/Pedidos_reg"><img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" /></Link>
+          <div id="cntr_botones">
+            <div id="cntr_nuevo_obj">
+              <Link to="/"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+              <div id="boton_texto"><p>Gráficas</p></div>
             </div>
-            <div id="boton_texto"><p>Nuevo pedido</p></div>
+
+            <div id="cntr_nuevo_obj">
+              <div id="boton_imagen">
+                <Link to="/Pedidos_reg"><img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" /></Link>
+              </div>
+              <div id="boton_texto"><p>Nuevo pedido</p></div>
+            </div>
           </div>
 
           <div id="cntr_gris_tabla">

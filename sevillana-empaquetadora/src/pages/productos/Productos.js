@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import productos_blanco from '../../imagenes/iconos/productos_blanco.png';
 import productos from '../../imagenes/iconos/productos+.png';
+import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/productos/productos.css';
 import { obtener_id, construir_tabla_productos }
@@ -110,11 +111,18 @@ const Productos = () => {
 
         <div id='cntr_productos'>
 
-          <div id="cntr_nuevo_obj">
-            <div id="boton_imagen">
-              <Link to="/Figuras"><img id="iconos_btn" src={productos} alt="nuevo producto" /></Link>
+          <div id="cntr_botones">
+            <div id="cntr_nuevo_obj">
+              <Link to="/"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+              <div id="boton_texto"><p>Gráficas</p></div>
             </div>
-            <div id="boton_texto"><p>Nuevo producto</p></div>
+
+            <div id="cntr_nuevo_obj">
+              <div id="boton_imagen">
+                <Link to="/Figuras"><img id="iconos_btn" src={productos} alt="nuevo producto" /></Link>
+              </div>
+              <div id="boton_texto"><p>Nuevo producto</p></div>
+            </div>
           </div>
 
           <div id="cntr_gris_tabla">

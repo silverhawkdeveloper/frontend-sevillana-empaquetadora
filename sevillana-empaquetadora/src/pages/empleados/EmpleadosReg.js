@@ -220,11 +220,3 @@ const EmpleadosReg = () => {
 };
 
 export default EmpleadosReg;
-
-/*
-id="rol"
-id="nombre"
-id="telefono"
-id="email"
-id="contasenia"
-*/

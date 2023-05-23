@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import cajas from '../../imagenes/iconos/cajas+.png';
+import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/cajas/cajas.css';
 import { obtener_id, construir_tabla_cajas }
@@ -92,12 +93,21 @@ const Cajas = () => {
 
         <div id='cntr_productos'>
 
-          <div id="cntr_nuevo_obj">
-            <div id="boton_imagen">
-              <Link to="/Cajas_reg"><img id="iconos_btn" src={cajas} alt="nueva caja" /></Link>
+          <div id="cntr_botones">
+            <div id="cntr_nuevo_obj">
+              <Link to="/"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+              <div id="boton_texto"><p>Gráficas</p></div>
             </div>
-            <div id="boton_texto"><p>Nueva caja</p></div>
+
+            <div id="cntr_nuevo_obj">
+              <div id="boton_imagen">
+                <Link to="/Cajas_reg"><img id="iconos_btn" src={cajas} alt="nueva caja" /></Link>
+              </div>
+              <div id="boton_texto"><p>Nueva caja</p></div>
+            </div>
           </div>
+
+
 
           <div id="cntr_gris_tabla">
 
