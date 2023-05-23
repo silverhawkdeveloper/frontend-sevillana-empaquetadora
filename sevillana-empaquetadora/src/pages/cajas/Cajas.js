@@ -118,25 +118,3 @@ const Cajas = () => {
 };
 
 export default Cajas;
-/*
-              <tr>
-                <td>Caja 1</td>
-                <td>100x100x100</td>
-                <td onClick={modificar_caja}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-              <tr>
-                <td>Caja 2</td>
-                <td>150x100x100</td>
-                <td onClick={modificar_caja}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-              <tr>
-                <td>Caja 3</td>
-                <td>300x200x100</td>
-                <td onClick={modificar_caja}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-              <tr>
-                <td>Caja 4</td>
-                <td>250x250x100</td>
-                <td onClick={modificar_caja}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-*/

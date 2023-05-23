@@ -220,22 +220,3 @@ const CajasReg = () => {
 };
 
 export default CajasReg;
-/*
-  useEffect(() => {
-    // El código que deseas ejecutar después de cargar el contenido HTML
-    console.log('El contenido HTML se ha cargado');
-    // Capturamos el contenedor del boton eliminar
-    // Si hemos accedido desde nuevo empleado ocultamos el boton
-    const boton_eliminar = document.getElementById('contenedor_boton_login_no')
-    const contenedor_texto = document.getElementById('contenedor_texto').firstChild;
-    const imagen = document.getElementById('imagen')
-    let modificar_caja = localStorage.getItem('Modificar_caja');
-    if (modificar_caja) {
-      imagen.style.display = 'none';
-      contenedor_texto.innerHTML = 'Datos del producto';
-    } else {
-      boton_eliminar.style.display = 'none';
-    }
-
-  }, []);
-*/

@@ -3,90 +3,117 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import empleados_blanco from '../../imagenes/iconos/empleados_blanco.png';
 import empleados from '../../imagenes/iconos/empleados+.png';
-import boton_emer from '../../imagenes/iconos/boton-emergencia.png';
 import '../../css/app.css';
+import '../../css/empleados/empleados.css';
+import { obtener_id, construir_tabla_empleados }
+  from '../../js/funciones.js'
 
-function Empleados() {
+const Empleados = () => {
   const navigate = useNavigate();
+  localStorage.clear();
 
   useEffect(() => {
-    // La función que deseas ejecutar al montar el componente
-    console.log('El contenido HTML se ha cargado');
-  }, []);
+    const usuario = document.getElementById('usuario');
+    const url_profile = 'http://localhost:5000/auth-token/profile';
 
-  function modificar_empleado() {
-    console.log('Entrando en la función modificar_caja');
-    localStorage.setItem('Modificar_empleado', true);
-    navigate('/empleados_reg');
+    // Recuperamos el token almacenado en la sesion
+    const token = sessionStorage.getItem('JWT');
+    auth_token_profile(url_profile, token, usuario);
+
+    const url_empleado = 'http://localhost:5000/usuario/';
+    const tbody = document.getElementById('tbody');
+
+    // Peticion para obtener los empleados
+    fetch(url_empleado)
+      .then(response => response.json())
+      .then(data => {
+        construir_tabla_empleados(data, tbody);
+        const boton = document.getElementsByClassName('guardarpedido');
+
+        Array.from(boton).forEach(link => {
+          link.addEventListener('click', modificar_empleado)
+        });
+      })
+  });
+
+  function auth_token_profile(url, token, usuario) {
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': token
+      }
+    })
+      .then(respuesta => {
+        if (respuesta.ok) {
+          return respuesta.json();
+        } else {
+          logout();
+        }
+      })
+      .then((datos) => {
+        usuario.innerHTML = datos.email;
+      });
+  }
+
+  function logout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    navigate('/');
+  }
+
+  function modificar_empleado(e) {
+    const id = obtener_id(e);
+    localStorage.setItem('modificar_empleado', true);
+    fetch(`http://localhost:5000/usuario/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem('empleado', JSON.stringify(data));
+        navigate('/empleados_reg');
+      })
   }
 
   return (
-    <div id='contenedor'>
-      <div id="contenedor_negro">
+    <div id='cntr'>
+      <div id="cntr_negro">
 
-        <div id="contenedor_logo">
+        <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
           <img id="iconos_blanco" src={empleados_blanco} alt="logo sevillana empaquetadora" />
         </div>
 
-        <div id="contenedor_usuario">
-          <h4>daniel@email.com</h4>
+        <div id="cntr_usuario">
+          <h4 id='usuario'> </h4>
           <button id="boton_out"><Link id="boton_out" to="/">Log out</Link></button>
         </div>
 
       </div >
 
-      <div id="contenedor_blanco">
+      <div id="cntr_blanco">
 
-        <div id="contenedor_boton">
-          <div id="boton_imagen">
-            <Link to="/Empleados_reg"><img id="iconos_btn" src={empleados} alt="boton nuevo empleado" /></Link>
+        <div id='cntr_productos'>
+
+          <div id="cntr_nuevo_obj">
+            <div id="boton_imagen">
+              <Link to="/Empleados_reg"><img id="iconos_btn" src={empleados} alt="nuevo empleado" /></Link>
+            </div>
+            <div id="boton_texto"><p>Nuevo empleado</p></div>
           </div>
-          <div id="boton_texto"><p>Nuevo empleado</p></div>
-        </div>
 
-        <div id="contenedor_contenido">
-          <table>
-            <tbody>
-              <tr>
-                <th>Rol</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Modificar</th>
-              </tr>
-              <tr>
-                <td>Admin</td>
-                <td>Daniel Díaz</td>
-                <td>612345678</td>
-                <td>daniel@email.com</td>
-                <td onClick={modificar_empleado}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-              <tr>
-                <td>Admin</td>
-                <td>Elisabeth Olsen</td>
-                <td>612345678</td>
-                <td>olsen@email.com</td>
-                <td onClick={modificar_empleado}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-              <tr>
-                <td>User</td>
-                <td>Griffin</td>
-                <td>612345678</td>
-                <td>griffin@email.com</td>
-                <td onClick={modificar_empleado}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-              <tr>
-                <td>User</td>
-                <td>Swanson</td>
-                <td>612345678</td>
-                <td>swanson@email.com</td>
-                <td onClick={modificar_empleado}><Link><img className="boton_emer" src={boton_emer} alt="boton modificar" /></Link></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <div id="cntr_gris_tabla">
 
+            <table>
+            <tbody id='tbody'>
+                <tr>
+                  <th>Role</th>
+                  <th>Email</th>
+                  <th>Nombre</th>
+                  <th>Teléfono</th>
+                  <th>Modificar</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

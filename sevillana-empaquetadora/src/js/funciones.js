@@ -1,3 +1,33 @@
+export async function construir_tabla_empleados(datos, padre) {
+    await datos.forEach(element => {
+        const filaDato = document.createElement('tr');
+        padre.appendChild(filaDato);
+
+        const oculto = document.createElement('input');
+        oculto.type = 'hidden';
+        oculto.value = element._id;
+        filaDato.appendChild(oculto);
+
+        const role = document.createElement('td');
+        filaDato.appendChild(role);
+        role.innerHTML = element.role;
+
+        const email = document.createElement('td');
+        filaDato.appendChild(email);
+        email.innerHTML = element.email;
+
+        const nombre = document.createElement('td');
+        filaDato.appendChild(nombre);
+        nombre.innerHTML = element.nombre;
+
+        const telefono = document.createElement('td');
+        filaDato.appendChild(telefono);
+        telefono.innerHTML = element.telefono;
+
+        crear_boton(filaDato);
+    });
+}
+
 export async function construir_tabla_cajas(datos, padre) {
     await datos.forEach(element => {
         const filaDato = document.createElement('tr');

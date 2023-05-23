@@ -159,16 +159,6 @@ tr:hover {
     justify-content: center;
 }
 
-/*
-#cntr_formulario_datos {
-    border-radius: 15px;
-    max-width: 500px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-*/
 #cntr_boton_login {
     height: 70px;
     width: 120px;
@@ -208,7 +198,7 @@ input[type=text],
     border-radius: 6px;
     font-size: 16px;
     background-color: #F7F6EE;
-    padding: 8px 20px 8px 40px;
+    padding: 8px 20px 8px 35px;
     margin: 2px;
 }
 
@@ -231,41 +221,41 @@ select {
     border-radius: 4px;
     font-size: 16px;
     background-color: #F7F6EE;
-    padding: 8px 20px 8px 20px;
+    padding: 8px 20px 8px 30px;
     margin: 2px;
 }
 
 #rol {
     background-image: url('../imagenes/iconos/role.png');
-    background-position: 10px 10px;
+    background-position: 6px 6px;
     background-repeat: no-repeat;
     background-size: 20px;
 }
 
 #nombre {
     background-image: url('../imagenes/iconos/nombre.png');
-    background-position: 10px 10px;
+    background-position: 6px 6px;
     background-repeat: no-repeat;
     background-size: 20px;
 }
 
 #telefono {
     background-image: url('../imagenes/iconos/telefono.png');
-    background-position: 10px 10px;
+    background-position: 6px 6px;
     background-repeat: no-repeat;
     background-size: 20px;
 }
 
 #email {
     background-image: url('../imagenes/iconos/email.png');
-    background-position: 10px 10px;
+    background-position: 6px 6px;
     background-repeat: no-repeat;
     background-size: 20px;
 }
 
 #contasenia {
     background-image: url('../imagenes/iconos/contraseña.png');
-    background-position: 10px 10px;
+    background-position: 6px 6px;
     background-repeat: no-repeat;
     background-size: 20px;
 }
