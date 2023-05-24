@@ -4,6 +4,7 @@ import logo from '../../imagenes/logo.png';
 import empleados_blanco from '../../imagenes/iconos/empleados_blanco.png';
 import empleados from '../../imagenes/iconos/empleados+.png';
 import grafica from '../../imagenes/iconos/grafica.png';
+//import boton_emer from '../../imagenes/iconos/boton-emergencia.png';
 import '../../css/app.css';
 import '../../css/empleados/empleados.css';
 import { obtener_id, construir_tabla_empleados }
@@ -95,7 +96,7 @@ const Empleados = () => {
 
           <div id="cntr_botones">
             <div id="cntr_nuevo_obj">
-              <Link to="/"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+              <Link to="/empleados_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
               <div id="boton_texto"><p>Gráficas</p></div>
             </div>
 

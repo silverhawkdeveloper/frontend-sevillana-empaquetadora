@@ -95,7 +95,7 @@ const Cajas = () => {
 
           <div id="cntr_botones">
             <div id="cntr_nuevo_obj">
-              <Link to="/"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+              <Link to="/cajas_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
               <div id="boton_texto"><p>Gráficas</p></div>
             </div>
 
