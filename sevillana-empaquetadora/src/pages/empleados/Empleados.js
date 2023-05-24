@@ -4,7 +4,6 @@ import logo from '../../imagenes/logo.png';
 import empleados_blanco from '../../imagenes/iconos/empleados_blanco.png';
 import empleados from '../../imagenes/iconos/empleados+.png';
 import grafica from '../../imagenes/iconos/grafica.png';
-//import boton_emer from '../../imagenes/iconos/boton-emergencia.png';
 import '../../css/app.css';
 import '../../css/empleados/empleados.css';
 import { obtener_id, construir_tabla_empleados }

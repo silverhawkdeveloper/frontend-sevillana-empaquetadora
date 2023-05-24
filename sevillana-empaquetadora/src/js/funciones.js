@@ -1,3 +1,5 @@
+import boton_emer from '../imagenes/iconos/boton-emergencia.png';
+
 export async function construir_tabla_empleados(datos, padre) {
     await datos.forEach(element => {
         const filaDato = document.createElement('tr');
@@ -140,7 +142,8 @@ function crear_boton(padre) {
     const img = document.createElement('img');
     a.appendChild(img);
     img.setAttribute('class', 'boton_emer');
-    img.setAttribute('src', '/static/media/boton-emergencia.96bdd60a06715cf18206.png');
+    img.setAttribute('src', boton_emer);
+    //img.setAttribute('src', '/static/media/boton-emergencia.96bdd60a06715cf18206.png');
 }
 
 export function obtener_id(e) {
