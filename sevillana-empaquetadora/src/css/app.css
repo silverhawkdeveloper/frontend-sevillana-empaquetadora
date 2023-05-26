@@ -135,6 +135,18 @@ tr:hover {
 
 /*******************************************************/
 
+#cntr_grafica {
+    display: flex;
+    justify-content: center;
+}
+
+#grafica {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    width: 80%;
+}
+
 #cntr_blanco_empleados {
     background-color: #F7F6EE;
     height: 65%;
