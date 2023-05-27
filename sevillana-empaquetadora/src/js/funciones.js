@@ -120,9 +120,9 @@ export async function construir_tabla_pedidos(datos, padre) {
         const producto = document.createElement('td');
         filaDato.appendChild(producto);
         producto.innerHTML = element.producto[0].descripcion;
-        const cantidad = document.createElement('td');
-        filaDato.appendChild(cantidad);
-        cantidad.innerHTML = element.cantidad;
+        const caja = document.createElement('td');
+        filaDato.appendChild(caja);
+        caja.innerHTML = element.caja[0].descripcion
         const merma = document.createElement('td');
         filaDato.appendChild(merma);
         merma.innerHTML = element.merma;

@@ -63,6 +63,38 @@ const CajasGraf = () => {
         }
       }
     });
+
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    function datos_cajas() {
+      let array_caja2 = [];
+      let mes = 0;
+      cajas.forEach(caja => {
+        let objeto = {
+          label: '',
+          data: '',
+          borderWidth: 1
+        }
+        objeto.label = `Merma ${caja.descripcion}`;
+        objeto.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        pedidos.forEach(ped => {
+          if (caja._id === ped.caja[0]._id) {
+            mes = (new Date(ped.fecha)).getMonth()
+            objeto.data[mes] += ped.merma;
+          }
+        })
+        array_caja2.push(objeto);
+      });
+      return array_caja2;
+    }
+
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: meses,
+        datasets: datos_cajas()
+      }
+    });
   }
 
   async function peticionPedidos() {
@@ -120,6 +152,12 @@ const CajasGraf = () => {
         <div className='cntr_grafica'>
           <div className='grafica'>
             <canvas id="myChart" ></canvas>
+          </div>
+        </div>
+
+        <div className='cntr_grafica'>
+          <div className='grafica'>
+            <canvas id="myChart2" ></canvas>
           </div>
         </div>
       </div>
