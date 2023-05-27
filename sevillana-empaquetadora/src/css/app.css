@@ -135,16 +135,17 @@ tr:hover {
 
 /*******************************************************/
 
-#cntr_grafica {
+.cntr_grafica {
     display: flex;
     justify-content: center;
 }
 
-#grafica {
+.grafica {
     display: flex;
     justify-content: center;
     margin-top: 40px;
-    width: 80%;
+    margin-bottom: 40px;
+    width: 120vh;
 }
 
 #cntr_blanco_empleados {
