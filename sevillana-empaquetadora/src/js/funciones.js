@@ -133,6 +133,8 @@ export async function construir_tabla_pedidos(datos, padre) {
     });
 }
 
+
+
 function crear_boton(padre) {
     const td = document.createElement('td');
     padre.appendChild(td);
@@ -143,7 +145,6 @@ function crear_boton(padre) {
     a.appendChild(img);
     img.setAttribute('class', 'boton_emer');
     img.setAttribute('src', boton_emer);
-    //img.setAttribute('src', '/static/media/boton-emergencia.96bdd60a06715cf18206.png');
 }
 
 export function obtener_id(e) {

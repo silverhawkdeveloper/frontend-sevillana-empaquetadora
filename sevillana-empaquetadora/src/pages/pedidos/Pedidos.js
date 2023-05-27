@@ -4,6 +4,7 @@ import logo from '../../imagenes/logo.png';
 import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import pedidos_plus from '../../imagenes/iconos/pedidos+.png';
 import grafica from '../../imagenes/iconos/grafica.png';
+import down from '../../imagenes/iconos/down.png';
 import '../../css/app.css';
 import '../../css/pedidos/pedidos.css';
 import { obtener_id, construir_tabla_pedidos }
@@ -114,9 +115,9 @@ const Pedidos = () => {
             <table>
               <tbody id='tbody'>
                 <tr>
-                  <th>Fecha</th>
+                  <th className='cabecera'>Fecha<img className='down' src={down} alt='down'></img></th>
                   <th>Producto</th>
-                  <th>Caja</th>
+                  <th className='cabecera'>Caja<img className='down' src={down} alt='down'></img></th>
                   <th>Merma cm³</th>
                   <th>Realizado</th>
                   <th>Modificar</th>
