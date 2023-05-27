@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
+import { Chart } from 'chart.js/auto';
 
 import '../../css/app.css';
 import '../../css/home.css';
@@ -18,7 +19,63 @@ const CajasGraf = () => {
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url, token, usuario);
 
+    mostrar_grafica();
+
   });
+
+  async function mostrar_grafica() {
+    // Recuperamos los pedidos
+    const pedidos = await peticionPedidos();
+    let array_pedidos = [];
+
+    // Recuperamos las cajas
+    const cajas = await peticionCajas();
+    let array_caja = [];
+
+    let contador = 0;
+    cajas.forEach(caj => {
+      array_caja.push(caj.descripcion);
+      pedidos.forEach(ped => {
+        if (caj._id === ped.caja[0]._id) {
+          contador++;
+        }
+      })
+      array_pedidos.push(contador);
+      contador = 0;
+    });
+
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: array_caja,
+        datasets: [{
+          label: 'Cajas empleadas',
+          data: array_pedidos,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  async function peticionPedidos() {
+    const response = await fetch('http://localhost:5000/pedido/');
+    const data = await response.json();
+    return data;
+  }
+
+  async function peticionCajas() {
+    const response = await fetch('http://localhost:5000/caja/');
+    const data = await response.json();
+    return data;
+  }
 
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
@@ -60,7 +117,11 @@ const CajasGraf = () => {
       </div>
 
       <div id="cntr_blanco">
-
+        <div className='cntr_grafica'>
+          <div className='grafica'>
+            <canvas id="myChart" ></canvas>
+          </div>
+        </div>
       </div>
 
     </div>
