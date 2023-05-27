@@ -108,14 +108,14 @@ const Pedidos = () => {
         // Los dos elementos para comparar, uno de la fila actual y uno de la siguiente
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
-        if (dir == "asc") {
+        if (dir === "asc") {
           // Comprobamos las dos filas
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
             // Cambiamos el orden
             cambiar = true;
             break;
           }
-        } else if (dir == "desc") {
+        } else if (dir === "desc") {
           if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
             // Cambiamos el orden
             cambiar = true;
@@ -130,7 +130,7 @@ const Pedidos = () => {
         contador++;
       } else {
         // Cambiamos la dirección
-        if (contador == 0 && dir == "asc") {
+        if (contador === 0 && dir ==="asc") {
           dir = "desc";
           bandera = true;
         }
