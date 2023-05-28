@@ -146,8 +146,35 @@ tr:hover {
     justify-content: center;
 }
 
-/*******************************************************/
 
+/**************************************** ERROR ****************************************/
+.textoError {
+    display: inline;
+    width: 180px;
+    /*le damos el mismo tamaño que el input*/
+    font-size: 12px;
+    /*reducimos el tamaño de la fuente*/
+    line-height: 1.5;
+    color: red;
+    /*lo coloreamos de rojo*/
+}
+
+.texto {
+    display: none;
+}
+
+.claseError {
+    border: 5px solid red;
+    border-radius: 5px;
+}
+
+.claseError:invalid {
+    border: 5px solid red;
+    border-radius: 5px;
+}
+
+
+/*******************************************************/
 .cntr_grafica {
     display: flex;
     justify-content: center;
@@ -217,6 +244,7 @@ tr:hover {
 input[type=text],
 [type=date],
 [type=number],
+[type=email],
 [type=password] {
     width: 100%;
     box-sizing: border-box;
@@ -279,7 +307,7 @@ select {
     background-size: 20px;
 }
 
-#contasenia {
+#contrasenia {
     background-image: url('../imagenes/iconos/contraseña.png');
     background-position: 6px 6px;
     background-repeat: no-repeat;

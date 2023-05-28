@@ -47,8 +47,8 @@ export async function construir_tabla_cajas(datos, padre) {
         const medidas = document.createElement('td');
         filaDato.appendChild(medidas);
         medidas.innerHTML = 'Alto: ' + element.alto + '<br/>' +
-                                    'Ancho: ' + element.ancho + '<br/>' +
-                                    'Profundo: ' + element.profundo;
+            'Ancho: ' + element.ancho + '<br/>' +
+            'Profundo: ' + element.profundo;
 
         crear_boton(filaDato);
     });
@@ -81,16 +81,16 @@ export async function construir_tabla_productos(datos, padre) {
                 break;
             case 'Ortoedro':
                 medidas.innerHTML = 'Alto: ' + element.alto + '<br/>' +
-                                    'Ancho: ' + element.ancho + '<br/>' +
-                                    'Profundo: ' + element.profundo
+                    'Ancho: ' + element.ancho + '<br/>' +
+                    'Profundo: ' + element.profundo
                 break;
             case 'Cilindro':
                 medidas.innerHTML = 'Alto: ' + element.alto + '<br/>' +
-                                    'Circunferencia: ' + element.circunferencia
-                    break;
+                    'Circunferencia: ' + element.circunferencia
+                break;
             case 'Esfera':
                 medidas.innerHTML = 'Circunferencia: ' + element.circunferencia
-                    break;
+                break;
             default:
                 break;
         }
@@ -150,4 +150,34 @@ function crear_boton(padre) {
 export function obtener_id(e) {
     let id = e.currentTarget.parentElement.parentElement.firstChild.value;
     return id;
+}
+
+/**
+ * * Función para validar si el campo contiene errores.
+ * @param {Event} evento Hace referencia al elemento al cual el controlador del evento fue asociado.
+ */
+export function validarError(objetoInput, mensaje, automatico) {
+    const spanError = objetoInput.parentNode.parentNode.lastElementChild.firstChild;
+    let valido = objetoInput.validity.valid;
+    // En el caso de no informar del tercer parámetro
+    if (automatico === undefined) {
+        if (!valido) {
+            objetoInput.classList.add("claseError")
+            spanError.classList.remove("texto")
+            spanError.classList.add("textoError")
+            spanError.innerText = mensaje
+        } else {
+            objetoInput.classList.remove("claseError")
+            spanError.classList.add("texto")
+            spanError.classList.remove("textoError")
+            spanError.innerText = ''
+        }
+    // Para informar de los mensajes del servidor
+    } else if (automatico === 1) {
+        objetoInput.classList.add("claseError")
+        spanError.classList.remove("texto")
+        spanError.classList.add("textoError")
+        spanError.innerText = mensaje
+    }
+
 }
