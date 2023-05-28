@@ -1,27 +1,25 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
+// CSS
 import '../../css/app.css';
 import '../../css/pedidos/pedidos_mod.css';
 
 const PedidosMod = () => {
   const navigate = useNavigate();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
-    // La función que deseas ejecutar al montar el componente
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
-
-    // Recuperamos el token almacenado en la sesion
-    const token = sessionStorage.getItem('JWT');
-    auth_token_profile(url, token, usuario);
-
-    //Cargamos los datos locales
-    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
-
     const fechaHTML = document.getElementById('fecha');
     const productoHTML = document.getElementById('producto');
     const cantidadHTML = document.getElementById('cantidad');
@@ -29,6 +27,12 @@ const PedidosMod = () => {
     const numero_cajasHTML = document.getElementById('numero_cajas');
     const mermaHTML = document.getElementById('merma');
     const usuarioHTML = document.getElementById('sel_usuario');
+    // Cargamos los datos locales
+    const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
+
+    // Recuperamos el token almacenado en la sesion
+    const token = sessionStorage.getItem('JWT');
+    auth_token_profile(url, token, usuario);
 
     // Formato de la fecha
     const fecha_res = new Date(pedidoLocal.fecha);
@@ -97,6 +101,12 @@ const PedidosMod = () => {
 
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -107,22 +117,32 @@ const PedidosMod = () => {
       .then(respuesta => {
         if (respuesta.ok) {
           return respuesta.json();
+          // En caso de no tener una respuesta Ok
         } else {
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
+  /**
+   * * Función para guardar la modificación del pedido
+   */
   function guardar() {
+    // Constantes
     const fechaHTML = document.getElementById('fecha');
     const productoHTML = document.getElementById('producto');
     const cajaHTML = document.getElementById('caja');
@@ -157,7 +177,11 @@ const PedidosMod = () => {
     localStorage.clear();
   }
 
+  /**
+   * * Función para eliminar el pedido
+   */
   function eliminar() {
+    // Constantes
     const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
     const url = `http://localhost:5000/pedido/delete/${pedidoLocal._id}`;
 
@@ -176,6 +200,7 @@ const PedidosMod = () => {
 
   return (
     <div id='cntr'>
+
       <div id="cntr_negro">
 
         <div id="cntr_logo">
@@ -191,10 +216,12 @@ const PedidosMod = () => {
       </div>
 
       <div id="cntr_blanco">
+
         <div id='cntr_pedidos_mod'>
+
           <div id='cntr_gris_pedidos_mod'>
 
-            <div id="cntr_texto"><h2>Datos del pedido</h2></div>
+            <h2>Datos del pedido</h2>
 
             <div id='contenido_pedidos_mod'>
 
@@ -221,6 +248,7 @@ const PedidosMod = () => {
             </div>
 
             <div id="cntr_botones">
+
               <div id="cntr_boton_login">
                 <div id="boton_texto"><p>Eliminar</p></div>
                 <div id="boton_imagen" onClick={eliminar}>
@@ -234,11 +262,15 @@ const PedidosMod = () => {
                   <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
                 </div>
               </div>
+
             </div>
 
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 

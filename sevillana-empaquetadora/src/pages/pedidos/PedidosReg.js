@@ -1,27 +1,34 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
+// CSS
 import '../../css/app.css';
 import '../../css/pedidos/pedidos_reg.css';
+// Funciones
 import { empaquetar } from '../../logica/app.js';
-import { Pedido } from '../../logica/modelo-pedido';
+import { Pedido } from '../../logica/modelo-pedido.js';
 
 const PedidosReg = () => {
   const navigate = useNavigate();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
+    const productoHTML = document.getElementById('producto');
+    const nodos_hijos = productoHTML.childNodes;
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url, token, usuario);
-
-    const productoHTML = document.getElementById('producto');
-    const nodos_hijos = productoHTML.childNodes
 
     fetch('http://localhost:5000/producto/', {
       method: 'GET'
@@ -43,6 +50,12 @@ const PedidosReg = () => {
       });
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -53,46 +66,64 @@ const PedidosReg = () => {
       .then(respuesta => {
         if (respuesta.ok) {
           return respuesta.json();
+          // En caso de no tener una respuesta Ok
         } else {
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
+  /**
+   * * Función para recuperar las cajas de la BBDD
+   * @returns Devuelve un array de la cajas
+   */
   async function peticionCajas() {
     const response = await fetch('http://localhost:5000/caja/');
     const data = await response.json();
     return data;
   }
 
+  /**
+   * * Función para recuperar un producto de la BBDD
+   * @returns Devuelve el producto
+   */
   async function peticionProducto(id) {
     const response = await fetch(`http://localhost:5000/producto/${id}`);
     const data = await response.json();
     return data[0];
   }
 
+  /**
+   * * Función para obtener el resultado de empaquetar un pedido
+   */
   async function comprobar_ped() {
+    // Constantes
     const cajas = await peticionCajas();
-    const fecha = new Date();
     const producto_ped = await peticionProducto(document.getElementById('producto').value);
     const cantidad_ped = document.getElementById('cantidad').valueAsNumber;
+    const fecha = new Date();
     const pedido = new Pedido(fecha, producto_ped, cantidad_ped);
-    let resultado = empaquetar(pedido, cajas);
-
-    //Mostramos el resultado en la pantalla
     const caja = document.getElementById('caja');
     const numero = document.getElementById('numero');
     const merma = document.getElementById('merma');
+    // Método para empaquetar el pedido
+    const resultado = empaquetar(pedido, cajas);
 
+    //Mostramos el resultado en la pantalla
     caja.value = resultado.caja;
     numero.value = resultado.numero_cajas;
     merma.value = resultado.merma;
@@ -110,6 +141,11 @@ const PedidosReg = () => {
     localStorage.setItem('pedido_local', JSON.stringify(pedido_local));
   }
 
+  /**
+   * Funcíon para recuperar el usuario logeado
+   * @param {String} token 
+   * @returns Devuelve un usuario
+   */
   async function usuario(token) {
     const response = await fetch('http://localhost:5000/auth-token/profile', {
       method: 'GET',
@@ -121,11 +157,16 @@ const PedidosReg = () => {
     return data;
   }
 
+  /**
+   * * Función para guardar el pedido
+   */
   async function guardar() {
+    // Constantes
     const token = sessionStorage.getItem('JWT');
     const usuario_local = await usuario(token);
     const pedido = JSON.parse(localStorage.getItem('pedido_local'));
     const fecha = new Date();
+
     fetch('http://localhost:5000/pedido/', {
       method: "POST",
       headers: {
@@ -151,6 +192,9 @@ const PedidosReg = () => {
     localStorage.clear();
   }
 
+  /**
+   * * Función para cancelar el pedido
+   */
   function cancelar() {
     localStorage.clear();
     navigate('/Pedidos');
@@ -158,6 +202,7 @@ const PedidosReg = () => {
 
   return (
     <div id='cntr'>
+
       <div id="cntr_negro">
 
         <div id="cntr_logo">
@@ -177,6 +222,7 @@ const PedidosReg = () => {
         <div id='cntr_pedidos_reg'>
 
           <div id="form">
+
             <h2>Indica producto y cantidad</h2>
 
             <form id="form_estrecho">
@@ -191,9 +237,11 @@ const PedidosReg = () => {
                 <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
               </div>
             </div>
+
           </div>
 
           <div id="form">
+
             <h2>Resultado del empaquetado</h2>
 
             <form id="form_resultado">
@@ -214,6 +262,7 @@ const PedidosReg = () => {
 
 
             <div id="cntr_botones">
+
               <div id="cntr_boton_login">
                 <div id="boton_texto"><p>Cancelar</p></div>
                 <div id="boton_imagen" onClick={cancelar}>
@@ -227,11 +276,15 @@ const PedidosReg = () => {
                   <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
                 </div>
               </div>
+
             </div>
 
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 };
