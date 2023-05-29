@@ -21,8 +21,6 @@ const Figuras = () => {
     // Constantes
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
-    const url_pedido = 'http://localhost:5000/pedido/';
-    const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
