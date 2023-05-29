@@ -11,7 +11,6 @@ import empleados from '../imagenes/iconos/empleados.png';
 import '../css/app.css';
 import '../css/home.css';
 
-
 const Home = () => {
   const navigate = useNavigate();
 
