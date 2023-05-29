@@ -1,5 +1,7 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import ortoedro from '../../imagenes/figuras_geometricas/medidas_ortoedro.png';
@@ -10,22 +12,26 @@ const OrtoedroReg = () => {
   const navigate = useNavigate();
   localStorage.setItem('tipo', 'Ortoedro');
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
-
-    // Recuperamos el token almacenado en la sesion
-    const token = sessionStorage.getItem('JWT');
-    auth_token_profile(url_profile, token, usuario);
-
     // Capturamos el cntr del boton eliminar
     // Si hemos accedido desde nuevo ocultamos el boton
     const boton_eliminar = document.getElementById('boton_eliminar');
     const boton_guardar = document.getElementById('boton_guardar');
     const boton_nuevo = document.getElementById('boton_nuevo');
     const contenedor_texto = document.getElementById('contenedor_texto').firstChild;
-    const imagen = document.getElementById('imagen')
+    const imagen = document.getElementById('imagen');
     let modificar_producto = localStorage.getItem('Modificar_producto');
+
+    // Recuperamos el token almacenado en la sesion
+    const token = sessionStorage.getItem('JWT');
+    auth_token_profile(url_profile, token, usuario);
+
     if (modificar_producto) {
       boton_nuevo.style.display = 'none';
       imagen.style.display = 'none';
@@ -33,7 +39,7 @@ const OrtoedroReg = () => {
 
       //Cargamos los datos locales
       const productoLocal = JSON.parse(localStorage.getItem('producto'));
-
+      // Constantes
       const descripcionHTML = document.getElementById('descripcion');
       const altoHTML = document.getElementById('alto');
       const anchoHTML = document.getElementById('ancho');
@@ -53,6 +59,12 @@ const OrtoedroReg = () => {
     }
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -64,21 +76,31 @@ const OrtoedroReg = () => {
         if (respuesta.ok) {
           return respuesta.json();
         } else {
+          // En caso de no tener una respuesta Ok
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
+  /**
+   * * Función para modificar el pedido
+   */
   function guardar() {
+    // Constantes
     const productoLocal = JSON.parse(localStorage.getItem('producto'));
     const descripcionHTML = document.getElementById('descripcion');
     const altoHTML = document.getElementById('alto');
@@ -105,6 +127,9 @@ const OrtoedroReg = () => {
     localStorage.clear();
   }
 
+  /**
+   * * Función para modificar el pedido
+   */
   function eliminar() {
     const productoLocal = JSON.parse(localStorage.getItem('producto'));
     const url = `http://localhost:5000/producto/delete/${productoLocal._id}`;
@@ -122,6 +147,9 @@ const OrtoedroReg = () => {
     localStorage.clear();
   }
 
+  /**
+   * * Función para registrar un nuevo pedido
+   */
   function insertar() {
     const tipo = localStorage.getItem('tipo');
     const descripcionHTML = document.getElementById('descripcion');

@@ -72,7 +72,7 @@ const Login = () => {
         <h1>BIENVENIDO</h1>
 
         <div id="cntr_formulario">
-          <input id="email" type="email" placeholder="Email" onChange={pressEnter} />
+          <input id="email" type="email" placeholder="Email" onChange={pressEnter} onKeyDown={pressEnter}/>
           <input id="contrasenia" type="password" placeholder="Contraseña" onKeyDown={pressEnter} />
         </div>
 

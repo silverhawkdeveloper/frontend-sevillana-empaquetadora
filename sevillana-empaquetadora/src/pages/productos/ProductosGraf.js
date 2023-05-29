@@ -1,16 +1,20 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
 import { Chart } from 'chart.js/auto';
-
+// CSS
 import '../../css/app.css';
 import '../../css/home.css';
-
 
 const ProductosGraf = () => {
   const navigate = useNavigate();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     // La función que deseas ejecutar al montar el componente
     const usuario = document.getElementById('usuario');
     const url = 'http://localhost:5000/auth-token/profile';
@@ -23,16 +27,21 @@ const ProductosGraf = () => {
 
   });
 
+  /**
+   * * Función para mostrar las graficas
+   */
   async function mostrar_grafica() {
+    // Constantes
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     // Recuperamos los pedidos
     const pedidos = await peticionPedidos();
-    let array_pedidos = [];
-
     // Recuperamos los productos
     const productos = await peticionProductos();
+    // Varibles
+    let array_pedidos = [];
     let array_productos = [];
-
     let contador = 0;
+
     productos.forEach(prod => {
       array_productos.push(prod.descripcion);
       pedidos.forEach(ped => {
@@ -44,7 +53,20 @@ const ProductosGraf = () => {
       contador = 0;
     });
 
-    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    // Gráfica
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: meses,
+        datasets: datos_productos()
+      }
+    });
+
+    /**
+     * * Función para construir un array
+     * @returns Devuelve un array con los pedidos
+     */
     function datos_productos() {
       let array = [];
       let mes = 0;
@@ -61,34 +83,39 @@ const ProductosGraf = () => {
             mes = (new Date(ped.fecha)).getMonth()
             objeto.data[mes] += 1;
           }
-        })
+        });
         array.push(objeto);
       });
       return array;
     }
-
-    const ctx = document.getElementById('myChart');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: meses,
-        datasets: datos_productos()
-      }
-    });
   }
 
+  /**
+   * Función de una petición fetch
+   * @returns Devuelve los pedidios
+   */
   async function peticionPedidos() {
     const response = await fetch('http://localhost:5000/pedido/');
     const data = await response.json();
     return data;
   }
 
+  /**
+   * Función de una petición fetch
+   * @returns Devuelve los pedidios
+   */
   async function peticionProductos() {
     const response = await fetch('http://localhost:5000/producto/');
     const data = await response.json();
     return data;
   }
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -108,6 +135,10 @@ const ProductosGraf = () => {
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();

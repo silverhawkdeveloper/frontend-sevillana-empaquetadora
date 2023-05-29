@@ -1,11 +1,15 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagen
 import logo from '../../imagenes/logo.png';
 import productos_blanco from '../../imagenes/iconos/productos_blanco.png';
 import productos from '../../imagenes/iconos/productos+.png';
 import grafica from '../../imagenes/iconos/grafica.png';
+// CSS
 import '../../css/app.css';
 import '../../css/productos/productos.css';
+// Funciones
 import { obtener_id, construir_tabla_productos }
   from '../../js/funciones.js'
 
@@ -13,16 +17,19 @@ const Productos = () => {
   const navigate = useNavigate();
   localStorage.clear();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_producto = 'http://localhost:5000/producto/';
+    const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url_profile, token, usuario);
-
-    const url_producto = 'http://localhost:5000/producto/';
-    const tbody = document.getElementById('tbody');
 
     // Peticion para obtener los productos
     fetch(url_producto)
@@ -37,6 +44,12 @@ const Productos = () => {
       })
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -47,21 +60,31 @@ const Productos = () => {
       .then(respuesta => {
         if (respuesta.ok) {
           return respuesta.json();
+          // En caso de no tener una respuesta Ok
         } else {
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
+  /**
+   * * Función para redirigirnos a la página de modificar el producto
+   * @param {EventTarget} e 
+   */
   function modificar_producto(e) {
     const id = obtener_id(e);
     let ruta;

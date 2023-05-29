@@ -1,28 +1,40 @@
+//React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import cubo from '../../imagenes/figuras_geometricas/cubo.png';
 import ortoedro from '../../imagenes/figuras_geometricas/ortoedro.png';
 import cilindro from '../../imagenes/figuras_geometricas/cilindro.png';
 import esfera from '../../imagenes/figuras_geometricas/esfera.png';
+// CSS
 import '../../css/app.css';
 import '../../css/productos/figuras.css';
 
 const Figuras = () => {
   const navigate = useNavigate();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_pedido = 'http://localhost:5000/pedido/';
+    const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url_profile, token, usuario);
-
-    const url_pedido = 'http://localhost:5000/pedido/';
-    const tbody = document.getElementById('tbody');
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -34,14 +46,20 @@ const Figuras = () => {
         if (respuesta.ok) {
           return respuesta.json();
         } else {
+          // En caso de no tener una respuesta Ok
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
