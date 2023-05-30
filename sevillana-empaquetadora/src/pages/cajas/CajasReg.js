@@ -1,44 +1,50 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import caja from '../../imagenes/medidas_caja.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
+// CSS
 import '../../css/app.css';
 import '../../css/cajas/cajas.css';
 
 const CajasReg = () => {
   const navigate = useNavigate();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
+    const boton_eliminar = document.getElementById('boton_eliminar');
+    const boton_guardar = document.getElementById('boton_guardar');
+    const boton_nuevo = document.getElementById('boton_nuevo');
+    const contenedor_texto = document.getElementById('contenedor_texto').firstChild;
+    const imagen = document.getElementById('imagen');
+    const modificar_caja = localStorage.getItem('modificar_caja');
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url_profile, token, usuario);
 
-    // Capturamos el cntr del boton eliminar
-    // Si hemos accedido desde nuevo ocultamos el boton
-    const boton_eliminar = document.getElementById('boton_eliminar');
-    const boton_guardar = document.getElementById('boton_guardar');
-    const boton_nuevo = document.getElementById('boton_nuevo');
-    const contenedor_texto = document.getElementById('contenedor_texto').firstChild;
-    const imagen = document.getElementById('imagen')
-    let modificar_caja = localStorage.getItem('modificar_caja');
     if (modificar_caja) {
-      boton_nuevo.style.display = 'none';
-      imagen.style.display = 'none';
-      contenedor_texto.innerHTML = 'Datos de la caja';
-
+      // Constantes
       //Cargamos los datos locales
       const cajaLocal = JSON.parse(localStorage.getItem('caja'));
-
       const descripcionHTML = document.getElementById('descripcion');
       const altoHTML = document.getElementById('alto');
       const anchoHTML = document.getElementById('ancho');
       const profundoHTML = document.getElementById('profundo');
+
+      // Si hemos accedido desde nuevo ocultamos el boton
+      boton_nuevo.style.display = 'none';
+      imagen.style.display = 'none';
+      contenedor_texto.innerHTML = 'Datos de la caja';
 
       descripcionHTML.value = cajaLocal.descripcion;
       altoHTML.value = cajaLocal.alto;
@@ -51,6 +57,12 @@ const CajasReg = () => {
     }
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -61,22 +73,32 @@ const CajasReg = () => {
       .then(respuesta => {
         if (respuesta.ok) {
           return respuesta.json();
+          // En caso de no tener una respuesta Ok
         } else {
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
+  /**
+   * * Función para actualizar una caja
+   */
   function guardar() {
+    // Constantes
     const cajaLocal = JSON.parse(localStorage.getItem('caja'));
     const descripcionHTML = document.getElementById('descripcion');
     const altoHTML = document.getElementById('alto');
@@ -103,7 +125,11 @@ const CajasReg = () => {
     localStorage.clear();
   }
 
+  /**
+   * * Función para eliminar una caja
+   */
   function eliminar() {
+    // Constantes
     const cajaLocal = JSON.parse(localStorage.getItem('caja'));
     const url = `http://localhost:5000/caja/delete/${cajaLocal._id}`;
 
@@ -120,7 +146,11 @@ const CajasReg = () => {
     localStorage.clear();
   }
 
+  /**
+   * * Función para guardar una nueva caja
+   */
   function insertar() {
+    // Constantes
     const descripcionHTML = document.getElementById('descripcion');
     const altoHTML = document.getElementById('alto');
     const anchoHTML = document.getElementById('ancho');
@@ -147,6 +177,7 @@ const CajasReg = () => {
 
   return (
     <div id='cntr'>
+
       <div id="cntr_negro">
 
         <div id="cntr_logo">
@@ -162,7 +193,6 @@ const CajasReg = () => {
       </div >
 
       <div id="cntr_blanco">
-
         <div id="cntr_duo">
 
           <div id="imagen">
@@ -170,6 +200,7 @@ const CajasReg = () => {
           </div>
 
           <div id="form">
+
             <div id="contenedor_texto"><h2>Mide la caja</h2></div>
 
             <div id="contenedor_formulario">
@@ -213,8 +244,10 @@ const CajasReg = () => {
             </div>
 
           </div>
+
         </div>
       </div>
+
     </div>
   );
 };

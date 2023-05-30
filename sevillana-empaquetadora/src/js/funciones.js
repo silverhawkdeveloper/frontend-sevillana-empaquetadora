@@ -1,3 +1,4 @@
+// Imagenes
 import boton_emer from '../imagenes/iconos/boton-emergencia.png';
 
 export async function construir_tabla_empleados(datos, padre) {
@@ -133,8 +134,6 @@ export async function construir_tabla_pedidos(datos, padre) {
     });
 }
 
-
-
 function crear_boton(padre) {
     const td = document.createElement('td');
     padre.appendChild(td);
@@ -172,12 +171,11 @@ export function validarError(objetoInput, mensaje, automatico) {
             spanError.classList.remove("textoError")
             spanError.innerText = ''
         }
-    // Para informar de los mensajes del servidor
+        // Para informar de los mensajes del servidor
     } else if (automatico === 1) {
         objetoInput.classList.add("claseError")
         spanError.classList.remove("texto")
         spanError.classList.add("textoError")
         spanError.innerText = mensaje
     }
-
 }

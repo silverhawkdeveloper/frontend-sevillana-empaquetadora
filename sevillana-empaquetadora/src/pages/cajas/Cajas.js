@@ -1,28 +1,35 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import cajas from '../../imagenes/iconos/cajas+.png';
 import grafica from '../../imagenes/iconos/grafica.png';
+// CSS
 import '../../css/app.css';
 import '../../css/cajas/cajas.css';
-import { obtener_id, construir_tabla_cajas }
+// Funciones
+import { obtener_id, construir_tabla_cajas, auth_token_profile }
   from '../../js/funciones.js'
 
 const Cajas = () => {
   const navigate = useNavigate();
   localStorage.clear();
 
+  /**
+   * * Componente de React que entra una vez se ha cargado la página
+   */
   useEffect(() => {
+    // Constantes
     const usuario = document.getElementById('usuario');
     const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_producto = 'http://localhost:5000/caja/';
+    const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url_profile, token, usuario);
-
-    const url_producto = 'http://localhost:5000/caja/';
-    const tbody = document.getElementById('tbody');
 
     // Peticion para obtener las cajas
     fetch(url_producto)
@@ -37,6 +44,12 @@ const Cajas = () => {
       })
   });
 
+  /**
+   * * Función para autentificar al usuario
+   * @param {URL} url 
+   * @param {String} token 
+   * @param {HTMLElement} usuario 
+   */
   function auth_token_profile(url, token, usuario) {
     fetch(url, {
       method: 'GET',
@@ -47,21 +60,31 @@ const Cajas = () => {
       .then(respuesta => {
         if (respuesta.ok) {
           return respuesta.json();
+          // En caso de no tener una respuesta Ok
         } else {
           logout();
         }
       })
       .then((datos) => {
+        // Mostramos el email del usuario logeado
         usuario.innerHTML = datos.email;
       });
   }
 
+  /**
+   * * Función para deslogear al usuario
+   * Limpia la memoria y te dirige al inicio
+   */
   function logout() {
     sessionStorage.clear();
     localStorage.clear();
     navigate('/');
   }
 
+  /**
+   * * Función para redirigirnos a la página de modificar caja
+   * @param {EventTarget} e 
+   */
   function modificar_caja(e) {
     const id = obtener_id(e);
     localStorage.setItem('modificar_caja', true);
@@ -75,6 +98,7 @@ const Cajas = () => {
 
   return (
     <div id='cntr'>
+
       <div id="cntr_negro">
 
         <div id="cntr_logo">
@@ -90,10 +114,10 @@ const Cajas = () => {
       </div>
 
       <div id="cntr_blanco">
-
         <div id='cntr_productos'>
 
           <div id="cntr_botones">
+
             <div id="cntr_nuevo_obj">
               <Link to="/cajas_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
               <div id="boton_texto"><p>Gráficas</p></div>
@@ -105,9 +129,8 @@ const Cajas = () => {
               </div>
               <div id="boton_texto"><p>Nueva caja</p></div>
             </div>
+
           </div>
-
-
 
           <div id="cntr_gris_tabla">
 
@@ -120,9 +143,12 @@ const Cajas = () => {
                 </tr>
               </tbody>
             </table>
+
           </div>
+
         </div>
       </div>
+
     </div>
   );
 };

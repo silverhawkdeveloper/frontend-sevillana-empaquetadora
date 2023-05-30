@@ -30,7 +30,6 @@ import CilindroReg from "./pages/productos/CilindroReg";
 import EsferaReg from "./pages/productos/EsferaReg";
 import ProductosGraf from "./pages/productos/ProductosGraf";
 
-
 export default function App() {
   return (
     <BrowserRouter>
