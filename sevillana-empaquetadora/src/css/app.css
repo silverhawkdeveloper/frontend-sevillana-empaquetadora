@@ -83,6 +83,8 @@ h4 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
 #cntr_gris_tabla {

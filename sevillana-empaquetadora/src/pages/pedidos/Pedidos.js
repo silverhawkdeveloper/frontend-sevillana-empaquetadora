@@ -190,17 +190,16 @@ const Pedidos = () => {
 
           <div id="cntr_botones">
 
-            <div id="cntr_nuevo_obj">
-              <Link to="/pedidos_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+            <Link id="cntr_nuevo_obj" to="/pedidos_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" />
               <div id="boton_texto"><p>Gráficas</p></div>
-            </div>
+            </Link>
 
-            <div id="cntr_nuevo_obj">
+            <Link id="cntr_nuevo_obj" to="/Pedidos_reg">
               <div id="boton_imagen">
-                <Link to="/Pedidos_reg"><img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" /></Link>
+                <img id="iconos_btn" src={pedidos_plus} alt="logo pedidos_plus" />
               </div>
               <div id="boton_texto"><p>Nuevo pedido</p></div>
-            </div>
+            </Link>
 
           </div>
 

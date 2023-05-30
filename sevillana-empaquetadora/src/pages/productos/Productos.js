@@ -135,17 +135,19 @@ const Productos = () => {
         <div id='cntr_productos'>
 
           <div id="cntr_botones">
-            <div id="cntr_nuevo_obj">
-              <Link to="/productos_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
-              <div id="boton_texto"><p>Gráficas</p></div>
-            </div>
 
-            <div id="cntr_nuevo_obj">
+            <Link id="cntr_nuevo_obj" to="/productos_graf">
+              <img id="iconos_btn" src={grafica} alt="graficas empleado" />
+              <div id="boton_texto"><p>Gráficas</p></div>
+            </Link>
+
+            <Link id="cntr_nuevo_obj" to="/Figuras">
               <div id="boton_imagen">
-                <Link to="/Figuras"><img id="iconos_btn" src={productos} alt="nuevo producto" /></Link>
+                <img id="iconos_btn" src={productos} alt="nuevo producto" />
               </div>
               <div id="boton_texto"><p>Nuevo producto</p></div>
-            </div>
+            </Link>
+
           </div>
 
           <div id="cntr_gris_tabla">

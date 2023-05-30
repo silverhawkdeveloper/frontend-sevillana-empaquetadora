@@ -94,17 +94,19 @@ const Empleados = () => {
         <div id='cntr_productos'>
 
           <div id="cntr_botones">
-            <div id="cntr_nuevo_obj">
-              <Link to="/empleados_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
-              <div id="boton_texto"><p>Gráficas</p></div>
-            </div>
 
-            <div id="cntr_nuevo_obj">
+            <Link id="cntr_nuevo_obj" to="/empleados_graf">
+              <img id="iconos_btn" src={grafica} alt="graficas empleado" />
+              <div id="boton_texto"><p>Gráficas</p></div>
+            </Link>
+
+            <Link id="cntr_nuevo_obj" to="/Empleados_reg">
               <div id="boton_imagen">
-                <Link to="/Empleados_reg"><img id="iconos_btn" src={empleados} alt="nuevo empleado" /></Link>
+                <img id="iconos_btn" src={empleados} alt="nuevo empleado" />
               </div>
               <div id="boton_texto"><p>Nuevo empleado</p></div>
-            </div>
+            </Link>
+
           </div>
 
           <div id="cntr_gris_tabla">

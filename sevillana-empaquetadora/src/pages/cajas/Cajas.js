@@ -118,17 +118,17 @@ const Cajas = () => {
 
           <div id="cntr_botones">
 
-            <div id="cntr_nuevo_obj">
-              <Link to="/cajas_graf"><img id="iconos_btn" src={grafica} alt="graficas empleado" /></Link>
+            <Link id="cntr_nuevo_obj" to="/cajas_graf">
+              <img id="iconos_btn" src={grafica} alt="graficas empleado" />
               <div id="boton_texto"><p>Gráficas</p></div>
-            </div>
+            </Link>
 
-            <div id="cntr_nuevo_obj">
+            <Link id="cntr_nuevo_obj" to="/Cajas_reg">
               <div id="boton_imagen">
-                <Link to="/Cajas_reg"><img id="iconos_btn" src={cajas} alt="nueva caja" /></Link>
+                <img id="iconos_btn" src={cajas} alt="nueva caja" />
               </div>
               <div id="boton_texto"><p>Nueva caja</p></div>
-            </div>
+            </Link>
 
           </div>
 
