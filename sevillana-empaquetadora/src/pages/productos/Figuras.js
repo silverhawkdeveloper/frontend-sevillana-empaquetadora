@@ -83,22 +83,28 @@ const Figuras = () => {
 
         <div id="cntr_figuras">
 
-          <h2>Elige la figura similar al prducto</h2>
+          <h2>Elige la figura similar al producto</h2>
 
-          <ul>
-            <li id="boton"> <Link to="/Cubo_reg"><div id="cuadrado">
+          <div id='cntr_figuras2'>
+
+            <li id="boton"><Link to="/Cubo_reg"><div id="cuadrado">
               <img id="figuras" src={cubo} alt="cubo" />
             </div>CUBO</Link></li>
+
             <li id="boton"><Link to="/Ortoedro_reg"><div id="cuadrado">
               <img id="figuras" src={ortoedro} alt="ortoedro" />
-            </div>ORTOEDRO</Link> </li>
+            </div>ORTOEDRO</Link></li>
+
             <li id="boton"><Link to="/Cilindro_reg"><div id="cuadrado">
               <img id="figuras" src={cilindro} alt="cilindro" />
             </div>CILINDRO</Link></li>
+
             <li id="boton"><Link to="/Esfera_reg"><div id="cuadrado">
               <img id="figuras" src={esfera} alt="esfera" />
             </div>ESFERA</Link></li>
-          </ul>
+
+          </div>
+
 
         </div>
 

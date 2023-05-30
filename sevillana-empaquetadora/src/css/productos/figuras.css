@@ -8,6 +8,16 @@
     text-align: center;
 }
 
+#cntr_figuras2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 #figuras {
     height: 160px;
+}
+
+#boton {
+    display: flex;
 }

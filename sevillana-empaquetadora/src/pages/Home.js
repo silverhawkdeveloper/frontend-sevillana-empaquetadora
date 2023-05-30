@@ -105,7 +105,7 @@ const Home = () => {
 
         <div id='cntr_home'>
 
-          <ul>
+          <ul id='home'>
             <li id="li_pedidos"><Link to="/Pedidos"><div id="cuadrado">
               <img id="iconos" src={pedididos} alt="logo pedididos" />
             </div>PEDIDOS</Link></li>
