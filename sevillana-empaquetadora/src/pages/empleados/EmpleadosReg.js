@@ -66,7 +66,8 @@ const EmpleadosReg = () => {
         }
       })
       .then((datos) => {
-        usuario.innerHTML = datos.email;
+        // Mostramos el email del usuario logeado
+        if (datos != undefined) usuario.innerHTML = datos.email;
       });
   }
 

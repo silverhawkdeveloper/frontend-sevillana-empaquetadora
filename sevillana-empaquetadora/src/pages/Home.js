@@ -60,8 +60,9 @@ const Home = () => {
       })
       .then((datos) => {
         // Mostramos el email del usuario logeado
-        usuario.innerHTML = datos.email;
-        // Si es user
+        if (datos != undefined){
+          usuario.innerHTML = datos.email;
+                  // Si es user
         if (datos.role === 'user') {
           div1.style.display = 'block';
           div2.style.display = 'block';
@@ -72,6 +73,7 @@ const Home = () => {
           div3.style.display = 'block';
           div4.style.display = 'block';
         }
+        } 
       });
   }
 

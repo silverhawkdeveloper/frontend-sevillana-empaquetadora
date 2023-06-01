@@ -81,7 +81,7 @@ const CuboReg = () => {
       })
       .then((datos) => {
         // Mostramos el email del usuario logeado
-        usuario.innerHTML = datos.email;
+        if (datos != undefined) usuario.innerHTML = datos.email;
       });
   }
 
