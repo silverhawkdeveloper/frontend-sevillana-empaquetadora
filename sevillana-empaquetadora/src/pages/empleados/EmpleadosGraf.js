@@ -126,7 +126,7 @@ const EmpleadosGraf = () => {
       })
       .then((datos) => {
         // Mostramos el email del usuario logeado
-        if (datos != undefined) usuario.innerHTML = datos.email;
+        if (datos !== undefined) usuario.innerHTML = datos.email;
       });
   }
 
@@ -135,12 +135,6 @@ const EmpleadosGraf = () => {
     localStorage.clear();
     navigate('/');
   }
-
-  const estilo = {
-    'display': 'flex',
-    'justify-content': 'center',
-    'align-content': 'center'
-  };
 
   return (
     <div id="cntr">

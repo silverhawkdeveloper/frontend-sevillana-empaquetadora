@@ -60,7 +60,7 @@ const Home = () => {
       })
       .then((datos) => {
         // Mostramos el email del usuario logeado
-        if (datos != undefined){
+        if (datos !== undefined){
           usuario.innerHTML = datos.email;
                   // Si es user
         if (datos.role === 'user') {

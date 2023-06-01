@@ -70,7 +70,7 @@ const Pedidos = () => {
       })
       .then((datos) => {
         // Mostramos el email del usuario logeado
-        if (datos != undefined) usuario.innerHTML = datos.email;
+        if (datos !== undefined) usuario.innerHTML = datos.email;
       });
   }
 
