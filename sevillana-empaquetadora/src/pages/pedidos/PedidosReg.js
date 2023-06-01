@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // Imagenes
 import logo from '../../imagenes/logo.png';
-import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
+import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png'
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
 // CSS
@@ -207,7 +207,7 @@ const PedidosReg = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={cajas_blanco} alt="logo sevillana empaquetadora" />
+          <img id="iconos_blanco" src={pedidos_blanco} alt="logo sevillana empaquetadora" />
         </div>
 
         <div id="cntr_usuario">

@@ -56,7 +56,7 @@ const PedidosMod = () => {
       .then(data => {
         data.forEach(producto => {
           const a = producto._id
-          const b = pedidoLocal.producto
+          const b = pedidoLocal.producto[0]
           const option = document.createElement('option');
           option.value = a;
           option.innerText = producto.descripcion;
@@ -70,8 +70,8 @@ const PedidosMod = () => {
       .then(response => response.json())
       .then(data => {
         data.forEach(caja => {
-          const a = caja._id
-          const b = pedidoLocal.caja
+          const a = caja._id;
+          const b = pedidoLocal.caja[0];
           const option = document.createElement('option');
           option.value = a;
           option.innerText = caja.descripcion;
@@ -86,7 +86,7 @@ const PedidosMod = () => {
       .then(data => {
         data.forEach(usuario => {
           const a = usuario._id;
-          const b = pedidoLocal.usuario;
+          const b = pedidoLocal.usuario[0];
           const option = document.createElement('option');
           option.value = a;
           option.innerText = usuario.email;
