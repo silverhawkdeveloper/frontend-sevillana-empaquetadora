@@ -109,15 +109,24 @@ const Pedidos = () => {
     // Constantes
     const table = document.getElementById("tabla_pedidos");
     // Variables
-    let rows, bandera = true, i, x, y, n, cambiar, dir, contador = 0;
+    let rows, bandera = true, i, x, y, n, num_x, num_y, cambiar, dir, contador = 0;
 
     // Determina el valor a n según donde se haga click
     switch (index.currentTarget.textContent) {
       case 'Fecha':
         n = 0;
         break;
-      case 'Caja':
+      case 'Producto':
         n = 1;
+        break;
+      case 'Caja':
+        n = 2;
+        break;
+      case 'Merma cm³':
+        n = 3;
+        break;
+      case 'Realizado':
+        n = 4;
         break;
       default:
         break;
@@ -137,15 +146,26 @@ const Pedidos = () => {
         // Los dos elementos para comparar, uno de la fila actual y uno de la siguiente
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
+
+        num_x = Number(x.innerHTML);
+        num_y = Number(y.innerHTML);
         if (dir === "asc") {
           // Comprobamos las dos filas
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          if (n !== 3 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            // Cambiamos el orden
+            cambiar = true;
+            break;
+          } else if (num_x > num_y) {
             // Cambiamos el orden
             cambiar = true;
             break;
           }
         } else if (dir === "desc") {
-          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          if (n !== 3 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            // Cambiamos el orden
+            cambiar = true;
+            break;
+          } else if (num_x < num_y) {
             // Cambiamos el orden
             cambiar = true;
             break;
@@ -208,11 +228,11 @@ const Pedidos = () => {
             <table id='tabla_pedidos'>
               <tbody id='tbody'>
                 <tr>
-                  <th className='cabecera' onClick={ordenarTabla}>Fecha<img className='down' src={down} alt='down'></img></th>
-                  <th>Producto</th>
-                  <th className='cabecera' onClick={ordenarTabla}>Caja<img className='down' src={down} alt='down'></img></th>
-                  <th>Merma cm³</th>
-                  <th>Realizado</th>
+                  <th onClick={ordenarTabla}>Fecha<img className='down' src={down} alt='down'></img></th>
+                  <th onClick={ordenarTabla}>Producto<img className='down' src={down} alt='down'></img></th>
+                  <th onClick={ordenarTabla}>Caja<img className='down' src={down} alt='down'></img></th>
+                  <th onClick={ordenarTabla}>Merma cm³<img className='down' src={down} alt='down'></img></th>
+                  <th onClick={ordenarTabla}>Realizado<img className='down' src={down} alt='down'></img></th>
                   <th>Modificar</th>
                 </tr>
               </tbody>
@@ -229,3 +249,6 @@ const Pedidos = () => {
 };
 
 export default Pedidos;
+/**
+ * className='cabecera'
+ */
