@@ -10,7 +10,7 @@ import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/cajas/cajas.css';
 // Funciones
-import { obtener_id, construir_tabla_cajas }
+import { obtener_id, construir_tabla_cajas, auth_token_profile }
   from '../../js/funciones.js'
 
 const Cajas = () => {
