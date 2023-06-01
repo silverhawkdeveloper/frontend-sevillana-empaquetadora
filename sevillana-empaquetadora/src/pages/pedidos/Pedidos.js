@@ -249,6 +249,3 @@ const Pedidos = () => {
 };
 
 export default Pedidos;
-/**
- * className='cabecera'
- */
