@@ -11,8 +11,8 @@ import down from '../../imagenes/iconos/down.png';
 import '../../css/app.css';
 import '../../css/pedidos/pedidos.css';
 // Funciones
-import { obtener_id, construir_tabla_pedidos }
-  from '../../js/funciones.js'
+import { obtener_id, construir_tabla_pedidos } from '../../js/funciones.js';
+import { ruta } from '../../index.js';
 
 const Pedidos = () => {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ const Pedidos = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
-    const url_pedido = 'http://localhost:5000/pedido/';
+    const url_profile = ruta + 'auth-token/profile';
+    const url_pedido = ruta + 'pedido/';
     const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
@@ -92,7 +92,7 @@ const Pedidos = () => {
     // Constantes
     const id = obtener_id(e);
     // Peticion para obtener un pedido
-    fetch(`http://localhost:5000/pedido/${id}`)
+    fetch(`${ruta}pedido/${id}`)
       .then(response => response.json())
       .then(data => {
         // Almacenamos el pedidio de forma local y nos dirigimo a la página
@@ -149,6 +149,7 @@ const Pedidos = () => {
 
         num_x = Number(x.innerHTML);
         num_y = Number(y.innerHTML);
+        
         if (dir === "asc") {
           // Comprobamos las dos filas
           if (n !== 3 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {

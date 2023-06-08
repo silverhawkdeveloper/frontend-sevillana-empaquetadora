@@ -10,6 +10,8 @@ import esfera from '../../imagenes/figuras_geometricas/esfera.png';
 // CSS
 import '../../css/app.css';
 import '../../css/productos/figuras.css';
+// Funciones
+import { ruta } from '../../index.js';
 
 const Figuras = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Figuras = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_profile = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
@@ -104,7 +106,6 @@ const Figuras = () => {
             </div>ESFERA</Link></li>
 
           </div>
-
 
         </div>
 

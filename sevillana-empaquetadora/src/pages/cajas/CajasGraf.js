@@ -7,6 +7,8 @@ import { Chart } from 'chart.js/auto';
 // CSS
 import '../../css/app.css';
 import '../../css/home.css';
+// Funciones
+import { ruta } from '../../index.js';
 
 const CajasGraf = () => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const CajasGraf = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
@@ -116,7 +118,7 @@ const CajasGraf = () => {
    * @returns Devuelve un array con lo pedidos
    */
   async function peticionPedidos() {
-    const response = await fetch('http://localhost:5000/pedido/');
+    const response = await fetch(ruta + 'pedido/');
     const data = await response.json();
     return data;
   }
@@ -126,7 +128,7 @@ const CajasGraf = () => {
    * @returns Devuelve un array con las cajas
    */
   async function peticionCajas() {
-    const response = await fetch('http://localhost:5000/caja/');
+    const response = await fetch(ruta + 'caja/');
     const data = await response.json();
     return data;
   }
@@ -197,7 +199,7 @@ const CajasGraf = () => {
             <canvas id="myChart2" ></canvas>
           </div>
         </div>
-        
+
       </div>
 
     </div>

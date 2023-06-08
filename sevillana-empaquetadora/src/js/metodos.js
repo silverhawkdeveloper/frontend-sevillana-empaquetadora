@@ -7,7 +7,7 @@ fetch("pagina.json/php")
     .then((datos) => {
         return datos;
     });
-    
+
 //XMLHTTPREQUEST
 if (XMLHttpRequest) {
     const xhr = new XMLHttpRequest();
@@ -63,24 +63,23 @@ function deleteAlmacenamiento() {
     sessionStorage.clear();
 }
 
-/*************************** xxxxxxxx ***************************/
-
+/*************************** Ejemplo asincrono ***************************/
 async function peticionProducto(id) {
     const response = await fetch(`http://localhost:5000/producto/${id}`);
     const data = await response.json();
     return data;
-  }
+}
 
-  async function peticionProducto(id) {
+async function peticionProducto(id) {
     const response = await fetch('http://localhost:5000/producto/mostrar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        _id: id
-      })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            _id: id
+        })
     });
     const data = await response.json();
     return data;
-  }
+}

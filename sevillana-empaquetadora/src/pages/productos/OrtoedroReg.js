@@ -7,6 +7,8 @@ import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import ortoedro from '../../imagenes/figuras_geometricas/medidas_ortoedro.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
+// Funciones
+import { ruta } from '../../index.js';
 
 const OrtoedroReg = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const OrtoedroReg = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_profile = ruta + 'auth-token/profile';
     // Capturamos el cntr del boton eliminar
     // Si hemos accedido desde nuevo ocultamos el boton
     const boton_eliminar = document.getElementById('boton_eliminar');
@@ -45,7 +47,7 @@ const OrtoedroReg = () => {
       const anchoHTML = document.getElementById('ancho');
       const profundoHTML = document.getElementById('profundo');
 
-      fetch(`http://localhost:5000/producto/${productoLocal._id}`)
+      fetch(`${ruta}producto/${productoLocal._id}`)
         .then(response => response.json())
         .then(data => {
           descripcionHTML.value = data[0].descripcion;
@@ -106,7 +108,7 @@ const OrtoedroReg = () => {
     const altoHTML = document.getElementById('alto');
     const anchoHTML = document.getElementById('ancho');
     const profundoHTML = document.getElementById('profundo');
-    const url = `http://localhost:5000/producto/update/${productoLocal._id}`;
+    const url = `${ruta}producto/update/${productoLocal._id}`;
 
     fetch(url, {
       method: "PUT",
@@ -132,7 +134,7 @@ const OrtoedroReg = () => {
    */
   function eliminar() {
     const productoLocal = JSON.parse(localStorage.getItem('producto'));
-    const url = `http://localhost:5000/producto/delete/${productoLocal._id}`;
+    const url = `${ruta}producto/delete/${productoLocal._id}`;
 
     fetch(url, {
       method: "DELETE",
@@ -143,7 +145,7 @@ const OrtoedroReg = () => {
       .then((respuesta) => {
         if (respuesta.ok) navigate('/Productos');
       })
-      
+
     localStorage.clear();
   }
 
@@ -156,8 +158,8 @@ const OrtoedroReg = () => {
     const altoHTML = document.getElementById('alto');
     const anchoHTML = document.getElementById('ancho');
     const profundoHTML = document.getElementById('profundo');
-    
-    fetch('http://localhost:5000/producto/', {
+
+    fetch(ruta + 'producto/', {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -245,8 +247,11 @@ const OrtoedroReg = () => {
             </div>
 
           </div>
+          
         </div>
+
       </div>
+
     </div>
   );
 };

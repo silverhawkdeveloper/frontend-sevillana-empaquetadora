@@ -1,11 +1,14 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import { Chart } from 'chart.js/auto';
-
+// CSS
 import '../../css/app.css';
 import '../../css/home.css';
-
+// Funciones
+import { ruta } from '../../index.js';
 
 const EmpleadosGraf = () => {
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ const EmpleadosGraf = () => {
   useEffect(() => {
     // La función que deseas ejecutar al montar el componente
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
@@ -64,7 +67,6 @@ const EmpleadosGraf = () => {
       }
     });
 
-
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     function datos_empleados() {
       let array_usuario2 = [];
@@ -99,13 +101,13 @@ const EmpleadosGraf = () => {
   }
 
   async function peticionPedidos() {
-    const response = await fetch('http://localhost:5000/pedido/');
+    const response = await fetch(ruta + 'pedido/');
     const data = await response.json();
     return data;
   }
 
   async function peticionUsuarios() {
-    const response = await fetch('http://localhost:5000/usuario/');
+    const response = await fetch(ruta + 'usuario/');
     const data = await response.json();
     return data;
   }

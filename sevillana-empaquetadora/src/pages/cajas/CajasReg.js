@@ -10,6 +10,8 @@ import remove from '../../imagenes/iconos/remove.png';
 // CSS
 import '../../css/app.css';
 import '../../css/cajas/cajas.css';
+// Funciones
+import { ruta } from '../../index.js';
 
 const CajasReg = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const CajasReg = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_profile = ruta + 'auth-token/profile';
     const boton_eliminar = document.getElementById('boton_eliminar');
     const boton_guardar = document.getElementById('boton_guardar');
     const boton_nuevo = document.getElementById('boton_nuevo');
@@ -104,7 +106,7 @@ const CajasReg = () => {
     const altoHTML = document.getElementById('alto');
     const anchoHTML = document.getElementById('ancho');
     const profundoHTML = document.getElementById('profundo');
-    const url = `http://localhost:5000/caja/update/${cajaLocal._id}`;
+    const url = `${ruta}caja/update/${cajaLocal._id}`;
 
     fetch(url, {
       method: "PUT",
@@ -131,7 +133,7 @@ const CajasReg = () => {
   function eliminar() {
     // Constantes
     const cajaLocal = JSON.parse(localStorage.getItem('caja'));
-    const url = `http://localhost:5000/caja/delete/${cajaLocal._id}`;
+    const url = `${ruta}caja/delete/${cajaLocal._id}`;
 
     fetch(url, {
       method: "DELETE",
@@ -156,7 +158,7 @@ const CajasReg = () => {
     const anchoHTML = document.getElementById('ancho');
     const profundoHTML = document.getElementById('profundo');
 
-    fetch('http://localhost:5000/caja/', {
+    fetch(ruta + 'caja/', {
       method: "POST",
       headers: {
         "Content-type": "application/json",

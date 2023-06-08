@@ -9,6 +9,8 @@ import remove from '../../imagenes/iconos/remove.png';
 // CSS
 import '../../css/app.css';
 import '../../css/pedidos/pedidos_mod.css';
+// Funciones
+import { ruta } from '../../index.js';
 
 const PedidosMod = () => {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const PedidosMod = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
     const fechaHTML = document.getElementById('fecha');
     const productoHTML = document.getElementById('producto');
     const cantidadHTML = document.getElementById('cantidad');
@@ -42,7 +44,7 @@ const PedidosMod = () => {
     const fecha_form = `${anio}-${mes}-${dia}`;
 
     // Peticion para obtener el pedido
-    fetch(`http://localhost:5000/pedido/${pedidoLocal._id}`)
+    fetch(`${ruta}pedido/${pedidoLocal._id}`)
       .then(response => response.json())
       .then(data => {
         data.forEach(pedido => {
@@ -51,7 +53,7 @@ const PedidosMod = () => {
       })
 
     // Peticion para obtener los productos
-    fetch(`http://localhost:5000/producto/`)
+    fetch(`${ruta}producto/`)
       .then(response => response.json())
       .then(data => {
         data.forEach(producto => {
@@ -66,7 +68,7 @@ const PedidosMod = () => {
       })
 
     // Peticion para obtener las cajas
-    fetch(`http://localhost:5000/caja/`)
+    fetch(`${ruta}caja/`)
       .then(response => response.json())
       .then(data => {
         data.forEach(caja => {
@@ -81,7 +83,7 @@ const PedidosMod = () => {
       })
 
     // Peticion para obtener el usuario
-    fetch(`http://localhost:5000/usuario/`)
+    fetch(`${ruta}usuario/`)
       .then(response => response.json())
       .then(data => {
         data.forEach(usuario => {
@@ -151,7 +153,7 @@ const PedidosMod = () => {
     const usuarioHTML = document.getElementById('sel_usuario');
 
     const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
-    const url = `http://localhost:5000/pedido/update/${pedidoLocal._id}`;
+    const url = `${ruta}pedido/update/${pedidoLocal._id}`;
 
     fetch(url, {
       method: "PUT",
@@ -183,7 +185,7 @@ const PedidosMod = () => {
   function eliminar() {
     // Constantes
     const pedidoLocal = JSON.parse(localStorage.getItem('pedido'));
-    const url = `http://localhost:5000/pedido/delete/${pedidoLocal._id}`;
+    const url = `${ruta}pedido/delete/${pedidoLocal._id}`;
 
     fetch(url, {
       method: "DELETE",

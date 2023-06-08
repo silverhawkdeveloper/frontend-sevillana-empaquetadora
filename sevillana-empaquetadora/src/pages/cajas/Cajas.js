@@ -10,8 +10,9 @@ import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/cajas/cajas.css';
 // Funciones
-import { obtener_id, construir_tabla_cajas }
-  from '../../js/funciones.js'
+import { obtener_id, construir_tabla_cajas } from '../../js/funciones.js';
+// Funciones
+import { ruta } from '../../index.js';
 
 const Cajas = () => {
   const navigate = useNavigate();
@@ -23,8 +24,8 @@ const Cajas = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
-    const url_producto = 'http://localhost:5000/caja/';
+    const url_profile = ruta + 'auth-token/profile';
+    const url_producto = ruta + 'caja/';
     const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
@@ -88,7 +89,7 @@ const Cajas = () => {
   function modificar_caja(e) {
     const id = obtener_id(e);
     localStorage.setItem('modificar_caja', true);
-    fetch(`http://localhost:5000/caja/${id}`)
+    fetch(`${ruta}caja/${id}`)
       .then(response => response.json())
       .then(data => {
         localStorage.setItem('caja', JSON.stringify(data));

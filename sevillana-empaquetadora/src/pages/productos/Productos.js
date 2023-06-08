@@ -10,8 +10,8 @@ import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/productos/productos.css';
 // Funciones
-import { obtener_id, construir_tabla_productos }
-  from '../../js/funciones.js'
+import { obtener_id, construir_tabla_productos } from '../../js/funciones.js';
+import { ruta } from '../../index.js';
 
 const Productos = () => {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ const Productos = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
-    const url_producto = 'http://localhost:5000/producto/';
+    const url_profile = ruta + 'auth-token/profile';
+    const url_producto = ruta + 'producto/';
     const tbody = document.getElementById('tbody');
 
     // Recuperamos el token almacenado en la sesion
@@ -87,35 +87,36 @@ const Productos = () => {
    */
   function modificar_producto(e) {
     const id = obtener_id(e);
-    let ruta;
+    let ruta_producto;
     localStorage.setItem('Modificar_producto', true);
     // Peticion para obtener un producto
-    fetch(`http://localhost:5000/producto/${id}`)
+    fetch(`${ruta}producto/${id}`)
       .then(response => response.json())
       .then(data => {
         localStorage.setItem('producto', JSON.stringify(data[0]));
         switch (data[0].tipo) {
           case 'Cubo':
-            ruta = "/cubo_reg";
+            ruta_producto = "/cubo_reg";
             break;
           case 'Ortoedro':
-            ruta = "/ortoedro_reg";
+            ruta_producto = "/ortoedro_reg";
             break;
           case 'Cilindro':
-            ruta = "/cilindro_reg";
+            ruta_producto = "/cilindro_reg";
             break;
           case 'Esfera':
-            ruta = "/esfera_reg";
+            ruta_producto = "/esfera_reg";
             break;
           default:
-            ruta = "/home";
+            ruta_producto = "/home";
         }
-        navigate(ruta);
+        navigate(ruta_producto);
       })
   }
 
   return (
     <div id='cntr'>
+
       <div id="cntr_negro">
 
         <div id="cntr_logo">
@@ -162,8 +163,11 @@ const Productos = () => {
               </tbody>
             </table>
           </div>
+          
         </div>
+
       </div>
+
     </div>
   );
 }

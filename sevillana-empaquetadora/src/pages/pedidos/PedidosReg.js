@@ -12,6 +12,7 @@ import '../../css/pedidos/pedidos_reg.css';
 // Funciones
 import { empaquetar } from '../../logica/app.js';
 import { Pedido } from '../../logica/modelo-pedido.js';
+import { ruta } from '../../index.js';
 
 const PedidosReg = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const PedidosReg = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
     const productoHTML = document.getElementById('producto');
     const nodos_hijos = productoHTML.childNodes;
 
@@ -30,7 +31,7 @@ const PedidosReg = () => {
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url, token, usuario);
 
-    fetch('http://localhost:5000/producto/', {
+    fetch(ruta + 'producto/', {
       method: 'GET'
     })
       .then(respuesta => {
@@ -92,7 +93,7 @@ const PedidosReg = () => {
    * @returns Devuelve un array de la cajas
    */
   async function peticionCajas() {
-    const response = await fetch('http://localhost:5000/caja/');
+    const response = await fetch(ruta + 'caja/');
     const data = await response.json();
     return data;
   }
@@ -102,7 +103,7 @@ const PedidosReg = () => {
    * @returns Devuelve el producto
    */
   async function peticionProducto(id) {
-    const response = await fetch(`http://localhost:5000/producto/${id}`);
+    const response = await fetch(`${ruta}producto/${id}`);
     const data = await response.json();
     return data[0];
   }
@@ -147,7 +148,7 @@ const PedidosReg = () => {
    * @returns Devuelve un usuario
    */
   async function usuario(token) {
-    const response = await fetch('http://localhost:5000/auth-token/profile', {
+    const response = await fetch(ruta + 'auth-token/profile', {
       method: 'GET',
       headers: {
         'Authorization': token
@@ -167,7 +168,7 @@ const PedidosReg = () => {
     const pedido = JSON.parse(localStorage.getItem('pedido_local'));
     const fecha = new Date();
 
-    fetch('http://localhost:5000/pedido/', {
+    fetch(ruta + 'pedido/', {
       method: "POST",
       headers: {
         "Content-type": "application/json",

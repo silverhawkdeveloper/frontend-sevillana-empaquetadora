@@ -10,6 +10,8 @@ import empleados from '../imagenes/iconos/empleados.png';
 // CSS
 import '../css/app.css';
 import '../css/home.css';
+// Funciones
+import { ruta } from '../index.js';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
     const li_pedidos = document.getElementById('li_pedidos');
     const li_productos = document.getElementById('li_productos');
     const li_cajas = document.getElementById('li_cajas');

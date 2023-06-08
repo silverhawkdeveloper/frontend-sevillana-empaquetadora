@@ -8,7 +8,8 @@ import logo from '../../imagenes/logo.png';
 // CSS
 import '../../css/app.css';
 import '../../css/home.css';
-
+// Funciones
+import { ruta } from '../../index.js';
 
 const PedidosGraf = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const PedidosGraf = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
@@ -89,7 +90,7 @@ const PedidosGraf = () => {
    * @returns Devuelve un array con lo pedidos
    */
   async function peticionPedidos() {
-    const response = await fetch('http://localhost:5000/pedido/');
+    const response = await fetch(ruta + 'pedido/');
     const data = await response.json();
     return data;
   }
@@ -154,7 +155,7 @@ const PedidosGraf = () => {
             <canvas id="myChart" ></canvas>
           </div>
         </div>
-        
+
       </div>
 
     </div>

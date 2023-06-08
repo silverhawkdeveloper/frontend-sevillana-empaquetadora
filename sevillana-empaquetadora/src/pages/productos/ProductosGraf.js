@@ -6,6 +6,8 @@ import { Chart } from 'chart.js/auto';
 // CSS
 import '../../css/app.css';
 import '../../css/home.css';
+// Funciones
+import { ruta } from '../../index.js';
 
 const ProductosGraf = () => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const ProductosGraf = () => {
     // Constantes
     // La función que deseas ejecutar al montar el componente
     const usuario = document.getElementById('usuario');
-    const url = 'http://localhost:5000/auth-token/profile';
+    const url = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
@@ -95,7 +97,7 @@ const ProductosGraf = () => {
    * @returns Devuelve los pedidios
    */
   async function peticionPedidos() {
-    const response = await fetch('http://localhost:5000/pedido/');
+    const response = await fetch(ruta + 'pedido/');
     const data = await response.json();
     return data;
   }
@@ -105,7 +107,7 @@ const ProductosGraf = () => {
    * @returns Devuelve los pedidios
    */
   async function peticionProductos() {
-    const response = await fetch('http://localhost:5000/producto/');
+    const response = await fetch(ruta + 'producto/');
     const data = await response.json();
     return data;
   }

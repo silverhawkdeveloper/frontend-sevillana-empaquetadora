@@ -6,8 +6,8 @@ import empleados from '../../imagenes/iconos/empleados+.png';
 import grafica from '../../imagenes/iconos/grafica.png';
 import '../../css/app.css';
 import '../../css/empleados/empleados.css';
-import { obtener_id, construir_tabla_empleados }
-  from '../../js/funciones.js'
+import { obtener_id, construir_tabla_empleados } from '../../js/funciones.js';
+import { ruta } from '../../index.js';
 
 const Empleados = () => {
   const navigate = useNavigate();
@@ -15,13 +15,13 @@ const Empleados = () => {
 
   useEffect(() => {
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_profile = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
     auth_token_profile(url_profile, token, usuario);
 
-    const url_empleado = 'http://localhost:5000/usuario/';
+    const url_empleado = ruta + 'usuario/';
     const tbody = document.getElementById('tbody');
 
     // Peticion para obtener los empleados
@@ -66,7 +66,7 @@ const Empleados = () => {
   function modificar_empleado(e) {
     const id = obtener_id(e);
     localStorage.setItem('modificar_empleado', true);
-    fetch(`http://localhost:5000/usuario/${id}`)
+    fetch(`${ruta}usuario/${id}`)
       .then(response => response.json())
       .then(data => {
         localStorage.setItem('empleado', JSON.stringify(data));
@@ -76,6 +76,7 @@ const Empleados = () => {
 
   return (
     <div id='cntr'>
+
       <div id="cntr_negro">
 
         <div id="cntr_logo">
@@ -123,9 +124,13 @@ const Empleados = () => {
                 </tr>
               </tbody>
             </table>
+            
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 };

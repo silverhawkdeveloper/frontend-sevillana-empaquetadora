@@ -1,18 +1,23 @@
+// React
 import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+// Imagenes
 import logo from '../../imagenes/logo.png';
 import empleados_blanco from '../../imagenes/iconos/empleados_blanco.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
+// CSS
 import '../../css/app.css';
 import '../../css/empleados/empleados.css';
+// Funciones
+import { ruta } from '../../index.js';
 
 const EmpleadosReg = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_profile = ruta + 'auth-token/profile';
 
     // Recuperamos el token almacenado en la sesion
     const token = sessionStorage.getItem('JWT');
@@ -84,7 +89,7 @@ const EmpleadosReg = () => {
     const telefonoHTML = document.getElementById('telefono');
     const emailHTML = document.getElementById('email');
     const contaseniaHTML = document.getElementById('contasenia');
-    const url = `http://localhost:5000/usuario/update/${empleadoLocal._id}`;
+    const url = `${ruta}usuario/update/${empleadoLocal._id}`;
 
     fetch(url, {
       method: "PUT",
@@ -108,7 +113,7 @@ const EmpleadosReg = () => {
 
   function eliminar() {
     const empleadoLocal = JSON.parse(localStorage.getItem('empleado'));
-    const url = `http://localhost:5000/usuario/delete/${empleadoLocal._id}`;
+    const url = `${ruta}usuario/delete/${empleadoLocal._id}`;
 
     fetch(url, {
       method: "DELETE",
@@ -130,7 +135,7 @@ const EmpleadosReg = () => {
     const emailHTML = document.getElementById('email');
     const contaseniaHTML = document.getElementById('contasenia');
 
-    fetch('http://localhost:5000/usuario/', {
+    fetch(ruta + 'usuario/', {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -212,6 +217,7 @@ const EmpleadosReg = () => {
               </div>
 
             </div>
+            
           </div>
         </div>
 

@@ -7,6 +7,8 @@ import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
 import esfera from '../../imagenes/figuras_geometricas/medidas_esfera.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
+// Funciones
+import { ruta } from '../../index.js';
 
 const EsferaReg = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const EsferaReg = () => {
   useEffect(() => {
     // Constantes
     const usuario = document.getElementById('usuario');
-    const url_profile = 'http://localhost:5000/auth-token/profile';
+    const url_profile = ruta + 'auth-token/profile';
     // Capturamos el cntr del boton eliminar
     // Si hemos accedido desde nuevo ocultamos el boton
     const boton_eliminar = document.getElementById('boton_eliminar');
@@ -43,7 +45,7 @@ const EsferaReg = () => {
       imagen.style.display = 'none';
       contenedor_texto.innerHTML = 'Datos del producto';
 
-      fetch(`http://localhost:5000/producto/${productoLocal._id}`)
+      fetch(`${ruta}producto/${productoLocal._id}`)
         .then(response => response.json())
         .then(data => {
           descripcionHTML.value = data[0].descripcion;
@@ -100,7 +102,7 @@ const EsferaReg = () => {
     const productoLocal = JSON.parse(localStorage.getItem('producto'));
     const descripcionHTML = document.getElementById('descripcion');
     const circunferenciaHTML = document.getElementById('circunferencia');
-    const url = `http://localhost:5000/producto/update/${productoLocal._id}`;
+    const url = `${ruta}producto/update/${productoLocal._id}`;
 
     fetch(url, {
       method: "PUT",
@@ -125,7 +127,7 @@ const EsferaReg = () => {
   function eliminar() {
     // Constantes
     const productoLocal = JSON.parse(localStorage.getItem('producto'));
-    const url = `http://localhost:5000/producto/delete/${productoLocal._id}`;
+    const url = `${ruta}producto/delete/${productoLocal._id}`;
 
     fetch(url, {
       method: "DELETE",
@@ -149,7 +151,7 @@ const EsferaReg = () => {
     const descripcionHTML = document.getElementById('descripcion');
     const circunferenciaHTML = document.getElementById('circunferencia');
 
-    fetch('http://localhost:5000/producto/', {
+    fetch(ruta + 'producto/', {
       method: "POST",
       headers: {
         "Content-type": "application/json",

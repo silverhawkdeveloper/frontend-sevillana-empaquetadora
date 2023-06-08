@@ -7,6 +7,7 @@ import flecha from '../imagenes/iconos/flecha.png';
 import '../css/login.css';
 // Funciones
 import { validarError } from '../js/funciones';
+import { ruta } from '../index.js';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Login = () => {
     // Constantes
     const email = document.getElementById("email");
     const contrasenia = document.getElementById("contrasenia");
-    const url = 'http://localhost:5000/auth-token/login';
+    const url = ruta + 'auth-token/login';
 
     fetch(url, {
       method: "POST",
