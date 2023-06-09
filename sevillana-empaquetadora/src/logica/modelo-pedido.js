@@ -1,7 +1,4 @@
-import { Producto } from "./modelo-producto.js";
-export { Pedido }
-
-class Pedido {
+export class Pedido {
     /**
      * * Constructor del objeto Pedido.
      * @param {String} fecha 

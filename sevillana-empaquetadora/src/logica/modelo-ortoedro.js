@@ -1,7 +1,6 @@
 import { Producto } from "./modelo-producto.js";
-export { Ortoedro }
 
-class Ortoedro extends Producto{
+export class Ortoedro extends Producto{
     /**
      * * Constructor del objeto Ortoedro.
      * @param {String} descripcion 
@@ -15,6 +14,7 @@ class Ortoedro extends Producto{
         this.ancho = ancho;
         this.profundo = profundo;
     }
+
     /**
      * * Método para calcular el volumen de un Ortoedro.
      * @returns Devuelve un valor numérico con el volumen en cm³ del Ortoedro.
@@ -23,15 +23,17 @@ class Ortoedro extends Producto{
         let volumen = this.alto * this.ancho * this.profundo;
         return volumen;
     }
+
     /**
      * * Método para mostrar las aristas del objeto.
      * @returns Devuelve un array con las aristas del objeto ordenadas de menor a mayor.
      */
     arrayAristas() {
-        let array = new Array(this.alto, this.ancho, this.profundo);
+        let array = [this.alto, this.ancho, this.profundo];
         array.sort((a, b) => { return a - b });
         return array;
     }
+    
     /**
      * * Método para mostrar el objeto Ortoedro.
      * @returns Devuelve una cadena con la información del objeto.

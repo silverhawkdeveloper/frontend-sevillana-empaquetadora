@@ -4,34 +4,6 @@ import { Ortoedro } from "./modelo-ortoedro.js";
 import { Cilindro } from "./modelo-cilindro.js";
 import { Esfera } from "./modelo-esfera.js";
 import { Caja } from "./modelo-caja.js";
-import { Pedido } from "./modelo-pedido.js";
-//import { Producto } from "./modelo-producto.js";
-/*
-// PRODUCTOS
-let p1 = new Cubo('p1', 5);
-let p2 = new Ortoedro('p2', 10, 30, 25);
-let p3 = new Cilindro('p3', 40, 3.5);
-let p4 = new Esfera('p4', 20);
-
-// CAJAS
-let c1 = new Caja('Caja 1', 30, 30, 30);
-let c2 = new Caja('Caja 2', 10, 15, 40);
-let c3 = new Caja('Caja 3', 40, 30, 30);
-
-let arrayCajas = new Array(c1, c2, c3);
-
-
-// PEDIDO
-let fecha = new Date();
-
-let pedido1 = new Pedido(fecha, p1, 53);
-let pedido2 = new Pedido(fecha, p2, 17);
-let pedido3 = new Pedido(fecha, p3, 23);
-let pedido4 = new Pedido(fecha, p4, 26);
-
-// PROBAMOS
-let miResultado = empaquetar(pedido2);
-*/
 
 export function empaquetar(pedido, array) {
 
@@ -57,7 +29,7 @@ export function empaquetar(pedido, array) {
     }
 
     //Creamos las cajas de la petición
-    let arrayCajas = new Array();
+    let arrayCajas = [];
     array.forEach(elemeto_caja => {
         let caja = new Caja(elemeto_caja._id, elemeto_caja.descripcion, elemeto_caja.alto,
             elemeto_caja.ancho, elemeto_caja.profundo);
@@ -83,7 +55,7 @@ export function empaquetar(pedido, array) {
  * @returns Devuelve un array con las cajas donde se puede almacenar el producto.
  */
 function seleccionCajas(cajas, producto) {
-    let arrayCajas = new Array();
+    let arrayCajas = [];
     let capacidadTotal = 1;
     // Array con las aristas del producto ordenadas de menor a mayor.
     const aristasProducto = producto.arrayAristas();
@@ -112,7 +84,7 @@ function seleccionCajas(cajas, producto) {
 function guardarProducto(cajas, producto, cantidad) {
     const aristasProducto = producto.arrayAristas();
     const volumenProducto = producto.calculoVolumen();
-    let arrayCajasResultado = new Array();
+    let arrayCajasResultado = [];
     let productosCaja = 1;
 
     cajas.forEach((caja) => {

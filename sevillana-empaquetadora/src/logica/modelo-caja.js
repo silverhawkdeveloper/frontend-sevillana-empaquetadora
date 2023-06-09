@@ -1,6 +1,4 @@
-export { Caja }
-
-class Caja {
+export class Caja {
     /**
      * * Constructor del objeto Caja.
      * @param {String} descripcion 
@@ -28,7 +26,7 @@ class Caja {
      * @returns Devuelve un array con las aristas del objeto ordenadas de menor a mayor.
      */
     arrayAristas() {
-        let array = new Array(this.alto, this.ancho, this.profundo);
+        let array = [this.alto, this.ancho, this.profundo];
         array.sort((a, b) => { return a - b });
         return array;
     }

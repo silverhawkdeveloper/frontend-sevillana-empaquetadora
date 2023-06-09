@@ -1,7 +1,6 @@
 import { Producto } from "./modelo-producto.js";
-export { Esfera }
 
-class Esfera extends Producto{
+export class Esfera extends Producto{
     /**
      * * Constructor del objeto Esfera.
      * @param {String} descripcion
@@ -26,7 +25,7 @@ class Esfera extends Producto{
      * @returns Devuelve un array con las aristas del objeto ordenadas de menor a mayor.
      */
     arrayAristas() {
-        let array = new Array(this.diametro, this.diametro, this.diametro);
+        let array = [this.diametro, this.diametro, this.diametro];
         array.sort((a, b) => { return a - b });
         return array;
     }

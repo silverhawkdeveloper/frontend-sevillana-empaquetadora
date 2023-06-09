@@ -1,7 +1,6 @@
 import { Producto } from "./modelo-producto.js";
-export { Cubo }
 
-class Cubo extends Producto {
+export class Cubo extends Producto {
     /**
      * * Constructor del objeto Cubo.
      * @param {String} descripcion 
@@ -24,7 +23,7 @@ class Cubo extends Producto {
      * @returns Devuelve un array con las aristas del objeto ordenadas de menor a mayor.
      */
     arrayAristas() {
-        let array = new Array(this.arista, this.arista, this.arista);
+        let array = [this.arista, this.arista, this.arista];
         array.sort((a, b) => { return a - b });
         return array;
     }

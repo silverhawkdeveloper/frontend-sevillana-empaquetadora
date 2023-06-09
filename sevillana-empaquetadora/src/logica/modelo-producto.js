@@ -1,6 +1,4 @@
-export { Producto }
-
-class Producto {
+export class Producto {
     /**
      * * Constructor del objeto Producto.
      * @param {String} descripcion
