@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/frontend-sevillana-empaquetadora/static/css/main.96d368ea.css",
+    "main.js": "/frontend-sevillana-empaquetadora/static/js/main.a8fde240.js",
+    "static/media/logo.png": "/frontend-sevillana-empaquetadora/static/media/logo.83f8abaf626afc893c01.png",
+    "static/media/medidas_ortoedro.png": "/frontend-sevillana-empaquetadora/static/media/medidas_ortoedro.b7fbaa66dda907e9a7d5.png",
+    "static/media/medidas_esfera.png": "/frontend-sevillana-empaquetadora/static/media/medidas_esfera.e55d0d5cad80945d164c.png",
+    "static/media/esfera.png": "/frontend-sevillana-empaquetadora/static/media/esfera.911d45a069c083418326.png",
+    "static/media/ortoedro.png": "/frontend-sevillana-empaquetadora/static/media/ortoedro.9e95a0c6d2df4950ccce.png",
+    "static/media/medidas_cilindro.png": "/frontend-sevillana-empaquetadora/static/media/medidas_cilindro.b24b7a8a63183403840d.png",
+    "static/media/medidas_caja.png": "/frontend-sevillana-empaquetadora/static/media/medidas_caja.ffbb86a3d4510d1fb458.png",
+    "static/media/medidas_cubo.png": "/frontend-sevillana-empaquetadora/static/media/medidas_cubo.595bacfd3f995da1271b.png",
+    "static/media/cilindro.png": "/frontend-sevillana-empaquetadora/static/media/cilindro.c65fcad3ebd250c715e3.png",
+    "static/media/cubo.png": "/frontend-sevillana-empaquetadora/static/media/cubo.b1ef8b9f44706e3114ee.png",
+    "static/media/boton-emergencia.png": "/frontend-sevillana-empaquetadora/static/media/boton-emergencia.96bdd60a06715cf18206.png",
+    "static/media/empleados_blanco.png": "/frontend-sevillana-empaquetadora/static/media/empleados_blanco.c95496a564e55825cd37.png",
+    "static/media/empleados+.png": "/frontend-sevillana-empaquetadora/static/media/empleados+.8271f274d3efc902fe63.png",
+    "static/media/productos_blanco.png": "/frontend-sevillana-empaquetadora/static/media/productos_blanco.a0806035bbe88d5a6177.png",
+    "static/media/productos+.png": "/frontend-sevillana-empaquetadora/static/media/productos+.50ac551a71c8ee5da66b.png",
+    "static/media/flecha.png": "/frontend-sevillana-empaquetadora/static/media/flecha.14d86dd1600d1c933d8a.png",
+    "static/media/pedidos_blanco.png": "/frontend-sevillana-empaquetadora/static/media/pedidos_blanco.7da85bfdc2763a442f83.png",
+    "static/media/pedidos+.png": "/frontend-sevillana-empaquetadora/static/media/pedidos+.bcc25ddae7a500f75f10.png",
+    "static/media/empleados.png": "/frontend-sevillana-empaquetadora/static/media/empleados.7bc3190287b7fd0beff2.png",
+    "static/media/grafica.png": "/frontend-sevillana-empaquetadora/static/media/grafica.2ef2ad27040c648e047e.png",
+    "static/media/role.png": "/frontend-sevillana-empaquetadora/static/media/role.0240faa8724fbca2d8dc.png",
+    "static/media/productos.png": "/frontend-sevillana-empaquetadora/static/media/productos.cadc3da11f30513c7ae2.png",
+    "static/media/cajas+.png": "/frontend-sevillana-empaquetadora/static/media/cajas+.a6cf679dad45933a43a4.png",
+    "static/media/pedidos.png": "/frontend-sevillana-empaquetadora/static/media/pedidos.d70255dcb30e7049c2dc.png",
+    "static/media/cajas_blanco.png": "/frontend-sevillana-empaquetadora/static/media/cajas_blanco.2320fadae8baf4733353.png",
+    "static/media/remove.png": "/frontend-sevillana-empaquetadora/static/media/remove.3c662b752278fc52f408.png",
+    "static/media/nombre.png": "/frontend-sevillana-empaquetadora/static/media/nombre.05d0404ad8a0ab5bdefa.png",
+    "static/media/down.png": "/frontend-sevillana-empaquetadora/static/media/down.d7a588032e686c1b9355.png",
+    "static/media/contraseña.png": "/frontend-sevillana-empaquetadora/static/media/contraseña.be4e1a3c68801f5ad64c.png",
+    "index.html": "/frontend-sevillana-empaquetadora/index.html",
+    "main.96d368ea.css.map": "/frontend-sevillana-empaquetadora/static/css/main.96d368ea.css.map",
+    "main.a8fde240.js.map": "/frontend-sevillana-empaquetadora/static/js/main.a8fde240.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96d368ea.css",
+    "static/js/main.a8fde240.js"
+  ]
+}
