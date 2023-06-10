@@ -170,11 +170,8 @@ const PedidosMod = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) return respuesta;
+        if (respuesta.ok) navigate('/Pedidos');
       })
-      .then((datos) => {
-        return datos;
-      });
 
     localStorage.clear();
   }
