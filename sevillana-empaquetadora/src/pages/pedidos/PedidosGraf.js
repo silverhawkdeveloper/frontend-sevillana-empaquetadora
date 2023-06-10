@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Chart } from 'chart.js/auto';
 // Imagenes
 import logo from '../../imagenes/logo.png';
+import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
 // CSS
 import '../../css/app.css';
 import '../../css/home.css';
@@ -139,6 +140,7 @@ const PedidosGraf = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
+          <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedididos" />
         </div>
 
         <div id="cntr_usuario">

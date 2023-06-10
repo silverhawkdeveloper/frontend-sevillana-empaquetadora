@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // Imagenes
 import logo from '../../imagenes/logo.png';
+import empleados_blanco from '../../imagenes/iconos/empleados_blanco.png';
 import { Chart } from 'chart.js/auto';
 // CSS
 import '../../css/app.css';
@@ -144,6 +145,7 @@ const EmpleadosGraf = () => {
       <div id="cntr_negro">
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
+          <img id="iconos_blanco" src={empleados_blanco} alt="logo sevillana empaquetadora" />
         </div>
 
         <div id="cntr_usuario">
