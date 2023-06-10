@@ -194,7 +194,7 @@ const PedidosMod = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) return respuesta;
+        if (respuesta.ok) navigate('/Pedidos');
       })
 
     localStorage.clear();
@@ -254,14 +254,14 @@ const PedidosMod = () => {
               <div id="cntr_boton_login">
                 <div id="boton_texto"><p>Eliminar</p></div>
                 <div id="boton_imagen" onClick={eliminar}>
-                  <Link to="/Pedidos"><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
+                  <Link><img id="iconos_btn" src={remove} alt="boton remove" /></Link>
                 </div>
               </div>
 
               <div id="cntr_boton_login">
                 <div id="boton_texto"><p>Guardar</p></div>
                 <div id="boton_imagen" onClick={guardar}>
-                  <Link to="/Pedidos"><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
+                  <Link><img id="iconos_btn" src={flecha} alt="boton flecha" /></Link>
                 </div>
               </div>
 
