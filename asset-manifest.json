@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend-sevillana-empaquetadora/static/css/main.96d368ea.css",
-    "main.js": "/frontend-sevillana-empaquetadora/static/js/main.a8fde240.js",
+    "main.js": "/frontend-sevillana-empaquetadora/static/js/main.6787d8f2.js",
     "static/media/logo.png": "/frontend-sevillana-empaquetadora/static/media/logo.83f8abaf626afc893c01.png",
     "static/media/medidas_ortoedro.png": "/frontend-sevillana-empaquetadora/static/media/medidas_ortoedro.b7fbaa66dda907e9a7d5.png",
     "static/media/medidas_esfera.png": "/frontend-sevillana-empaquetadora/static/media/medidas_esfera.e55d0d5cad80945d164c.png",
@@ -33,10 +33,10 @@
     "static/media/contraseña.png": "/frontend-sevillana-empaquetadora/static/media/contraseña.be4e1a3c68801f5ad64c.png",
     "index.html": "/frontend-sevillana-empaquetadora/index.html",
     "main.96d368ea.css.map": "/frontend-sevillana-empaquetadora/static/css/main.96d368ea.css.map",
-    "main.a8fde240.js.map": "/frontend-sevillana-empaquetadora/static/js/main.a8fde240.js.map"
+    "main.6787d8f2.js.map": "/frontend-sevillana-empaquetadora/static/js/main.6787d8f2.js.map"
   },
   "entrypoints": [
     "static/css/main.96d368ea.css",
-    "static/js/main.a8fde240.js"
+    "static/js/main.6787d8f2.js"
   ]
 }
