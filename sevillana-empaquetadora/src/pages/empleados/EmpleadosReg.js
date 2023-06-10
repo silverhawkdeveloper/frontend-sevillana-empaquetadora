@@ -42,13 +42,13 @@ const EmpleadosReg = () => {
       const nombreHTML = document.getElementById('nombre');
       const telefonoHTML = document.getElementById('telefono');
       const emailHTML = document.getElementById('email');
-      const contaseniaHTML = document.getElementById('contasenia');
+      const contraseniaHTML = document.getElementById('contrasenia');
 
       roleHTML.value = empleadoLocal.role;
       nombreHTML.value = empleadoLocal.nombre;
       telefonoHTML.value = empleadoLocal.telefono;
       emailHTML.value = empleadoLocal.email;
-      contaseniaHTML.value = empleadoLocal.contrasenia;
+      contraseniaHTML.value = empleadoLocal.contrasenia;
 
     } else {
       boton_eliminar.style.display = 'none';
@@ -88,7 +88,7 @@ const EmpleadosReg = () => {
     const nombreHTML = document.getElementById('nombre');
     const telefonoHTML = document.getElementById('telefono');
     const emailHTML = document.getElementById('email');
-    const contaseniaHTML = document.getElementById('contasenia');
+    const contraseniaHTML = document.getElementById('contrasenia');
     const url = `${ruta}usuario/update/${empleadoLocal._id}`;
 
     fetch(url, {
@@ -101,7 +101,7 @@ const EmpleadosReg = () => {
         'nombre': nombreHTML.value,
         'telefono': telefonoHTML.value,
         'email': emailHTML.value,
-        'contrasenia': contaseniaHTML.value
+        'contrasenia': contraseniaHTML.value
       }),
     })
       .then((respuesta) => {
@@ -135,7 +135,7 @@ const EmpleadosReg = () => {
     const nombreHTML = document.getElementById('nombre');
     const telefonoHTML = document.getElementById('telefono');
     const emailHTML = document.getElementById('email');
-    const contaseniaHTML = document.getElementById('contasenia');
+    const contraseniaHTML = document.getElementById('contrasenia');
 
     fetch(ruta + 'usuario/', {
       method: "POST",
@@ -147,7 +147,7 @@ const EmpleadosReg = () => {
         'nombre': nombreHTML.value,
         'telefono': telefonoHTML.value,
         'email': emailHTML.value,
-        'contrasenia': contaseniaHTML.value
+        'contrasenia': contraseniaHTML.value
       }),
     })
       .then((respuesta) => {
@@ -187,7 +187,7 @@ const EmpleadosReg = () => {
               <input id="nombre" type="text" placeholder="Nombre" />
               <input id="telefono" type="text" placeholder="Teléfono" />
               <input id="email" type="text" placeholder="Email" />
-              <input id="contasenia" type="password" placeholder="Contraseña" />
+              <input id="contrasenia" type="password" placeholder="Contraseña" />
             </form>
 
             <div id="cntr_botones">
