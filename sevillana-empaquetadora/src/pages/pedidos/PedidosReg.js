@@ -184,11 +184,8 @@ const PedidosReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) return respuesta;
+        if (respuesta.ok) navigate('/Pedidos');;
       })
-      .then((datos) => {
-        navigate('/Pedidos');
-      });
 
     localStorage.clear();
   }
