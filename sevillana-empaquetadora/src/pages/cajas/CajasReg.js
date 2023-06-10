@@ -121,10 +121,11 @@ const CajasReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Cajas');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Cajas');
+        }
+      });
   }
 
   /**
@@ -142,10 +143,11 @@ const CajasReg = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Cajas');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Cajas');
+        }
+      });
   }
 
   /**
@@ -171,10 +173,11 @@ const CajasReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Cajas');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Cajas');
+        }
+      });
   }
 
   return (

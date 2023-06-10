@@ -105,10 +105,11 @@ const EmpleadosReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Empleados');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Empleados');
+        }
+      });
   }
 
   function eliminar() {
@@ -122,10 +123,11 @@ const EmpleadosReg = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Empleados');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Empleados');
+        }
+      });
   }
 
   function insertar() {
@@ -149,10 +151,11 @@ const EmpleadosReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Empleados');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Empleados');
+        }
+      });
   }
   return (
     <div id='cntr'>
@@ -217,7 +220,7 @@ const EmpleadosReg = () => {
               </div>
 
             </div>
-            
+
           </div>
         </div>
 

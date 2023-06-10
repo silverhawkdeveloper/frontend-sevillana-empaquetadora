@@ -119,10 +119,11 @@ const CilindroReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   /**
@@ -140,10 +141,11 @@ const CilindroReg = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   /**
@@ -168,10 +170,11 @@ const CilindroReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   return (

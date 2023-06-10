@@ -170,10 +170,11 @@ const PedidosMod = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Pedidos');
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Pedidos');
+        }
       })
-
-    localStorage.clear();
   }
 
   /**
@@ -191,10 +192,11 @@ const PedidosMod = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Pedidos');
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Pedidos');
+        }
       })
-
-    localStorage.clear();
   }
 
   return (

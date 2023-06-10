@@ -123,10 +123,11 @@ const OrtoedroReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   /**
@@ -143,10 +144,11 @@ const OrtoedroReg = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   /**
@@ -173,10 +175,11 @@ const OrtoedroReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   return (
@@ -247,7 +250,7 @@ const OrtoedroReg = () => {
             </div>
 
           </div>
-          
+
         </div>
 
       </div>

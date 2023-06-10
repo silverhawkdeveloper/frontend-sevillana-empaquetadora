@@ -118,10 +118,11 @@ const CuboReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   /**
@@ -139,10 +140,11 @@ const CuboReg = () => {
       }
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');;
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   /**
@@ -166,10 +168,11 @@ const CuboReg = () => {
       }),
     })
       .then((respuesta) => {
-        if (respuesta.ok) navigate('/Productos');
-      })
-
-    localStorage.clear();
+        if (respuesta.ok) {
+          localStorage.clear();
+          navigate('/Productos');
+        }
+      });
   }
 
   return (
