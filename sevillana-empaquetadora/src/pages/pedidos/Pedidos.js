@@ -149,7 +149,7 @@ const Pedidos = () => {
 
         num_x = Number(x.innerHTML);
         num_y = Number(y.innerHTML);
-        
+
         if (dir === "asc") {
           // Comprobamos las dos filas
           if (n !== 3 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
@@ -195,7 +195,8 @@ const Pedidos = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedididos" />
+          <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedidos" />
+          <h4>Pedidos</h4>
         </div>
 
         <div id="cntr_usuario">

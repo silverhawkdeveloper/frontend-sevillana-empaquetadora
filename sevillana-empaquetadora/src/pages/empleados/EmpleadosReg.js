@@ -163,7 +163,8 @@ const EmpleadosReg = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={empleados_blanco} alt="logo sevillana empaquetadora" />
+          <Link to="/Empleados"><img id="iconos_blanco" src={empleados_blanco} alt="logo sevillana empaquetadora" /></Link>
+          <h4>Empleados</h4>
         </div>
 
         <div id="cntr_usuario">

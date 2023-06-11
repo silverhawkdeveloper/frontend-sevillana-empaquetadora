@@ -122,6 +122,7 @@ const Productos = () => {
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
           <img id="iconos_blanco" src={productos_blanco} alt="logo productos" />
+          <h4>Productos</h4>
         </div>
 
         <div id="cntr_usuario">
@@ -163,7 +164,7 @@ const Productos = () => {
               </tbody>
             </table>
           </div>
-          
+
         </div>
 
       </div>

@@ -187,7 +187,8 @@ const CajasReg = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={cajas_blanco} alt="logo sevillana empaquetadora" />
+          <Link to="/Cajas"><img id="iconos_blanco" src={cajas_blanco} alt="logo sevillana empaquetadora" /></Link>
+          <h4>Cajas</h4>
         </div>
 
         <div id="cntr_usuario">

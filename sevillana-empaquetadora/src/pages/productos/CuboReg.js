@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // Imagen
 import logo from '../../imagenes/logo.png';
-import cajas_blanco from '../../imagenes/iconos/cajas_blanco.png';
+import productos_blanco from '../../imagenes/iconos/productos_blanco.png';
 import cubo from '../../imagenes/figuras_geometricas/medidas_cubo.png';
 import flecha from '../../imagenes/iconos/flecha.png';
 import remove from '../../imagenes/iconos/remove.png';
@@ -181,7 +181,8 @@ const CuboReg = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={cajas_blanco} alt="logo sevillana empaquetadora" />
+          <Link to="/Productos"><img id="iconos_blanco" src={productos_blanco} alt="logo productos" /></Link>
+          <h4>Productos</h4>
         </div>
 
         <div id="cntr_usuario">

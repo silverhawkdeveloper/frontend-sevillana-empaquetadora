@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // Imagenes
 import logo from '../../imagenes/logo.png';
+import productos_blanco from '../../imagenes/iconos/productos_blanco.png';
 import cubo from '../../imagenes/figuras_geometricas/cubo.png';
 import ortoedro from '../../imagenes/figuras_geometricas/ortoedro.png';
 import cilindro from '../../imagenes/figuras_geometricas/cilindro.png';
@@ -72,6 +73,8 @@ const Figuras = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
+          <Link to="/Productos"><img id="iconos_blanco" src={productos_blanco} alt="logo productos" /></Link>
+          <h4>Productos</h4>
         </div>
 
         <div id="cntr_usuario">

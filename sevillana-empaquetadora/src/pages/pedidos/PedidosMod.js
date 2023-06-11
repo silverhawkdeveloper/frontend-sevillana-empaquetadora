@@ -206,7 +206,8 @@ const PedidosMod = () => {
 
         <div id="cntr_logo">
           <Link to="/Home"><img id="logo" src={logo} alt="logo sevillana empaquetadora" /></Link>
-          <img id="iconos_blanco" src={pedidos_blanco} alt="logo pedidos" />
+          <Link to="/Pedidos"><img id="iconos_blanco" src={pedidos_blanco} alt="logo pedidos" /></Link>
+          <h4>Pedidos</h4>
         </div>
 
         <div id="cntr_usuario">
