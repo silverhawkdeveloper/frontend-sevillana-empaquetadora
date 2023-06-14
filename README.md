@@ -23,4 +23,11 @@ Por un lado el aumento de la productividad del empleado a la hora de realizar un
 Seleccionar el empaquetado mas optimo de un pedido.
 
 ## Estructura del Proyecto
-
+- /sevillana-empaquetadora: Directorio principal que contiene el código fuente del proyecto.
+- /src: Directorio principal que contiene el código fuente del proyecto
+    - /css: Archivos de las hojas de estilo.
+    - /imagenes: Todos los archivos graficos empleados.
+    - /js: Encontramos lo .js de funciones y métodos.
+    - /logica: Las clases necesarias para construir los objetos y las funciones de empaquetado.
+    - /pages: Todas las paginas independientes del proyecto.
+- /docs: Directorio que alberga la documentación del proyecto.
