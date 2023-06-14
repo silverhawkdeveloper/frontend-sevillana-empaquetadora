@@ -65,7 +65,9 @@ export default function App() {
   );
 }
 
-// Para sevidor local 'http://localhost:5000/producto/'
+// Para sevidor local 
+//export const ruta = 'http://localhost:5000/'
+// Para despliegue
 export const ruta = 'https://backend-sevillana-empaquetadora-production.up.railway.app/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
