@@ -71,9 +71,13 @@ const CajasGraf = () => {
         }]
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: 'Cajas totales empleadas'
           }
         }
       }
@@ -84,6 +88,14 @@ const CajasGraf = () => {
       data: {
         labels: meses,
         datasets: datos_cajas()
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Merma total por caja'
+          }
+        }
       }
     });
 
@@ -100,7 +112,7 @@ const CajasGraf = () => {
           data: '',
           borderWidth: 1
         }
-        objeto.label = `Merma ${caja.descripcion}`;
+        objeto.label = caja.descripcion;
         objeto.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         pedidos.forEach(ped => {
           if (caja._id === ped.caja[0]._id) {

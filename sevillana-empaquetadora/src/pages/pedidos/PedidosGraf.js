@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // Chart
 import { Chart } from 'chart.js/auto';
+
 // Imagenes
 import logo from '../../imagenes/logo.png';
 import pedidos_blanco from '../../imagenes/iconos/pedidos_blanco.png';
@@ -54,7 +55,7 @@ const PedidosGraf = () => {
       data: {
         labels: meses,
         datasets: [{
-          label: 'Número de pedidos',
+          label: '',
           data: array_pedidos,
           borderWidth: 1,
           backgroundColor: [
@@ -76,9 +77,13 @@ const PedidosGraf = () => {
         }]
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: 'Pedidos mensuales'
           }
         }
       }

@@ -49,6 +49,14 @@ const ProductosGraf = () => {
       data: {
         labels: meses,
         datasets: datos_productos()
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Productos mensuales empaquetados'
+          }
+        }
       }
     });
 

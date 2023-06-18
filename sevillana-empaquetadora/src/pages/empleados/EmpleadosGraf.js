@@ -60,9 +60,13 @@ const EmpleadosGraf = () => {
         }]
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: 'Pedidos totales empaquetados'
           }
         }
       }
@@ -78,7 +82,7 @@ const EmpleadosGraf = () => {
           data: '',
           borderWidth: 1
         }
-        objeto.label = `Pedidos mensuales ${us.nombre}`;
+        objeto.label = us.nombre;
         objeto.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         pedidos.forEach(ped => {
           if (us._id === ped.usuario[0]._id) {
@@ -97,6 +101,14 @@ const EmpleadosGraf = () => {
       data: {
         labels: meses,
         datasets: datos_empleados()
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Pedidos mensuales'
+          }
+        }
       }
     });
   }
