@@ -41,21 +41,6 @@ const ProductosGraf = () => {
     const pedidos = await peticionPedidos();
     // Recuperamos los productos
     const productos = await peticionProductos();
-    // Varibles
-    let array_pedidos = [];
-    let array_productos = [];
-    let contador = 0;
-
-    productos.forEach(prod => {
-      array_productos.push(prod.descripcion);
-      pedidos.forEach(ped => {
-        if (prod._id === ped.producto[0]._id) {
-          contador++;
-        }
-      })
-      array_pedidos.push(contador);
-      contador = 0;
-    });
 
     // Gráfica
     const ctx = document.getElementById('myChart');
@@ -85,7 +70,7 @@ const ProductosGraf = () => {
         pedidos.forEach(ped => {
           if (prod._id === ped.producto[0]._id) {
             mes = (new Date(ped.fecha)).getMonth()
-            objeto.data[mes] += 1;
+            objeto.data[mes] += ped.cantidad;
           }
         });
         array.push(objeto);
@@ -167,11 +152,13 @@ const ProductosGraf = () => {
       </div>
 
       <div id="cntr_blanco">
+
         <div className='cntr_grafica'>
           <div className='grafica'>
             <canvas id="myChart" ></canvas>
           </div>
         </div>
+        
       </div>
 
     </div>
